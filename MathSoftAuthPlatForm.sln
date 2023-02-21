@@ -11,10 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business", "Business\Busine
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interfaces", "Interfaces\Interfaces.csproj", "{DDCAEA8C-E06B-4D34-9807-57DC2F71BD72}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathSoftCommonLib", "MathSoftCommonLib\MathSoftCommonLib.csproj", "{D3D58BD5-B400-4657-9B1C-687AA16AC05A}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathSoftModelLib", "MathSoftModelLib\MathSoftModelLib.csproj", "{B14C0DD3-0C37-47F1-9C92-DA244CD8FA06}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathSoftAuthPlatForm", "MathSoftAuthPlatForm\MathSoftAuthPlatForm.csproj", "{60DAA6C5-9EFF-4811-BAC9-379D82116887}"
 EndProject
 Global
@@ -39,14 +35,6 @@ Global
 		{DDCAEA8C-E06B-4D34-9807-57DC2F71BD72}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DDCAEA8C-E06B-4D34-9807-57DC2F71BD72}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DDCAEA8C-E06B-4D34-9807-57DC2F71BD72}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D3D58BD5-B400-4657-9B1C-687AA16AC05A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D3D58BD5-B400-4657-9B1C-687AA16AC05A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D3D58BD5-B400-4657-9B1C-687AA16AC05A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D3D58BD5-B400-4657-9B1C-687AA16AC05A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B14C0DD3-0C37-47F1-9C92-DA244CD8FA06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B14C0DD3-0C37-47F1-9C92-DA244CD8FA06}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B14C0DD3-0C37-47F1-9C92-DA244CD8FA06}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B14C0DD3-0C37-47F1-9C92-DA244CD8FA06}.Release|Any CPU.Build.0 = Release|Any CPU
 		{60DAA6C5-9EFF-4811-BAC9-379D82116887}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{60DAA6C5-9EFF-4811-BAC9-379D82116887}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{60DAA6C5-9EFF-4811-BAC9-379D82116887}.Release|Any CPU.ActiveCfg = Release|Any CPU

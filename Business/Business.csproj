@@ -41,6 +41,12 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="MathSoftCommonLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MathSoftCommonLib.1.0.0\lib\net40\MathSoftCommonLib.dll</HintPath>
+    </Reference>
+    <Reference Include="MathSoftModelLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MathSoftModelLib.1.0.0\lib\net40\MathSoftModelLib.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -76,14 +82,11 @@
       <Project>{9D10DBF6-C815-4644-B7B3-1277BD626A23}</Project>
       <Name>DTOModel</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MathSoftCommonLib\MathSoftCommonLib.csproj">
-      <Project>{d3d58bd5-b400-4657-9b1c-687aa16ac05a}</Project>
-      <Name>MathSoftCommonLib</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MathSoftModelLib\MathSoftModelLib.csproj">
-      <Project>{b14c0dd3-0c37-47f1-9c92-da244cd8fa06}</Project>
-      <Name>MathSoftModelLib</Name>
-    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DependencyDLL\MySql.Data.dll" />
+    <Content Include="DependencyDLL\Newtonsoft.Json.dll" />
+    <Content Include="DependencyDLL\System.Data.SQLite.DLL" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

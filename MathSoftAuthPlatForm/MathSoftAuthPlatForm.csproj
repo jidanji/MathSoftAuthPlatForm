@@ -58,6 +58,12 @@
     <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
       <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
+    <Reference Include="MathSoftCommonLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MathSoftCommonLib.1.0.0\lib\net40\MathSoftCommonLib.dll</HintPath>
+    </Reference>
+    <Reference Include="MathSoftModelLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MathSoftModelLib.1.0.0\lib\net40\MathSoftModelLib.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="NPOI, Version=2.3.0.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
       <HintPath>..\packages\NPOI.2.3.0\lib\net40\NPOI.dll</HintPath>
@@ -131,6 +137,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\favicon.ico" />
+    <Content Include="DependencyDLL\MySql.Data.dll" />
+    <Content Include="DependencyDLL\Newtonsoft.Json.dll" />
+    <Content Include="DependencyDLL\System.Data.SQLite.DLL" />
     <Content Include="favicon.ico" />
     <Content Include="images\excel.png" />
     <Content Include="Scripts\animate.min.css" />
@@ -448,14 +457,6 @@
     <ProjectReference Include="..\DTOModel\DTOModel.csproj">
       <Project>{9d10dbf6-c815-4644-b7b3-1277bd626a23}</Project>
       <Name>DTOModel</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MathSoftCommonLib\MathSoftCommonLib.csproj">
-      <Project>{d3d58bd5-b400-4657-9b1c-687aa16ac05a}</Project>
-      <Name>MathSoftCommonLib</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MathSoftModelLib\MathSoftModelLib.csproj">
-      <Project>{b14c0dd3-0c37-47f1-9c92-da244cd8fa06}</Project>
-      <Name>MathSoftModelLib</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
