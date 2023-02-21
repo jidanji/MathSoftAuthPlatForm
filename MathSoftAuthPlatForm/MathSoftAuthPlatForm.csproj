@@ -814,6 +814,7 @@
     <Content Include="fonts\FZZZHONGHJW.TTF" />
     <Content Include="fonts\zsYAHEI.ttf" />
     <Content Include="Content\modal.rar" />
+    <Content Include="Areas\Admin\Views\Shared\_BackGroudNoLeft.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <Content Include="Scripts\element-ui\CHANGELOG.en-US.md" />
     <Content Include="Scripts\element-ui\CHANGELOG.es.md" />

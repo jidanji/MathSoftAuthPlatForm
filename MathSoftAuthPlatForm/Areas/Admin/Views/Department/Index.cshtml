@@ -1,8 +1,16 @@
 ﻿
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Areas/Admin/Views/Shared/_BackGroud.cshtml";
 
+
+
+    if (Request["mode"] == "single")
+    {
+        Layout = "~/Areas/Admin/Views/Shared/_BackGroudNoLeft.cshtml";
+    }
+    else {
+        Layout = "~/Areas/Admin/Views/Shared/_BackGroud.cshtml";
+    }
 
     ViewBag.Id = "a21";
 }
