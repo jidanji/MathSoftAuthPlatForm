@@ -61,7 +61,6 @@
     <Compile Include="BLL_Role.cs" />
     <Compile Include="BLL_User.cs" />
     <Compile Include="BLL_View_User_Menu.cs" />
-    <Compile Include="BLL_View_User_Role.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

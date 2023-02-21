@@ -106,9 +106,6 @@
     <Compile Include="View_User_Menu.cs">
       <DependentUpon>DataContext.tt</DependentUpon>
     </Compile>
-    <Compile Include="View_User_Role.cs">
-      <DependentUpon>DataContext.tt</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="DataContext.edmx">

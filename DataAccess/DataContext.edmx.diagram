@@ -16,7 +16,6 @@
         <EntityTypeShape EntityType="MathRoleAuthorModel.sysdiagram" Width="1.5" PointX="7.75" PointY="4.75" />
         <EntityTypeShape EntityType="MathRoleAuthorModel.Math_View_DictAndType" Width="1.5" PointX="7.75" PointY="7.75" />
         <EntityTypeShape EntityType="MathRoleAuthorModel.View_User_Menu" Width="1.5" PointX="9.75" PointY="4.75" />
-        <EntityTypeShape EntityType="MathRoleAuthorModel.View_User_Role" Width="1.5" PointX="5.75" PointY="10.75" />
         <AssociationConnector Association="MathRoleAuthorModel.FK_Math_UserInfo_Math_UserInfo" />
         <AssociationConnector Association="MathRoleAuthorModel.FK_Math_Dict_Math_DictType" />
         <AssociationConnector Association="MathRoleAuthorModel.菜单id的关系" />

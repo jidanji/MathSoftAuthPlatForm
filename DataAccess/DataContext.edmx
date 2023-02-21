@@ -147,35 +147,6 @@
           <Property Name="User_Area" Type="int" />
           <Property Name="MenuOrderBy" Type="int" />
         </EntityType>
-        <!--生成过程中发现错误:
-警告 6002: 表/视图“MathRoleAuthor.dbo.View_User_Role”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
-        <EntityType Name="View_User_Role">
-          <Key>
-            <PropertyRef Name="RoleId" />
-            <PropertyRef Name="RoleOrderId" />
-            <PropertyRef Name="RoleName" />
-            <PropertyRef Name="UserId" />
-            <PropertyRef Name="UserOrderId" />
-          </Key>
-          <Property Name="RoleId" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="RoleOrderId" Type="int" Nullable="false" />
-          <Property Name="RoleName" Type="varchar" MaxLength="250" Nullable="false" />
-          <Property Name="RoleStatus" Type="int" />
-          <Property Name="RoleInsertTime" Type="datetime" />
-          <Property Name="RoleUpdateTime" Type="datetime" />
-          <Property Name="RoleRemark" Type="varchar(max)" />
-          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="UserOrderId" Type="int" Nullable="false" />
-          <Property Name="UserName" Type="varchar" MaxLength="255" />
-          <Property Name="UserAccount" Type="varchar" MaxLength="255" />
-          <Property Name="UserAddress" Type="varchar" MaxLength="255" />
-          <Property Name="UserPhoneNumber" Type="varchar" MaxLength="255" />
-          <Property Name="UserTel" Type="varchar" MaxLength="255" />
-          <Property Name="UserPwd" Type="varchar" MaxLength="255" />
-          <Property Name="UserStatus" Type="int" />
-          <Property Name="UserInsertTime" Type="datetime" />
-          <Property Name="UserUpdateTime" Type="datetime" />
-        </EntityType>
         <Association Name="FK_Math_Dict_Math_DictType">
           <End Role="Math_DictType" Type="Self.Math_DictType" Multiplicity="0..1" />
           <End Role="Math_Dict" Type="Self.Math_Dict" Multiplicity="*" />
@@ -333,28 +304,6 @@
     [View_User_Menu].[MenuOrderBy] AS [MenuOrderBy]
     FROM [dbo].[View_User_Menu] AS [View_User_Menu]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="View_User_Role" EntityType="Self.View_User_Role" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [View_User_Role].[RoleId] AS [RoleId], 
-    [View_User_Role].[RoleOrderId] AS [RoleOrderId], 
-    [View_User_Role].[RoleName] AS [RoleName], 
-    [View_User_Role].[RoleStatus] AS [RoleStatus], 
-    [View_User_Role].[RoleInsertTime] AS [RoleInsertTime], 
-    [View_User_Role].[RoleUpdateTime] AS [RoleUpdateTime], 
-    [View_User_Role].[RoleRemark] AS [RoleRemark], 
-    [View_User_Role].[UserId] AS [UserId], 
-    [View_User_Role].[UserOrderId] AS [UserOrderId], 
-    [View_User_Role].[UserName] AS [UserName], 
-    [View_User_Role].[UserAccount] AS [UserAccount], 
-    [View_User_Role].[UserAddress] AS [UserAddress], 
-    [View_User_Role].[UserPhoneNumber] AS [UserPhoneNumber], 
-    [View_User_Role].[UserTel] AS [UserTel], 
-    [View_User_Role].[UserPwd] AS [UserPwd], 
-    [View_User_Role].[UserStatus] AS [UserStatus], 
-    [View_User_Role].[UserInsertTime] AS [UserInsertTime], 
-    [View_User_Role].[UserUpdateTime] AS [UserUpdateTime]
-    FROM [dbo].[View_User_Role] AS [View_User_Role]</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="FK_Math_Dict_Math_DictType" Association="Self.FK_Math_Dict_Math_DictType">
             <End Role="Math_DictType" EntitySet="Math_DictType" />
             <End Role="Math_Dict" EntitySet="Math_Dict" />
@@ -427,7 +376,6 @@
           <EntitySet Name="sysdiagrams" EntityType="MathRoleAuthorModel.sysdiagram" />
           <EntitySet Name="Math_View_DictAndType" EntityType="MathRoleAuthorModel.Math_View_DictAndType" />
           <EntitySet Name="View_User_Menu" EntityType="MathRoleAuthorModel.View_User_Menu" />
-          <EntitySet Name="View_User_Role" EntityType="MathRoleAuthorModel.View_User_Role" />
           <AssociationSet Name="FK_Math_UserInfo_Math_UserInfo" Association="MathRoleAuthorModel.FK_Math_UserInfo_Math_UserInfo">
             <End Role="Math_Deptinfo" EntitySet="Math_Deptinfo" />
             <End Role="Math_UserInfo" EntitySet="Math_UserInfo" />
@@ -613,33 +561,6 @@
           <Property Name="User_Sex" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="User_Area" Type="Int32" />
           <Property Name="MenuOrderBy" Type="Int32" />
-        </EntityType>
-        <EntityType Name="View_User_Role">
-          <Key>
-            <PropertyRef Name="RoleId" />
-            <PropertyRef Name="RoleOrderId" />
-            <PropertyRef Name="RoleName" />
-            <PropertyRef Name="UserId" />
-            <PropertyRef Name="UserOrderId" />
-          </Key>
-          <Property Name="RoleId" Type="Guid" Nullable="false" />
-          <Property Name="RoleOrderId" Type="Int32" Nullable="false" />
-          <Property Name="RoleName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="RoleStatus" Type="Int32" />
-          <Property Name="RoleInsertTime" Type="DateTime" Precision="3" />
-          <Property Name="RoleUpdateTime" Type="DateTime" Precision="3" />
-          <Property Name="RoleRemark" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="UserId" Type="Guid" Nullable="false" />
-          <Property Name="UserOrderId" Type="Int32" Nullable="false" />
-          <Property Name="UserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="UserAccount" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="UserAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="UserPhoneNumber" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="UserTel" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="UserPwd" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="UserStatus" Type="Int32" />
-          <Property Name="UserInsertTime" Type="DateTime" Precision="3" />
-          <Property Name="UserUpdateTime" Type="DateTime" Precision="3" />
         </EntityType>
         <Association Name="FK_Math_UserInfo_Math_UserInfo">
           <End Type="MathRoleAuthorModel.Math_Deptinfo" Role="Math_Deptinfo" Multiplicity="0..1" />
@@ -894,30 +815,6 @@
                 <ScalarProperty Name="MenuOrderId" ColumnName="MenuOrderId" />
                 <ScalarProperty Name="MenuId" ColumnName="MenuId" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="View_User_Role">
-            <EntityTypeMapping TypeName="MathRoleAuthorModel.View_User_Role">
-              <MappingFragment StoreEntitySet="View_User_Role">
-                <ScalarProperty Name="UserUpdateTime" ColumnName="UserUpdateTime" />
-                <ScalarProperty Name="UserInsertTime" ColumnName="UserInsertTime" />
-                <ScalarProperty Name="UserStatus" ColumnName="UserStatus" />
-                <ScalarProperty Name="UserPwd" ColumnName="UserPwd" />
-                <ScalarProperty Name="UserTel" ColumnName="UserTel" />
-                <ScalarProperty Name="UserPhoneNumber" ColumnName="UserPhoneNumber" />
-                <ScalarProperty Name="UserAddress" ColumnName="UserAddress" />
-                <ScalarProperty Name="UserAccount" ColumnName="UserAccount" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="UserOrderId" ColumnName="UserOrderId" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="RoleRemark" ColumnName="RoleRemark" />
-                <ScalarProperty Name="RoleUpdateTime" ColumnName="RoleUpdateTime" />
-                <ScalarProperty Name="RoleInsertTime" ColumnName="RoleInsertTime" />
-                <ScalarProperty Name="RoleStatus" ColumnName="RoleStatus" />
-                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
-                <ScalarProperty Name="RoleOrderId" ColumnName="RoleOrderId" />
-                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
