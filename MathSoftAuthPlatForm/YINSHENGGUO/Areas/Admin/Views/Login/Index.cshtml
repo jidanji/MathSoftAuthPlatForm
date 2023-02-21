@@ -1,0 +1,322 @@
+﻿
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="icon" href="../../favicon.ico">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.9.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/bootstrapUpdate.css?v=20210705" rel="stylesheet" />
+    <link href="~/Content/octicons.css" rel="stylesheet" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <script src="~/Scripts/respond.min.js"></script>
+    <link href="~/Scripts/animate.min.css" rel="stylesheet" />
+    <meta name="renderer" content=webkit>
+    <link href="~/Scripts/nprogress-master/nprogress.css" rel="stylesheet" />
+    <script src="~/Scripts/nprogress-master/nprogress.js"></script>
+    <script>
+        $(document).ready(function () {
+            var ieVersion = "@ViewBag.BrowserType";
+            if (ieVersion == "IE8") {
+                $('#mymy').modal();
+            }
+        })
+    </script>
+    <title>石家庄城市经济职业学院招生管理系统</title>
+    <style>
+        #loginMsg {
+            display: none
+        }
+
+        @@font-face {
+            font-family: 'FZZZHONGHJW';
+            src: url('../../../../fonts/FZZZHONGHJW.TTF') format('truetype');
+        }
+
+        body {
+            background-color: #399bd4;
+            overflow: hidden;
+        }
+
+        .main {
+            background-image: url('../../../../images/login.png');
+            box-sizing: border-box;
+            background-repeat: no-repeat;
+            margin: 0 auto;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        @@font-face {
+            font-family: 'zsYAHEI';
+            src: url('../../../../fonts/zsYAHEI.ttf') format('truetype');
+        }
+
+        .tle {
+            color: #303376;
+            font-family: 'FZZZHONGHJW';
+            font-size: 26px;
+            height: 52px;
+            line-height: 53px;
+            width: 654px;
+            text-align: center;
+            letter-spacing: 6px;
+        }
+
+        .tle1 {
+            color: #303376;
+            font-family: 'FZZZHONGHJW';
+            font-size: 20px;
+            text-align: center;
+            letter-spacing: 6px;
+        }
+
+        .login {
+            position: relative;
+            height: 157px;
+            width: 331px;
+            padding: 20px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            height: 80px;
+            margin-left: 2px;
+            line-height: 52px;
+        }
+
+        #formNew input {
+            border: none;
+            background-color: transparent;
+            box-shadow: none;
+            border-bottom: 1px solid #777;
+        }
+
+        .rightDiv {
+            background: #fff;
+            height: 100%
+        }
+        #nprogress .spinner-icon {
+            border-radius: 50% !important
+        }
+    </style>
+
+    <script>
+        $(document).ready(function () {
+            $('#txtUserName').focus();
+            $("#txtUserName").bind('keypress', function (event) {
+                if (event.keyCode == "13") {
+                    if ($("#txtUserName").val()) {
+                        $('#txtPWD').focus();
+                    }
+                }
+            });
+            $("#txtPWD").bind('keypress', function (event) {
+                if (event.keyCode == "13") {
+                    if ($("#txtPWD").val()) {
+                        $('#btnDenglu').click();
+                    }
+                }
+            });
+            $('#btnDenglu').click(function () {
+                var UserName = $.trim($('#txtUserName').val());
+                var userPWD = $.trim($('#txtPWD').val());
+                if (!UserName) {
+                    $('#txtUserName').focus();
+                    $('#loginMsg').slideDown().html('用户名不能为空！！')
+                    return;
+                }
+                if (!userPWD) {
+                    $('#txtPWD').focus();
+                    $('#loginMsg').slideDown().html('密码不能为空！！')
+                    return;
+                }
+                $("#modelLoad").modal();
+                $.ajax({
+                    beforeSend: function () {
+                        NProgress.done()
+                    }, //发送请求
+                    timeout: 15000,
+                    type: "post",
+                    url: '@Url.Content("~/Admin/Login/ValidUser")',
+                    data: { 'UserName': UserName, 'UserPWD': userPWD },
+                    success: function (data) {
+                        $("#modelLoad").modal("hide");
+                        if (data.suc) {
+                            if (data.remark) {
+                                NProgress.start()
+                                location.href = data.remark;
+                            }
+                            else {
+                                $('#loginMsg').slideDown().html("您没有授权")
+                            }
+                        }
+                        else {
+                            $('#loginMsg').slideDown().html(data.remark)
+                        }
+                    },
+                    dataType: "JSON",
+                    complete: function (XMLHttpRequest, status) {
+                        $("#modelLoad").modal("hide");
+                        if (status == 'timeout') {
+                            $('#loginMsg').slideDown().html("超时,刷新试试");
+                        }
+                    }
+                });
+
+            })
+
+            $('#btnQuxiao').click(function () {
+                $("#formNew").get(0).reset();
+            })
+            $("#woyijing,#nexttime").click(function () {
+                $('#mymy').modal("hide");
+            })
+        })
+    </script>
+</head>
+<body>
+    <div class="main animate__animated  animate__fadeIn" id="main">
+        <div class="row" style="height:100%">
+            <div class="col-md-6 col-lg-6 col-sm-6 rightDiv">
+                <div style="margin-top: 170px;">
+                    <div class="tle1 animate__animated  animate__fadeInDown">
+                        石家庄城市经济学院
+                    </div>
+                    <div class="tle1 animate__animated  animate__fadeInDown">
+                        招生管理系统
+                    </div>
+                    <div class="alert alert-danger text-center" role="alert">
+                        学生报到率>=5%才有效
+                    </div>
+                    <div class="login animate__animated  animate__fadeInDown" id="divLogin">
+                        <form class="form-horizontal" id="formNew" name="formNew">
+                            <div class="form-group">
+                                <label for="txtUserName" class="col-sm-2 control-label" style="padding-left:0;padding-right:0;">用户名</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" autofocus
+                                           id="txtUserName" name="txtUserName"
+                                           placeholder="请输入用户名">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputPassword3" class="col-sm-2 control-label" style="padding-left:0;padding-right:0;">密码</label>
+                                <div class="col-sm-10">
+                                    <input type="password" class="form-control"
+                                           id="txtPWD" name="txtPWD"
+                                           placeholder="请输入密码">
+                                </div>
+                            </div>
+
+                            <div class="form-group" style="margin-bottom:3px;">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <div id="btnDenglu" class="btn btn-primary  btn-sm" style="width:79px;">
+                                        登陆
+                                    </div>
+                                    <div id="btnQuxiao" class="btn  btn-danger  btn-sm" style="width:79px;">
+                                        取消
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="">
+                                    <div id="loginMsg" class="alert alert-danger" role="alert">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div style="position:absolute;bottom:20px;width:100%;color:#2b2b2b;font-size:13px;letter-spacing:1px" class="text-center">
+                    ©2021 &nbsp;
+                    <a target="_blank" style="color:#000" href="http://www.sjzcsjjxy.com/">
+                        石家庄城市经济职业学院
+                    </a>
+                    <br />
+                    <a target="_blank" style="color:#000" href="http://www.sjzcsjjxy.com/">
+                        石家庄经济技术开发区岗上文明路 12 号
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-6 col-sm-6" style="position:relative;height:100%">
+                <div class="tle animate__animated  animate__fadeInDown">
+                    <img src="~/images/logo.png" class="logo" />
+                    <img src="~/images/maliang1.png" />
+                </div>
+                <div style="position:absolute;bottom:20px;width:100%;color:#fff;font-size:13px;letter-spacing:1px" class="text-center">
+                    <div style="color:#fff;margin-top:10px;">
+                        推荐使用1366*768或者高于此分辨率的普通电脑、高清屏等设备
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade " aria-hidden="true" data-backdrop="static" id="modelLoad" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">  <i class="glyphicon glyphicon-remove-circle"></i></button>
+                    <form>
+
+                        <div class="form-group form-group-sm">
+                            <h5 class="pro-title">正在处理中，请耐心等待......</h5>
+                            <div class="progress pro-radius">
+                                <div class="progress-bar progress-bar-striped gradient load_bar" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="mymy" aria-hidden="true" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">  <i class="glyphicon glyphicon-remove-circle"></i></button>
+                    <h4 class="modal-title" id="myModalLabel">温馨提示</h4>
+                </div>
+                <div class="modal-body" style="padding:0">
+                    <div class="jumbotron" style="padding:10px;margin:0;background:#fff">
+                        <img src="~/images/chrome_logo_2x.png" style="height:45px;" />
+                        <h1 style="font-size:50px; text-align:center">推荐您使用Chrome浏览器</h1>
+                        <p style="font-size:18px;color:#777;text-align:center">
+
+                            检测到您还在使用IE8浏览器，属于过时浏览器,为了您的良好体验，请使用谷歌浏览器。
+                        </p>
+                        <div style="text-align:center">
+                            <a class="btn btn-primary btn-sm" href="~/Admin/Upload/chrome_64.0.3282.119.exe" role="button">
+                                <i class="glyphicon glyphicon-download"></i>
+                                立即下载
+                            </a>
+
+                            <div class="btn btn-default btn-sm" id="woyijing" role="button">
+                                我已经安装
+                            </div>
+
+                            <div class="btn btn-link btn-sm" id="nexttime" role="button">
+
+                                下次再说
+                            </div>
+                        </div>
+
+                        <p style="font-size:14px;color:#777;text-align:center;margin-top:15px;">
+                            适用于 Windows 10/8.1/8/7 64-bit
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

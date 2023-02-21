@@ -1,0 +1,45 @@
+﻿/*
+    默认样式
+*/
+.badge {
+    font-weight: 500;
+    border-radius: 2px;
+    background-color: #337ab7;
+    margin-left: 2px;
+}
+/*等待*/
+.badgeWaiting {
+    background-color: #f8c43a !important;
+    color:#000
+}
+
+ 
+/*新建*/
+.badgeCreated {
+    background-color: #59d8d7
+}
+
+/*就绪*/
+.badgePlanned {
+    background-color: #f7994b
+}
+/*运行中*/
+.badgeStart {
+    background-color: #6fa5fa
+}
+/*失败*/
+.badgeProblem {
+    background-color: #ed315a
+}
+/*完成*/
+.badgeComplete {
+    background-color: #67d883
+}
+/*暂停*/
+.badgeHold {
+    background-color: #838cfd
+}
+/**/
+.badgeCancelled {
+    background-color: #bdbcbc
+}

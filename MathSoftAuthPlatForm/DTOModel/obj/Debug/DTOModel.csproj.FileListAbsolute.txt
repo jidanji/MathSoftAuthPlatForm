@@ -1,0 +1,11 @@
+D:\city\yinshengguo\DTOModel\bin\Debug\DTOModel.dll
+D:\city\yinshengguo\DTOModel\bin\Debug\DTOModel.pdb
+D:\city\yinshengguo\DTOModel\obj\Debug\DTOModel.csprojAssemblyReference.cache
+D:\city\yinshengguo\DTOModel\obj\Debug\DTOModel.csproj.CoreCompileInputs.cache
+D:\city\yinshengguo\DTOModel\obj\Debug\DTOModel.dll
+D:\city\yinshengguo\DTOModel\obj\Debug\DTOModel.pdb
+C:\Users\malia\Documents\GitHub\MathSoftAuthPlatForm\MathSoftAuthPlatForm\DTOModel\bin\Debug\DTOModel.dll
+C:\Users\malia\Documents\GitHub\MathSoftAuthPlatForm\MathSoftAuthPlatForm\DTOModel\bin\Debug\DTOModel.pdb
+C:\Users\malia\Documents\GitHub\MathSoftAuthPlatForm\MathSoftAuthPlatForm\DTOModel\obj\Debug\DTOModel.csproj.CoreCompileInputs.cache
+C:\Users\malia\Documents\GitHub\MathSoftAuthPlatForm\MathSoftAuthPlatForm\DTOModel\obj\Debug\DTOModel.dll
+C:\Users\malia\Documents\GitHub\MathSoftAuthPlatForm\MathSoftAuthPlatForm\DTOModel\obj\Debug\DTOModel.pdb

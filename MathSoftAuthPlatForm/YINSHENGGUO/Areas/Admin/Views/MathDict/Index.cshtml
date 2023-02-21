@@ -1,0 +1,450 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_BackGroud.cshtml";
+
+    ViewBag.Id = "a22";
+}
+
+<script type="text/javascript">
+    var t1 = null;
+    var optype = 1;
+
+    function initT1() {
+        if (t1) {
+            t1.draw(true);
+            return;
+        }
+        t1 = $('#t1').DataTable({
+            "bAutoWidth": true,
+            "aLengthMenu": [10,15,20,50,100, 200, 500], //更改显示记录数选项  
+            "iDisplayLength": 15, //默认显示的记录数  
+            dom: 't<"d"r><"row"<"col-md-2"l><"col-md-2"i><"col-md-8"p>>',
+            "processing": true,
+            "serverSide": true,
+            "sScrollY": $(window).height() - $("#navbar").outerHeight() - 150,
+            "bSort": false,
+            "bPaginate": true, //是否显示（应用）分页器
+
+            "ajax": {
+                beforeSend: function () {
+                    NProgress.start()
+                }, //发送请求
+                "url": "GetData",
+                datatype: "JSON",
+                data: function (d) {
+                    d.DictValue = $('#searchDictValue').val();
+                    d.DictTypeId = $('#searchDictTypeId').val();
+                }
+            },
+            "columns": [
+                {
+                    data: null,
+                    render: function (data, type, row, meta) {
+                        var content = '<label style="margin:0">';
+                        content += '    <input type="checkbox" data-type="selectRow" />';
+                        content += '    <span></span>';
+                        content += '</label>';
+                        return content;
+                    },
+                    width: "50"
+                },
+                { "data": null, width: 120 },
+                {
+                    "data": "DictTypeValue"
+                },
+                {
+                    "data": "DictValue"
+                },
+                {
+                    "data": "DictRemark"
+                },
+
+                {
+                    "data": null, render: function (data, type, row, meta) {
+                        return "<button edit class='btn btn-xs btn-warning' data-linedata='" + JSON.stringify(data) + "'>编辑</button>"
+                            + " <button delete class='btn btn-xs btn-danger' data-linedata='" + data.DictId + "'>删除</button>"
+                    },
+                    'sClass': "text-center"
+                }
+            ],
+            language: {
+                "sProcessing": "正在处理数据...",
+                "sLengthMenu": "显示 _MENU_ 项结果",
+                "sZeroRecords": "没有匹配结果",
+                "sInfo": "显示第 _START_ 至 _END_ 项结果，共 _TOTAL_ 项",
+                "sInfoEmpty": "显示第 0 至 0 项结果，共 0 项",
+                "sInfoFiltered": "(由 _MAX_ 项结果过滤)",
+                "sInfoPostFix": "",
+                "sSearch": "搜索:",
+                "sUrl": "",
+                "sEmptyTable": "表中数据为空",
+                "sLoadingRecords": "载入中...",
+                "sInfoThousands": ",",
+                "oPaginate": {
+                    "sFirst": "首页",
+                    "sPrevious": "上页",
+                    "sNext": "下页",
+                    "sLast": "末页"
+                },
+                "oAria": {
+                    "sSortAscending": ": 以升序排列此列",
+                    "sSortDescending": ": 以降序排列此列"
+                }
+            },
+            "fnDrawCallback": function () {
+                var api = this.api();
+                var startIndex = api.context[0]._iDisplayStart;//获取到本页开始的条数
+                api.column(1).nodes().each(function (cell, i) {
+                    cell.innerHTML =  (startIndex + i + 1) 
+                });
+                NProgress.done()
+            }
+        });
+
+
+        $("#ckbSelectAll").change(function () {
+            var selected = $(this).prop("checked");
+
+            $('#t1 input[data-type="selectRow"]').prop('checked', selected);
+            if (selected) {
+                $('#t1 tbody tr ').addClass('selected')
+            }
+            else {
+                $('#t1 tbody tr ').removeClass('selected')
+            }
+
+
+        });
+
+
+        $('#t1 tbody').on('click', 'tr', function (e) {
+            var selected = $(this).find('*[data-type="selectRow"]').prop('checked');
+            $(this).find('*[data-type="selectRow"]').prop('checked', !selected);
+            if (!selected) {
+                $(this).addClass('selected')
+            }
+            else {
+                $(this).removeClass('selected')
+            }
+
+            
+
+        })
+
+        $('#t1 tbody').on("click", 'input[data-type="selectRow"]', function (e) {
+            e.stopPropagation();
+            var selected = $(this).prop("checked");
+            if (selected) {
+                $(this).parents("tr").addClass("selected");
+            }
+            else {
+                $(this).parents("tr").removeClass("selected");
+            }
+        });
+
+        $('#t1 tbody').on("click", 'button[edit]', function (e) {
+            optype = 2;
+            e.stopPropagation();
+            var tr = $(this).closest('tr');
+            var row = t1.row(tr);
+            var data = row.data();
+
+
+            $("#form1").get(0).reset();
+            $("#form1").validate().resetForm(); //清除验证
+
+            $("#myModalLabel").html("修改字典")
+            $('#modelZhong').modal();
+
+         
+
+            console.log(data)
+
+            for (var sth in data) {
+                $("#" + sth).val(data[sth])
+            }
+
+
+
+            //弹出编辑框 并
+        });
+
+        $('#t1 tbody').on("click", 'button[delete]', function (e) {
+            e.stopPropagation();
+
+            var tr = $(this).closest('tr');
+            var row = t1.row(tr);
+            layer.confirm('您确定要删除吗？', {
+                btn: ['确定', '取消'] //按钮
+            }, function () {
+               
+                $.ajax({
+                    'url': "DeleteMathDict",
+                    data: { "DictId": row.data().DictId },
+                    success: function (data) {
+                        if (data.suc) {
+                            layer.msg('删除成功', { icon: 1 })
+                            t1.draw(true);
+                        }
+                        else {
+                            layer.msg(data.remark, { icon: 2 })
+                        }
+
+                    }
+                })
+            });
+
+
+          
+        });
+    }
+
+    $(document).ready(function () {
+
+        $('#btnSearch').click(function () {
+            t1.draw(true);
+        });
+
+        $('#btnAddUser').click(function () {
+            optype = 1;
+            $("#form1").get(0).reset();
+            $("#form1").validate().resetForm(); //清除验证
+            $("#myModalLabel").html("新建字典")
+            $('#modelZhong').modal();
+        });
+        initT1();
+
+        $("#form1").validate({
+            rules: {
+                DictValue: {
+                    required: true
+                },
+                DictTypeId: {
+                    required: true
+                }
+            },
+            submitHandler: function (form) {
+
+                var data = $(form).serialize();
+                if (optype === 1) {
+                    $.ajax({
+                        url: "AddMathDict",
+                        data: $(form).serialize(),
+                        success: function (data) {
+                            if (data.suc) {
+                                layer.msg('新建成功', { icon: 1 })
+                                $('#modelZhong').modal('hide');
+                                t1.draw(true);
+                            }
+                            else {
+                                layer.msg(data.remark, { icon: 2 })
+                            }
+                        },
+                        dataType: "JSON",
+                        type: "POST"
+                    })
+                }
+                else {
+                    $.ajax({
+                        url: "UpdateMathDict",
+                        data: $(form).serialize(),
+                        success: function (data) {
+                            if (data.suc) {
+                                layer.msg('更新成功', { icon: 1 })
+                                $('#modelZhong').modal('hide');
+                                t1.draw(false);
+                            }
+                            else {
+                                layer.msg(data.remark, { icon: 2 })
+                            }
+                        },
+                        dataType: "JSON",
+                        type: "POST"
+                    })
+                }
+              
+            }
+
+
+
+        });
+
+        $('#btnBatchDelete').click(function () {
+
+            var data = [];
+            var l = t1.rows('.selected').data().length;
+            if (l) {
+                for (var i = 0; i < l; i++) {
+                    data.push(t1.rows('.selected').data()[i].DictId);
+                }
+                var resStr = JSON.stringify(data);
+
+                layer.confirm('您确定要删除这'+l+'条数据吗？', {
+                    btn: ['确定', '取消'] //按钮
+                }, function () {
+                    $.ajax({
+                        'url': "DeleteMathDictBatch",
+                        data: { "DictIds": resStr },
+                        success: function (data) {
+                            if (data.suc) {
+                                layer.msg(data.remark, { icon: 1 })
+                                t1.draw(true);
+                            }
+                            else {
+                                layer.msg(data.remark, { icon: 2 })
+                            }
+                        }
+                    })
+                });
+
+
+
+              
+            }
+            else {
+                layer.alert("您没有选中任何一行", { icon: 2 })
+            }
+        })
+
+
+
+    });
+</script>
+
+<div aria-hidden="true" data-backdrop="static" class="modal fade " id="modelZhong" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form class="form-horizontal" id="form1">
+                <input id="DictId" name="DictId" type="hidden" />
+                <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">  <i class="glyphicon glyphicon-remove-circle"></i></button>
+                    <h5 class="modal-title" id="myModalLabel">新建字典</h5>
+                </div>
+                <div class="modal-body">
+
+                    <div class="form-group form-group-sm row">
+                        <label class="col-sm-2  control-label" for="formGroupInputSmall"><font style="color:red">*</font>&nbsp;字典值 </label>
+                        <div class="col-sm-4">
+                            <input type="text" id="DictValue" name="DictValue" class="form-control" placeholder="字典值" />
+
+                          
+                        </div>
+
+
+                        <label class="col-sm-2  control-label" for="formGroupInputSmall"><font style="color:red">*</font>&nbsp;字典类型 </label>
+                        <div class="col-sm-4">
+
+                            @Html.DropDownList("DictTypeId", ViewBag.list as SelectList, "--请选择--",new { @class = "form-control" })
+
+                            
+
+                        </div>
+                    </div>
+
+
+
+
+
+                    <div class="form-group form-group-sm row">
+                        <label class="col-sm-2  control-label" for="formGroupInputLarge">字典说明</label>
+                        <div class="col-sm-10">
+                            <textarea id="DictRemark" name="DictRemark" placeholder="字典说明" class="form-control" rows="2"></textarea>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+                <div class="modal-footer">
+
+
+
+                    <button id="cmd2000" type="submit" class="btn btn-primary btn-sm">
+                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                        保存
+                    </button>
+
+
+
+                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                        关闭
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+
+        <div class="input-group  input-group-sm ">
+            <span class="input-group-addon" id="basic-addon1">字典类型</span>
+
+            @Html.DropDownList("searchDictTypeId", ViewBag.list as SelectList, "--请选择--", new { @class = "form-control" })
+
+            
+        </div>
+    </div>
+
+
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+
+        <div class="input-group  input-group-sm ">
+            <span class="input-group-addon" id="basic-addon1">字典值</span>
+            <input type="text" class="form-control" aria-describedby="basic-addon1"
+                   id="searchDictValue"
+                   name="searchDictValue"
+                   placeholder="请输入字典值"
+                   >
+        </div>
+    </div>
+
+
+
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 " role="group" aria-label="...">
+        <button type="button" class="btn btn-primary btn-sm" id="btnSearch">
+            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+            &nbsp;
+            点击搜索
+        </button>
+        <button id="btnAddUser" type="button" class="btn btn-success  btn-sm">
+            <i class="glyphicon glyphicon-plus" aria-hidden="true"></i>
+            &nbsp;
+            新建字典
+        </button>
+
+        <button id="btnBatchDelete" type="button" class="btn btn-danger  btn-sm">
+            <i class="glyphicon glyphicon-trash" aria-hidden="true"></i>
+            &nbsp;
+          批量删除
+        </button>
+
+    </div>
+</div>
+
+<div style="margin-top:10px;">
+    <table id="t1" class="table   table-hover table-condensed table-responsive   ">
+        <thead>
+            <tr>
+                <th>
+                    <label style="margin:0">
+                        <input id="ckbSelectAll" type="checkbox" />
+                        全选
+                    </label>
+                </th>
+                <th>序号</th>
+                
+                <th>字典类型</th>
+                <th>字典值</th>
+                <th>备注</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+
+    </table>
+</div>
+
+

@@ -1,0 +1,549 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MathSoftAuthPlatFormModelStoreContainer" CdmEntityContainer="MathSoftAuthPlatFormEntities">
+    <EntitySetMapping Name="AttachedMent">
+      <EntityTypeMapping TypeName="MathSoftAuthPlatFormModel.AttachedMent">
+        <MappingFragment StoreEntitySet="AttachedMent">
+          <ScalarProperty Name="AttachedId" ColumnName="AttachedId" />
+          <ScalarProperty Name="WorkId" ColumnName="WorkId" />
+          <ScalarProperty Name="AttachedUrl" ColumnName="AttachedUrl" />
+          <ScalarProperty Name="AttchedType" ColumnName="AttchedType" />
+          <ScalarProperty Name="AttchedInserTime" ColumnName="AttchedInserTime" />
+          <ScalarProperty Name="AttchedRemark" ColumnName="AttchedRemark" />
+          <ScalarProperty Name="AttchSeq" ColumnName="AttchSeq" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BaseInfo">
+      <EntityTypeMapping TypeName="MathSoftAuthPlatFormModel.BaseInfo">
+        <MappingFragment StoreEntitySet="BaseInfo">
+          <ScalarProperty Name="序号" ColumnName="序号" />
+          <ScalarProperty Name="专业" ColumnName="专业" />
+          <ScalarProperty Name="专业ID" ColumnName="专业ID" />
+          <ScalarProperty Name="姓名" ColumnName="姓名" />
+          <ScalarProperty Name="性别" ColumnName="性别" />
+          <ScalarProperty Name="身份证号" ColumnName="身份证号" />
+          <ScalarProperty Name="学校" ColumnName="学校" />
+          <ScalarProperty Name="推荐人" ColumnName="推荐人" />
+          <ScalarProperty Name="推荐人ID" ColumnName="推荐人ID" />
+          <ScalarProperty Name="推荐人部门" ColumnName="推荐人部门" />
+          <ScalarProperty Name="推荐人部门ID" ColumnName="推荐人部门ID" />
+          <ScalarProperty Name="备注" ColumnName="备注" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BrowserInfo">
+      <EntityTypeMapping TypeName="MathSoftAuthPlatFormModel.BrowserInfo">
+        <MappingFragment StoreEntitySet="BrowserInfo">
+          <ScalarProperty Name="BrowserId" ColumnName="BrowserId" />
+          <ScalarProperty Name="BrowserOrderId" ColumnName="BrowserOrderId" />
+          <ScalarProperty Name="BrowserName" ColumnName="BrowserName" />
+          <ScalarProperty Name="BrowserVersion" ColumnName="BrowserVersion" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="BrowserType" ColumnName="BrowserType" />
+          <ScalarProperty Name="Platform" ColumnName="Platform" />
+          <ScalarProperty Name="Frames" ColumnName="Frames" />
+          <ScalarProperty Name="Tables" ColumnName="Tables" />
+          <ScalarProperty Name="Cookies" ColumnName="Cookies" />
+          <ScalarProperty Name="InsertTime" ColumnName="InsertTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CC">
+      <EntityTypeMapping TypeName="MathSoftAuthPlatFormModel.CC">
+        <MappingFragment StoreEntitySet="CC">
+          <ScalarProperty Name="XSCId" ColumnName="XSCId" />
+          <ScalarProperty Name="IdCard" ColumnName="IdCard" />
+          <ScalarProperty Name="StudentName" ColumnName="StudentName" />
+          <ScalarProperty Name="StudentNumber" ColumnName="StudentNumber" />
+          <ScalarProperty Name="DictValue" ColumnName="DictValue" />
+          <ScalarProperty Name="DictRemark" ColumnName="DictRemark" />
+          <ScalarProperty Name="zhanzhangdaqu" ColumnName="zhanzhangdaqu" />
+          <ScalarProperty Name="zhanzhang" ColumnName="zhanzhang" />
+          <ScalarProperty Name="zhanzhangquyu" ColumnName="zhanzhangquyu" />
+          <ScalarProperty Name="GrandSchool" ColumnName="GrandSchool" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DeleteLog">
+      <EntityTypeMapping TypeName="MathSoftAuthPlatFormModel.DeleteLog">
+        <MappingFragment StoreEntitySet="DeleteLog">
+          <ScalarProperty Name="DeleteLogId" ColumnName="DeleteLogId" />
+          <ScalarProperty Name="DeleteContent" ColumnName="DeleteContent" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Math_CWC">
+      <EntityTypeMapping TypeName="MathSoftAuthPlatFormModel.Math_CWC">
+        <MappingFragment StoreEntitySet="Math_CWC">
+          <ScalarProperty Name="CWCId" ColumnName="CWCId" />
+          <ScalarProperty Name="StudentName" ColumnName="StudentName" />
+          <ScalarProperty Name="IdCard" ColumnName="IdCard" />
+          <ScalarProperty Name="InsertTime" ColumnName="InsertTime" />
+          <ScalarProperty Name="LastUpdateTime" ColumnName="LastUpdateTime" />
+          <ScalarProperty Name="DataFrom" ColumnName="DataFrom" />
+          <ScalarProperty Name="FeeItems" ColumnName="FeeItems" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Math_Deptinfo">
+      <EntityTypeMapping TypeName="MathSoftAuthPlatFormModel.Math_Deptinfo">
+        <MappingFragment StoreEntitySet="Math_Deptinfo">
+          <ScalarProperty Name="Math_Dept_Id" ColumnName="Math_Dept_Id" />
+          <ScalarProperty Name="Math_SeqNo" ColumnName="Math_SeqNo" />
+          <ScalarProperty Name="Math_Dept_Name" ColumnName="Math_Dept_Name" />
+          <ScalarProperty Name="Math_Dept_Remark" ColumnName="Math_Dept_Remark" />
+          <ScalarProperty Name="Math_Dept_InsertTime" ColumnName="Math_Dept_InsertTime" />
+          <ScalarProperty Name="Math_Dept_UpdateTime" ColumnName="Math_Dept_UpdateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Math_Dict">
+      <EntityTypeMapping TypeName="MathSoftAuthPlatFormModel.Math_Dict">
+        <MappingFragment StoreEntitySet="Math_Dict">
+          <ScalarProperty Name="DictId" ColumnName="DictId" />
+          <ScalarProperty Name="DictOrderId" ColumnName="DictOrderId" />
+          <ScalarProperty Name="DictValue" ColumnName="DictValue" />
+          <ScalarProperty Name="DictTypeId" ColumnName="DictTypeId" />
+          <ScalarProperty Name="DictRemark" ColumnName="DictRemark" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Math_DictType">
+      <EntityTypeMapping TypeName="MathSoftAuthPlatFormModel.Math_DictType">
+        <MappingFragment StoreEntitySet="Math_DictType">
+          <ScalarProperty Name="DictTypeId" ColumnName="DictTypeId" />
+          <ScalarProperty Name="DictTypeValue" ColumnName="DictTypeValue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Math_FileUpload">
+      <EntityTypeMapping TypeName="MathSoftAuthPlatFormModel.Math_FileUpload">
+        <MappingFragment StoreEntitySet="Math_FileUpload">
+          <ScalarProperty Name="UploadId" ColumnName="UploadId" />
+          <ScalarProperty Name="UploadTime" ColumnName="UploadTime" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="FilePath" ColumnName="FilePath" />
+          <ScalarProperty Name="FileType" ColumnName="FileType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Math_JYT">
+      <EntityTypeMapping TypeName="MathSoftAuthPlatFormModel.Math_JYT">
+        <MappingFragment StoreEntitySet="Math_JYT">
+          <ScalarProperty Name="JYTId" ColumnName="JYTId" />
+          <ScalarProperty Name="StudentName" ColumnName="StudentName" />
+          <ScalarProperty Name="IdCard" ColumnName="IdCard" />
+          <ScalarProperty Name="StudentSex" ColumnName="StudentSex" />
+          <ScalarProperty Name="GrandSchool" ColumnName="GrandSchool" />
+          <ScalarProperty Name="InsertTime" ColumnName="InsertTime" />
+          <ScalarProperty Name="LastUpdateTime" ColumnName="LastUpdateTime" />
+          <ScalarProperty Name="DataFrom" ColumnName="DataFrom" />
+          <ScalarProperty Name="ZSLB" ColumnName="ZSLB" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Math_MenuInfo">
+      <EntityTypeMapping TypeName="MathSoftAuthPlatFormModel.Math_MenuInfo">
+        <MappingFragment StoreEntitySet="Math_MenuInfo">
+          <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+          <ScalarProperty Name="MenuOrderId" ColumnName="MenuOrderId" />
+          <ScalarProperty Name="MenuTitle" ColumnName="MenuTitle" />
+          <ScalarProperty Name="MenuURL" ColumnName="MenuURL" />
+          <ScalarProperty Name="MenuRemark" ColumnName="MenuRemark" />
+          <ScalarProperty Name="MenuIcon" ColumnName="MenuIcon" />
+          <ScalarProperty Name="MenuInsertTime" ColumnName="MenuInsertTime" />
+          <ScalarProperty Name="MenuUpdateTime" ColumnName="MenuUpdateTime" />
+          <ScalarProperty Name="MenuOrderBy" ColumnName="MenuOrderBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Math_Role_Menu_Selcet">
+      <EntityTypeMapping TypeName="MathSoftAuthPlatFormModel.Math_Role_Menu_Selcet">
+        <MappingFragment StoreEntitySet="Math_Role_Menu_Selcet">
+          <ScalarProperty Name="Role_Menu_Selet_Id" ColumnName="Role_Menu_Selet_Id" />
+          <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Math_RoleInfo">
+      <EntityTypeMapping TypeName="MathSoftAuthPlatFormModel.Math_RoleInfo">
+        <MappingFragment StoreEntitySet="Math_RoleInfo">
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="RoleOrderId" ColumnName="RoleOrderId" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+          <ScalarProperty Name="RoleStatus" ColumnName="RoleStatus" />
+          <ScalarProperty Name="RoleInsertTime" ColumnName="RoleInsertTime" />
+          <ScalarProperty Name="RoleUpdateTime" ColumnName="RoleUpdateTime" />
+          <ScalarProperty Name="RoleRemark" ColumnName="RoleRemark" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Math_Status">
+      <EntityTypeMapping TypeName="MathSoftAuthPlatFormModel.Math_Status">
+        <MappingFragment StoreEntitySet="Math_Status">
+          <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+          <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+          <ScalarProperty Name="StatusValue" ColumnName="StatusValue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Math_Student">
+      <EntityTypeMapping TypeName="MathSoftAuthPlatFormModel.Math_Student">
+        <MappingFragment StoreEntitySet="Math_Student">
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="StudentOrderId" ColumnName="StudentOrderId" />
+          <ScalarProperty Name="StudentName" ColumnName="StudentName" />
+          <ScalarProperty Name="StudentIDCard" ColumnName="StudentIDCard" />
+          <ScalarProperty Name="StudentPhone" ColumnName="StudentPhone" />
+          <ScalarProperty Name="StudentType" ColumnName="StudentType" />
+          <ScalarProperty Name="StudentSchool" ColumnName="StudentSchool" />
+          <ScalarProperty Name="StudentAddress" ColumnName="StudentAddress" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="UserPhone" ColumnName="UserPhone" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserDeptId" ColumnName="UserDeptId" />
+          <ScalarProperty Name="UserDeptName" ColumnName="UserDeptName" />
+          <ScalarProperty Name="StudentZhuanYeId" ColumnName="StudentZhuanYeId" />
+          <ScalarProperty Name="InsertTime" ColumnName="InsertTime" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="Area" ColumnName="Area" />
+          <ScalarProperty Name="DingZhengName" ColumnName="DingZhengName" />
+          <ScalarProperty Name="DingZhengNumber" ColumnName="DingZhengNumber" />
+          <ScalarProperty Name="DingZhengUpdateTime" ColumnName="DingZhengUpdateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Math_SYJD">
+      <EntityTypeMapping TypeName="MathSoftAuthPlatFormModel.Math_SYJD">
+        <MappingFragment StoreEntitySet="Math_SYJD">
+          <ScalarProperty Name="SYJDId" ColumnName="SYJDId" />
+          <ScalarProperty Name="GrandSchool" ColumnName="GrandSchool" />
+          <ScalarProperty Name="Who" ColumnName="Who" />
+          <ScalarProperty Name="InsertTime" ColumnName="InsertTime" />
+          <ScalarProperty Name="LastUpdateTime" ColumnName="LastUpdateTime" />
+          <ScalarProperty Name="DataFrom" ColumnName="DataFrom" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Math_User_Role_Select">
+      <EntityTypeMapping TypeName="MathSoftAuthPlatFormModel.Math_User_Role_Select">
+        <MappingFragment StoreEntitySet="Math_User_Role_Select">
+          <ScalarProperty Name="User_Role_Select_Id" ColumnName="User_Role_Select_Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Math_UserInfo">
+      <EntityTypeMapping TypeName="MathSoftAuthPlatFormModel.Math_UserInfo">
+        <MappingFragment StoreEntitySet="Math_UserInfo">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="UserOrderId" ColumnName="UserOrderId" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserAccount" ColumnName="UserAccount" />
+          <ScalarProperty Name="UserPhone" ColumnName="UserPhone" />
+          <ScalarProperty Name="UserTel" ColumnName="UserTel" />
+          <ScalarProperty Name="UserPwd" ColumnName="UserPwd" />
+          <ScalarProperty Name="UserInsertTime" ColumnName="UserInsertTime" />
+          <ScalarProperty Name="UserUpdateTime" ColumnName="UserUpdateTime" />
+          <ScalarProperty Name="User_Dept_Id" ColumnName="User_Dept_Id" />
+          <ScalarProperty Name="User_Sex" ColumnName="User_Sex" />
+          <ScalarProperty Name="User_Area" ColumnName="User_Area" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Math_Work">
+      <EntityTypeMapping TypeName="MathSoftAuthPlatFormModel.Math_Work">
+        <MappingFragment StoreEntitySet="Math_Work">
+          <ScalarProperty Name="WorkId" ColumnName="WorkId" />
+          <ScalarProperty Name="WorkName" ColumnName="WorkName" />
+          <ScalarProperty Name="Province" ColumnName="Province" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Area" ColumnName="Area" />
+          <ScalarProperty Name="Target" ColumnName="Target" />
+          <ScalarProperty Name="ShoolName" ColumnName="ShoolName" />
+          <ScalarProperty Name="WorkSeq" ColumnName="WorkSeq" />
+          <ScalarProperty Name="PointWhoNumber" ColumnName="PointWhoNumber" />
+          <ScalarProperty Name="PointWho" ColumnName="PointWho" />
+          <ScalarProperty Name="Fee" ColumnName="Fee" />
+          <ScalarProperty Name="BegTime" ColumnName="BegTime" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="JiaotongFangshi" ColumnName="JiaotongFangshi" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CreateDeptId" ColumnName="CreateDeptId" />
+          <ScalarProperty Name="UserAccount" ColumnName="UserAccount" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserTelNumber" ColumnName="UserTelNumber" />
+          <ScalarProperty Name="UserDeptName" ColumnName="UserDeptName" />
+          <ScalarProperty Name="InfactFee" ColumnName="InfactFee" />
+          <ScalarProperty Name="ShenPiRiQi" ColumnName="ShenPiRiQi" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Math_Work_History">
+      <EntityTypeMapping TypeName="MathSoftAuthPlatFormModel.Math_Work_History">
+        <MappingFragment StoreEntitySet="Math_Work_History">
+          <ScalarProperty Name="WorkHisId" ColumnName="WorkHisId" />
+          <ScalarProperty Name="WorkHisSeq" ColumnName="WorkHisSeq" />
+          <ScalarProperty Name="WorkId" ColumnName="WorkId" />
+          <ScalarProperty Name="ShenPiRen" ColumnName="ShenPiRen" />
+          <ScalarProperty Name="ShenPiRenTel" ColumnName="ShenPiRenTel" />
+          <ScalarProperty Name="ShenPiJianYi" ColumnName="ShenPiJianYi" />
+          <ScalarProperty Name="ShenPiJianRemark" ColumnName="ShenPiJianRemark" />
+          <ScalarProperty Name="ShenPiDateTime" ColumnName="ShenPiDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Math_XSC">
+      <EntityTypeMapping TypeName="MathSoftAuthPlatFormModel.Math_XSC">
+        <MappingFragment StoreEntitySet="Math_XSC">
+          <ScalarProperty Name="XSCId" ColumnName="XSCId" />
+          <ScalarProperty Name="IdCard" ColumnName="IdCard" />
+          <ScalarProperty Name="StudentName" ColumnName="StudentName" />
+          <ScalarProperty Name="InsertTime" ColumnName="InsertTime" />
+          <ScalarProperty Name="LastUpdateTime" ColumnName="LastUpdateTime" />
+          <ScalarProperty Name="DataFrom" ColumnName="DataFrom" />
+          <ScalarProperty Name="StudentNumber" ColumnName="StudentNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Math_ZZ">
+      <EntityTypeMapping TypeName="MathSoftAuthPlatFormModel.Math_ZZ">
+        <MappingFragment StoreEntitySet="Math_ZZ">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="zhanzhangdaqu" ColumnName="zhanzhangdaqu" />
+          <ScalarProperty Name="zhanzhangquyu" ColumnName="zhanzhangquyu" />
+          <ScalarProperty Name="zhanzhang" ColumnName="zhanzhang" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Math_ZZTARGET">
+      <EntityTypeMapping TypeName="MathSoftAuthPlatFormModel.Math_ZZTARGET">
+        <MappingFragment StoreEntitySet="Math_ZZTARGET">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="zhanzhangdaqu" ColumnName="zhanzhangdaqu" />
+          <ScalarProperty Name="school" ColumnName="school" />
+          <ScalarProperty Name="zhanzhang" ColumnName="zhanzhang" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="MathSoftAuthPlatFormModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SysSetting">
+      <EntityTypeMapping TypeName="MathSoftAuthPlatFormModel.SysSetting">
+        <MappingFragment StoreEntitySet="SysSetting">
+          <ScalarProperty Name="SysSettingId" ColumnName="SysSettingId" />
+          <ScalarProperty Name="SysBaoMingStatus" ColumnName="SysBaoMingStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TimeLine">
+      <EntityTypeMapping TypeName="MathSoftAuthPlatFormModel.TimeLine">
+        <MappingFragment StoreEntitySet="TimeLine">
+          <ScalarProperty Name="TimelineId" ColumnName="TimelineId" />
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+          <ScalarProperty Name="category" ColumnName="category" />
+          <ScalarProperty Name="BegTime" ColumnName="BegTime" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="InsertTime" ColumnName="InsertTime" />
+          <ScalarProperty Name="LastUpdateTime" ColumnName="LastUpdateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ZhanZhangStaticNew">
+      <EntityTypeMapping TypeName="MathSoftAuthPlatFormModel.ZhanZhangStaticNew">
+        <MappingFragment StoreEntitySet="ZhanZhangStaticNew">
+          <ScalarProperty Name="XSCId" ColumnName="XSCId" />
+          <ScalarProperty Name="IdCard" ColumnName="IdCard" />
+          <ScalarProperty Name="StudentName" ColumnName="StudentName" />
+          <ScalarProperty Name="StudentNumber" ColumnName="StudentNumber" />
+          <ScalarProperty Name="DictValue" ColumnName="DictValue" />
+          <ScalarProperty Name="DictRemark" ColumnName="DictRemark" />
+          <ScalarProperty Name="zhanzhangdaqu" ColumnName="zhanzhangdaqu" />
+          <ScalarProperty Name="zhanzhang" ColumnName="zhanzhang" />
+          <ScalarProperty Name="zhanzhangquyu" ColumnName="zhanzhangquyu" />
+          <ScalarProperty Name="GrandSchool" ColumnName="GrandSchool" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ZZ_Static">
+      <EntityTypeMapping TypeName="MathSoftAuthPlatFormModel.ZZ_Static">
+        <MappingFragment StoreEntitySet="ZZ_Static">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="StudentName" ColumnName="StudentName" />
+          <ScalarProperty Name="StudentIdCard" ColumnName="StudentIdCard" />
+          <ScalarProperty Name="StudentType" ColumnName="StudentType" />
+          <ScalarProperty Name="ZhanZhangDaQuResource" ColumnName="ZhanZhangDaQuResource" />
+          <ScalarProperty Name="ZhanZhangDaQu" ColumnName="ZhanZhangDaQu" />
+          <ScalarProperty Name="ZhanZhang" ColumnName="ZhanZhang" />
+          <ScalarProperty Name="StudentSchool" ColumnName="StudentSchool" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Math_View_DictAndType">
+      <EntityTypeMapping TypeName="MathSoftAuthPlatFormModel.Math_View_DictAndType">
+        <MappingFragment StoreEntitySet="Math_View_DictAndType">
+          <ScalarProperty Name="DictId" ColumnName="DictId" />
+          <ScalarProperty Name="DictOrderId" ColumnName="DictOrderId" />
+          <ScalarProperty Name="DictValue" ColumnName="DictValue" />
+          <ScalarProperty Name="DictTypeId" ColumnName="DictTypeId" />
+          <ScalarProperty Name="DictTypeValue" ColumnName="DictTypeValue" />
+          <ScalarProperty Name="DictRemark" ColumnName="DictRemark" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="View_AnalySISS">
+      <EntityTypeMapping TypeName="MathSoftAuthPlatFormModel.View_AnalySISS">
+        <MappingFragment StoreEntitySet="View_AnalySISS">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="JYT_Id" ColumnName="JYT_Id" />
+          <ScalarProperty Name="JYT_StudentName" ColumnName="JYT_StudentName" />
+          <ScalarProperty Name="JYT_IdCard" ColumnName="JYT_IdCard" />
+          <ScalarProperty Name="JYT_StudentSex" ColumnName="JYT_StudentSex" />
+          <ScalarProperty Name="JYT_GrandSchool" ColumnName="JYT_GrandSchool" />
+          <ScalarProperty Name="JYT_InsertTime" ColumnName="JYT_InsertTime" />
+          <ScalarProperty Name="JYT_LastUpdateTime" ColumnName="JYT_LastUpdateTime" />
+          <ScalarProperty Name="JYT_DataFrom" ColumnName="JYT_DataFrom" />
+          <ScalarProperty Name="XSC_IdCard" ColumnName="XSC_IdCard" />
+          <ScalarProperty Name="ZS_IdCard" ColumnName="ZS_IdCard" />
+          <ScalarProperty Name="SYJD_GrandSchool" ColumnName="SYJD_GrandSchool" />
+          <ScalarProperty Name="SYJD_Who" ColumnName="SYJD_Who" />
+          <ScalarProperty Name="CWC_IdCard" ColumnName="CWC_IdCard" />
+          <ScalarProperty Name="ZS_Who" ColumnName="ZS_Who" />
+          <ScalarProperty Name="XSC_StudentName" ColumnName="XSC_StudentName" />
+          <ScalarProperty Name="tuijianren" ColumnName="tuijianren" />
+          <ScalarProperty Name="tuijianrentype" ColumnName="tuijianrentype" />
+          <ScalarProperty Name="FeeItems" ColumnName="FeeItems" />
+          <ScalarProperty Name="ZSLB" ColumnName="ZSLB" />
+          <ScalarProperty Name="Resault_Who" ColumnName="Resault_Who" />
+          <ScalarProperty Name="name_Check" ColumnName="name_Check" />
+          <ScalarProperty Name="name_Check_Content" ColumnName="name_Check_Content" />
+          <ScalarProperty Name="Area" ColumnName="Area" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="View_User_Menu">
+      <EntityTypeMapping TypeName="MathSoftAuthPlatFormModel.View_User_Menu">
+        <MappingFragment StoreEntitySet="View_User_Menu">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+          <ScalarProperty Name="MenuOrderId" ColumnName="MenuOrderId" />
+          <ScalarProperty Name="MenuTitle" ColumnName="MenuTitle" />
+          <ScalarProperty Name="MenuRemark" ColumnName="MenuRemark" />
+          <ScalarProperty Name="MenuURL" ColumnName="MenuURL" />
+          <ScalarProperty Name="MenuIcon" ColumnName="MenuIcon" />
+          <ScalarProperty Name="MenuInsertTime" ColumnName="MenuInsertTime" />
+          <ScalarProperty Name="MenuUpdateTime" ColumnName="MenuUpdateTime" />
+          <ScalarProperty Name="UserOrderId" ColumnName="UserOrderId" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserAccount" ColumnName="UserAccount" />
+          <ScalarProperty Name="UserPhone" ColumnName="UserPhone" />
+          <ScalarProperty Name="UserTel" ColumnName="UserTel" />
+          <ScalarProperty Name="UserPwd" ColumnName="UserPwd" />
+          <ScalarProperty Name="UserInsertTime" ColumnName="UserInsertTime" />
+          <ScalarProperty Name="UserUpdateTime" ColumnName="UserUpdateTime" />
+          <ScalarProperty Name="User_Dept_Id" ColumnName="User_Dept_Id" />
+          <ScalarProperty Name="User_Sex" ColumnName="User_Sex" />
+          <ScalarProperty Name="User_Area" ColumnName="User_Area" />
+          <ScalarProperty Name="MenuOrderBy" ColumnName="MenuOrderBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="View_User_Role">
+      <EntityTypeMapping TypeName="MathSoftAuthPlatFormModel.View_User_Role">
+        <MappingFragment StoreEntitySet="View_User_Role">
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="RoleOrderId" ColumnName="RoleOrderId" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+          <ScalarProperty Name="RoleStatus" ColumnName="RoleStatus" />
+          <ScalarProperty Name="RoleInsertTime" ColumnName="RoleInsertTime" />
+          <ScalarProperty Name="RoleUpdateTime" ColumnName="RoleUpdateTime" />
+          <ScalarProperty Name="RoleRemark" ColumnName="RoleRemark" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="UserOrderId" ColumnName="UserOrderId" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserAccount" ColumnName="UserAccount" />
+          <ScalarProperty Name="UserAddress" ColumnName="UserAddress" />
+          <ScalarProperty Name="UserPhoneNumber" ColumnName="UserPhoneNumber" />
+          <ScalarProperty Name="UserTel" ColumnName="UserTel" />
+          <ScalarProperty Name="UserPwd" ColumnName="UserPwd" />
+          <ScalarProperty Name="UserStatus" ColumnName="UserStatus" />
+          <ScalarProperty Name="UserInsertTime" ColumnName="UserInsertTime" />
+          <ScalarProperty Name="UserUpdateTime" ColumnName="UserUpdateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="View_ZhanZhangStatic">
+      <EntityTypeMapping TypeName="MathSoftAuthPlatFormModel.View_ZhanZhangStatic">
+        <MappingFragment StoreEntitySet="View_ZhanZhangStatic">
+          <ScalarProperty Name="XSCId" ColumnName="XSCId" />
+          <ScalarProperty Name="IdCard" ColumnName="IdCard" />
+          <ScalarProperty Name="StudentName" ColumnName="StudentName" />
+          <ScalarProperty Name="StudentNumber" ColumnName="StudentNumber" />
+          <ScalarProperty Name="DictValue" ColumnName="DictValue" />
+          <ScalarProperty Name="DictRemark" ColumnName="DictRemark" />
+          <ScalarProperty Name="zhanzhangdaqu" ColumnName="zhanzhangdaqu" />
+          <ScalarProperty Name="zhanzhang" ColumnName="zhanzhang" />
+          <ScalarProperty Name="zhanzhangquyu" ColumnName="zhanzhangquyu" />
+          <ScalarProperty Name="GrandSchool" ColumnName="GrandSchool" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="View_ZhanZhangStaticBase">
+      <EntityTypeMapping TypeName="MathSoftAuthPlatFormModel.View_ZhanZhangStaticBase">
+        <MappingFragment StoreEntitySet="View_ZhanZhangStaticBase">
+          <ScalarProperty Name="XSCId" ColumnName="XSCId" />
+          <ScalarProperty Name="IdCard" ColumnName="IdCard" />
+          <ScalarProperty Name="StudentName" ColumnName="StudentName" />
+          <ScalarProperty Name="StudentNumber" ColumnName="StudentNumber" />
+          <ScalarProperty Name="DictValue" ColumnName="DictValue" />
+          <ScalarProperty Name="DictRemark" ColumnName="DictRemark" />
+          <ScalarProperty Name="zhanzhangdaqu" ColumnName="zhanzhangdaqu" />
+          <ScalarProperty Name="zhanzhang" ColumnName="zhanzhang" />
+          <ScalarProperty Name="zhanzhangquyu" ColumnName="zhanzhangquyu" />
+          <ScalarProperty Name="GrandSchool" ColumnName="GrandSchool" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="resetDB" FunctionName="MathSoftAuthPlatFormModel.Store.resetDB" />
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="MathSoftAuthPlatFormModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="MathSoftAuthPlatFormModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="MathSoftAuthPlatFormModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="MathSoftAuthPlatFormModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MathSoftAuthPlatFormModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="MathSoftAuthPlatFormModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MathSoftAuthPlatFormModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="MathSoftAuthPlatFormModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="MathSoftAuthPlatFormModel.Store.sp_upgraddiagrams" />
+  </EntityContainerMapping>
+</Mapping>

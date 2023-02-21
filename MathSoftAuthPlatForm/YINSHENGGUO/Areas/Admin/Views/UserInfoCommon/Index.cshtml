@@ -1,0 +1,614 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_BackGroud.cshtml";
+
+    ViewBag.Id = "a10009";
+}
+<style>
+    .paddingRight0 {
+    padding-right:0;
+    }
+    .paddingLeft5 {
+    padding-left:5px;
+    }
+
+    @@media screen and (min-width: 1080px) {
+        .selfContainer {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+</style>
+<script type="text/javascript">
+    var t1 = null;
+    var optype = 1;
+    function initT1() {
+        if (t1) {
+            t1.draw(true);
+            return;
+        }
+        t1 = $('#t1').DataTable({
+            "bAutoWidth": true,
+            "aLengthMenu": [10,15, 20, 50, 100, 200, 500], //更改显示记录数选项  
+            "iDisplayLength": 15, //默认显示的记录数  
+            dom: 't<"d"r><"row"<"col-md-2"l><"col-md-2"i><"col-md-8"p>>',
+            "processing": true,
+            "serverSide": true,
+            "sScrollY": $(window).height() - $("#navbar").outerHeight() - 150,
+            "bSort": false,
+            "bPaginate": true, //是否显示（应用）分页器
+
+            "ajax": {
+                beforeSend: function () {
+                    NProgress.start()
+                }, //发送请求
+                "url": "GetData",
+                datatype: "JSON",
+                data: function (d) {
+                    d.UserName = $('#searchUserName').val();
+                    d.UserAccount = $('#searchUserAccount').val();
+                    d.User_Dept_Id = $("#searchDept").val();
+                    d.UserPhone = $("#searchUserPhone").val();
+                },
+                type:"POST"
+            },
+            "columns": [
+                {
+                    data: null,
+                    render: function (data, type, row, meta) {
+                        var content = '<label style="margin:0">';
+                        content += '    <input type="checkbox" data-type="selectRow" />';
+                        content += '    <span></span>';
+                        content += '</label>';
+                        return content;
+                    }
+                },
+                {
+                    "data": null,
+                    width:30
+                },
+                {
+                    "data": "UserName"
+                },
+                {
+                    "data": "UserPhone"
+                },
+                {
+                    "data": "UserAccount"
+                },
+              
+                {
+                    "data": "UserPwd"
+                },
+                {
+                    "data": "RoleNames"
+                },
+                {
+                    "data": "Math_Dept_Name"
+                },
+                {
+                    "data": "User_Area",
+                    render: function (data, type, row, meta) {
+                        if (data == "0") {
+                            return "教师"
+                        }
+                        else if (data == "1") {
+                            return "本部门"
+                        }
+
+                        else if (data == "2") {
+                            return "全院"
+                        }
+
+                        else {
+                            return "教师"
+                        }
+                    }
+                },
+
+           
+                {
+                    "data": "UserUpdateTime",
+                    render: function (data, type, row, meta) {
+                        return dateFormate(data)
+                    }
+
+                },
+                {
+                    "data": null, render: function (data, type, row, meta) {
+                        return "<button edit class='btn btn-xs btn-warning'>编辑</button>"
+                            + " <button delete class='btn btn-xs btn-danger'>删除</button>"
+                            + " <button renzhipai class='btn btn-xs btn-info'>指派到角色</button>"
+                    },
+                    'sClass': "text-center"
+                }
+            ],
+            language: {
+                "sProcessing": "正在处理数据...",
+                "sLengthMenu": "显示 _MENU_ 项结果",
+                "sZeroRecords": "没有匹配结果",
+                "sInfo": "显示第 _START_ 至 _END_ 项结果，共 _TOTAL_ 项",
+                "sInfoEmpty": "显示第 0 至 0 项结果，共 0 项",
+                "sInfoFiltered": "(由 _MAX_ 项结果过滤)",
+                "sInfoPostFix": "",
+                "sSearch": "搜索:",
+                "sUrl": "",
+                "sEmptyTable": "表中数据为空",
+                "sLoadingRecords": "载入中...",
+                "sInfoThousands": ",",
+                "oPaginate": {
+                    "sFirst": "首页",
+                    "sPrevious": "上页",
+                    "sNext": "下页",
+                    "sLast": "末页"
+                },
+                "oAria": {
+                    "sSortAscending": ": 以升序排列此列",
+                    "sSortDescending": ": 以降序排列此列"
+                }
+            },
+            "fnDrawCallback": function () {
+                var api = this.api();
+                var startIndex = api.context[0]._iDisplayStart;//获取到本页开始的条数
+                api.column(1).nodes().each(function (cell, i) {
+                    cell.innerHTML =   (startIndex + i + 1)  
+                });
+                NProgress.done();
+            }
+        });
+
+        $("#ckbSelectAll").change(function () {
+            var selected = $(this).prop("checked");
+
+            $('#t1 input[data-type="selectRow"]').prop('checked', selected);
+            if (selected) {
+                $('#t1 tbody tr ').addClass('selected')
+            }
+            else {
+                $('#t1 tbody tr ').removeClass('selected')
+            }
+
+
+        });
+
+        $('#t1 tbody').on('click', 'tr', function (e) {
+            var selected = $(this).find('*[data-type="selectRow"]').prop('checked');
+            $(this).find('*[data-type="selectRow"]').prop('checked', !selected);
+            if (!selected) {
+                $(this).addClass('selected')
+            }
+            else {
+                $(this).removeClass('selected')
+            }
+
+
+
+        })
+
+        $('#t1 tbody').on("click", 'input[data-type="selectRow"]', function (e) {
+            e.stopPropagation();
+            var selected = $(this).prop("checked");
+            if (selected) {
+                $(this).parents("tr").addClass("selected");
+            }
+            else {
+                $(this).parents("tr").removeClass("selected");
+            }
+        });
+
+        $('#t1 tbody').on("click", 'button[edit]', function (e) {
+            optype = 2;
+            e.stopPropagation();
+            var tr = $(this).closest('tr');
+            var row = t1.row(tr);
+            var data = row.data();
+
+
+            $("#form1").get(0).reset();
+            $("#form1").validate().resetForm(); //清除验证
+
+            $("#myModalLabel").html("修改人员信息")
+            $('#modelZhong').modal();
+
+
+
+
+
+            for (var sth in data) {
+                $("#" + sth).val(data[sth])
+            }
+
+            $.each(data.ListRole, function (idx, el) {
+                $(':checkbox[value="' + el["RoleId"] + '"]').prop("checked", true)
+            });
+
+
+
+            //弹出编辑框 并
+        });
+
+        $('#t1 tbody').on("click", 'button[delete]', function (e) {
+            e.stopPropagation();
+
+            var tr = $(this).closest('tr');
+            var row = t1.row(tr);
+            layer.confirm('您确定要删除吗？', {
+                btn: ['确定', '取消'] //按钮
+            }, function () {
+
+                $.ajax({
+                    'url': "DeleteUser",
+                    data: { "UserId": row.data().UserId },
+                    success: function (data) {
+                        if (data.suc) {
+                            layer.msg('删除成功', { icon: 1 })
+                            t1.draw(true);
+                        }
+                        else {
+                            layer.msg(data.remark, { icon: 2 })
+                        }
+
+                    }
+                })
+            });
+
+
+
+        });
+
+        $('#t1 tbody').on('click', 'button[renzhipai]', function (e) {
+            optype = 2;
+            e.stopPropagation();
+            var tr = $(this).closest('tr');
+            var row = t1.row(tr);
+            var data = row.data();
+
+
+            $("#form1").get(0).reset();
+            $("#form1").validate().resetForm(); //清除验证
+
+            $("#myModalLabel").html("修改部门")
+            $('#modelZhong').modal();
+
+
+
+
+
+            for (var sth in data) {
+                $("#" + sth).val(data[sth])
+            }
+
+            $.each(data.ListRole, function (idx, el) {
+                $(':checkbox[value="' + el["RoleId"] + '"]').prop("checked", true)
+            });
+
+        })
+    }
+
+    $(document).ready(function () {
+        $('#btnAddUser').click(function () {
+            optype = 1;
+            $("#form1").get(0).reset();
+            $("#form1").validate().resetForm(); //清除验证
+            $("#myModalLabel").html("新建用户")
+            $('#modelZhong').modal();
+        });
+
+        $('#btnBatchDelete').click(function () {
+
+            var data = [];
+            var l = t1.rows('.selected').data().length;
+            if (l) {
+                for (var i = 0; i < l; i++) {
+                    data.push(t1.rows('.selected').data()[i].UserId);
+                }
+                var resStr = JSON.stringify(data);
+
+                layer.confirm('动作非常危险，将删除授权和关联学生信息,您确定要删除这' + l + '条数据吗？', {
+                    btn: ['确定', '取消'], //按钮
+                    title: "法律风险系统提示，此动作可能触发法律风险",
+                    icon: 3
+                }, function () {
+                    $.ajax({
+                        'url': "DeleteUserBatch",
+                        data: { "UserIds": resStr },
+                        success: function (data) {
+                            if (data.suc) {
+                                layer.msg(data.remark, { icon: 1 })
+                                t1.draw(true);
+                            }
+                            else {
+                                layer.msg(data.remark, { icon: 2 })
+                            }
+                        }
+                    })
+                });
+            }
+            else {
+                alert("您没有选中任何一条数据")
+            }
+        })
+
+        $("#form1").validate({
+            rules: {
+                roleName: {
+                    required: true
+                }
+            },
+            submitHandler: function (form) {
+
+                var data = $(form).serialize();
+
+                var userlist = [];
+                var selectedcheck = $("#formRoleSend  :checkbox:checked");
+
+                $(selectedcheck).each(function (idx, el) {
+                    userlist.push({ "RoleId": $(el).val() });
+                })
+                var sendData = $(form).serialize();
+                  
+                if (optype === 1) {
+                    $.ajax({
+                        url: "AddUser?" + sendData,
+                        data: { RoleIds: JSON.stringify(userlist) },
+                        success: function (data) {
+                            if (data.suc) {
+                                layer.msg('新建成功', { icon: 1 })
+                                $('#modelZhong').modal('hide');
+                                t1.draw(true);
+                            }
+                            else {
+                                layer.msg(data.remark, { icon: 2 })
+                            }
+                        },
+                        dataType: "JSON",
+                        type: "POST"
+                    })
+                }
+                else {
+                    $.ajax({
+                        url: "UpdateUser?" + sendData,
+                        data: { RoleIds: JSON.stringify(userlist) },
+                        success: function (data) {
+                            if (data.suc) {
+                                layer.msg('修改成功', { icon: 1 })
+                                $('#modelZhong').modal('hide');
+                                t1.draw(false);
+                            }
+                            else {
+                                layer.msg(data.remark, { icon: 2 })
+                            }
+                        },
+                        dataType: "JSON",
+                        type: "POST"
+                    })
+                }
+              
+            }
+
+
+
+        });
+
+        initT1();
+
+        $("#btnSearch").click(function () {
+            t1.draw(true);
+        });
+    });
+</script>
+
+<div aria-hidden="true" data-backdrop="static" class="modal fade " id="modelZhong" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">  <i class="glyphicon glyphicon-remove-circle"></i></button>
+                <h5 class="modal-title" id="myModalLabel">新建用户</h5>
+            </div>
+            <form class="form-horizontal" id="form1">
+                <div class="modal-body">
+
+                    <div class="form-group form-group-sm row">
+
+                        <input id="UserId" name="UserId" type="hidden" />
+                        <label class="col-sm-2  control-label" for="formGroupInputSmall">登录名</label>
+                        <div class="col-sm-4">
+                            <input type="text" id="UserAccount" name="UserAccount"  required class="form-control" placeholder="请输入登录名" />
+                        </div>
+
+                        <label class="col-sm-2  control-label" for="formGroupInputSmall">密码</label>
+                        <div class="col-sm-4">
+                            <input type="text" id="UserPwd" name="UserPwd" required class="form-control" placeholder="请输入密码" />
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="form-group form-group-sm row">
+
+                        <label class="col-sm-2  control-label" for="formGroupInputSmall">姓名</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" id="UserName" name="UserName" required placeholder="请输入姓名" />
+                        </div>
+                        <label class="col-sm-2  control-label" for="formGroupInputSmall">性别</label>
+                        <div class="col-sm-4">
+                            <select class="form-control" type="text" required id="User_Sex" name="User_Sex" placeholder="Small input">
+                                <option value="">--请选择性别--</option>
+                                <option value="男">男</option>
+                                <option value="女">女</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group form-group-sm row">
+                        <label class="col-sm-2  control-label" for="formGroupInputSmall">手机</label>
+                        <div class="col-sm-4">
+                            <input type="text" required class="form-control" id="UserPhone" name="UserPhone"
+                                   placeholder="请输入手机" />
+                        </div>
+                        <label class="col-sm-2  control-label" for="formGroupInputSmall">座机</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control"   placeholder="请输入座机" id="UserTel" name="UserTel" />
+                        </div>
+                    </div>
+                    <div class="form-group form-group-sm row">
+                        <label class="col-sm-2  control-label" for="formGroupInputLarge">用户部门</label>
+                        <div class="col-sm-4">
+                            <select class="form-control" type="text" required
+                                    id="User_Dept_Id"
+                                    name="User_Dept_Id"
+                                    placeholder="Small input">
+                                <option value="">--请选择用户部门--</option>
+                                @{
+                                    List<DTOModel.UI_Math_Deptinfo> list = ViewBag.DeptList as List<DTOModel.UI_Math_Deptinfo>;
+                                    foreach (DTOModel.UI_Math_Deptinfo item in list)
+                                    {
+                                        string sth = string.Format("<option value=\"" + item.Math_Dept_Id + "\">" + item.Math_Dept_Name + "</option>");
+                    @Html.Raw(sth)
+}
+
+                                }
+
+                            </select>
+                        </div>
+                        <label class="col-sm-2  control-label" for="formGroupInputLarge">职责范围</label>
+                        <div class="col-sm-4">
+                            <select id="User_Area" name="User_Area" required class="form-control">
+                                <option value="">--请选择职责范围--</option>
+                                <option value="0">教师</option>
+                                <option  value="1">本部门</option>
+                                <option value="2">全院</option>
+                            </select>
+                        </div>
+                        </div>
+                        <div class="form-group form-group-sm row" id="formRoleSend">
+                            <label class="col-sm-2  control-label" for="formGroupInputLarge">用户角色</label>
+                            <div class="col-sm-10">
+                                <div>
+
+                                    @{
+                                        List<DTOModel.UIRoleModel> jb1 = ViewBag.RoleList as List<DTOModel.UIRoleModel>;
+                                        List<DTOModel.UIRoleModel> jb2 = jb1.Where(item => item.RoleId != Guid.Parse("8C8CF1D5-0257-4EE1-ABD6-935A07C413CE")).ToList();
+
+                                        foreach (DTOModel.UIRoleModel item1 in jb2)
+                                        {
+                                            string sth12 = string.Format("<div class=\"checkbox col-sm-4\"><label><input type = \"checkbox\" value=\"" + item1.RoleId + "\">" + item1.RoleName + "</label></div>");
+                                            @Html.Raw(sth12)
+                    }
+                                    }
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            <div class="modal-footer">
+                <button id="cmd2000" type="submit" class="btn btn-primary btn-sm">
+                    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                    保存
+                </button>
+                <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    关闭
+                </button>
+            </div>
+                </form>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-2 col-sm-2 col-md-2 paddingRight0">
+        <div class="input-group  input-group-sm  ">
+            <span class="input-group-addon" id="basic-addon1">姓名</span>
+            <input type="text"
+                   placeholder="姓名"
+                   id="searchUserName" name="searchUserName" class="form-control" aria-describedby="basic-addon1">
+        </div>
+    </div>
+
+
+
+    <div class="col-lg-2 col-sm-2 col-md-2 paddingRight0 paddingLeft5">
+        <div class="input-group  input-group-sm">
+            <span class="input-group-addon" id="basic-addon1">登录名</span>
+            <input type="text"
+                   id="searchUserAccount"
+                   class="form-control"
+                   aria-describedby="basic-addon1"
+                   name="searchUserAccount"
+                   placeholder="登录名">
+        </div>
+    </div>
+
+    <div class="col-lg-2 col-sm-2 col-md-2 paddingRight0 paddingLeft5" >
+        <div class="input-group  input-group-sm">
+            <span class="input-group-addon" id="basic-addon1">部门</span>
+            <select id="searchDept" class="form-control">
+                <option value="">--请选择--</option>
+                @{
+                    List<DTOModel.UI_Math_Deptinfo> list1 = ViewBag.DeptList as List<DTOModel.UI_Math_Deptinfo>;
+                    foreach (DTOModel.UI_Math_Deptinfo item in list1)
+                    {
+                        string sth = string.Format("<option value=\"" + item.Math_Dept_Id + "\">" + item.Math_Dept_Name + "</option>");
+                        @Html.Raw(sth)
+                    }
+                }
+            </select>
+        </div>
+    </div>
+    <div class="col-lg-2 col-sm-2 col-md-2 paddingRight0 paddingLeft5">
+        <div class="input-group  input-group-sm">
+            <span class="input-group-addon" id="basic-addon1">手机</span>
+            <input type="text"
+                   id="searchUserPhone"
+                   class="form-control"
+                   aria-describedby="basic-addon1"
+                   name="searchUserPhone"
+                   placeholder="手机">
+        </div>
+    </div>
+
+    <div class="col-lg-4 col-sm-4 col-md-4 paddingRight0 paddingLeft5">
+        <button type="button" class="btn btn-primary btn-sm" id="btnSearch">
+            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+            &nbsp;
+            点击搜索
+        </button>
+
+        <button id="btnAddUser" type="button" class="btn btn-success  btn-sm">
+            <i class="fa fa-user-plus" aria-hidden="true"></i>
+            &nbsp;
+            新建用户
+        </button>
+
+        <button id="btnBatchDelete" type="button" class="btn btn-danger  btn-sm">
+            批量删除
+        </button>
+    </div>
+</div>
+<div style="margin-top:10px;">
+    <table id="t1" class="table  table-condensed table-responsive ">
+        <thead>
+            <tr>
+                <th>
+                    <label style="margin:0">
+                        <input id="ckbSelectAll" type="checkbox" />
+
+                    </label>
+                </th>
+                <th>序号</th>
+                <th>姓名</th>
+                <th>手机</th>
+                <th>登录名</th>
+                <th>密码</th>
+                <th>角色列表</th>
+                <th>部门</th>
+                <th>职责范围</th>
+                <th>修改日期</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+      
+    </table>
+</div>

@@ -1,0 +1,501 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_BackGroud.cshtml";
+
+    ViewBag.Id = "a" + 10002;
+}
+
+<style>
+    .panel, .panel-heading, .panel-body {
+        border: 0;
+    }
+    .el-range-editor--small.el-input__inner {
+        border: 0;
+        border-bottom: 1px solid #ccc;
+        background-color: transparent;
+    }
+    .el-range-input {
+        background-color: transparent;
+    }
+    .text-success {
+        color: #3c763d !important;
+    }
+
+    .text-danger {
+        color: darkred !important;
+    }
+
+    .btn-success {
+        background-color: #3c763d !important;
+        border: 1px solid #3c763d !important;
+    }
+
+    .btn-danger {
+        background-color: darkred !important;
+        border: 1px solid darkred !important;
+    }
+
+    .jumbotron {
+        margin-bottom: 0;
+        padding-top: 46px;
+    }
+
+    .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9 {
+        padding-right: 5px;
+        padding-left: 5px;
+    }
+
+    .row {
+        margin-right: -5px;
+        margin-left: -5px;
+    }
+
+    .panel-heading {
+        padding: 4px 14px !important;
+        background-image: -webkit-linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent) !important;
+        background-image: -o-linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent) !important;
+        background-image: linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent) !important;
+        background-size: 4px 4px !important;
+        background-color: #3385ff !important;
+        color: #fff !important;
+        cursor: unset !important;
+    }
+
+    .glyphicon-plus {
+        cursor: pointer !important;
+    }
+
+    #cc {
+        overflow: auto !important;
+    }
+
+    .block {
+        margin-bottom: 5px;
+    }
+
+    .itemdelete {
+        color: red;
+        visibility: hidden;
+        cursor: pointer;
+    }
+
+    .el-date-editor--datetimerange.el-input, .el-date-editor--datetimerange.el-input__inner {
+        width: 370px !important;
+    }
+</style>
+
+
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            beforeSend: function () {
+                NProgress.start()
+            }, //发送请求
+            url: "GetData",
+            success: function (data) {
+                if (data.SysBaoMingStatus == 1) {
+
+                    $('#change').addClass("btn-success").removeClass("btn-danger").html('<i class="glyphicon glyphicon-transfer"> </i>状态可用')
+                }
+                else {
+
+                    $('#change').addClass("btn-danger").removeClass("btn-success").html('<i class="glyphicon glyphicon-transfer"> </i>状态不可用')
+                }
+                NProgress.done();
+            }
+        })
+
+        $('#change').click(function () {
+            $.ajax({
+                beforeSend: function () {
+                    NProgress.start()
+                }, //发送请求
+                url: "Update",
+                success: function (data) {
+                    if (data.SysBaoMingStatus == 1) {
+                        $('#change').addClass("btn-success").removeClass("btn-danger").html('<i class="glyphicon glyphicon-transfer"> </i>状态可用')
+                    }
+                    else {
+                        $('#change').addClass("btn-danger").removeClass("btn-success").html('<i class="glyphicon glyphicon-transfer"> </i>状态不可用')
+                    }
+                    NProgress.done();
+                }
+            })
+        })
+
+        $(document).on('mouseenter', 'div.block',
+            function () {
+                if ($(this).is('div.block')) {
+                    $(this).find('.itemdelete').css({ 'visibility': 'visible' });
+                }
+            }
+        )
+
+        $(document).on('mouseleave', 'div.block',
+            function () {
+                if ($(this).is('div.block')) {
+                    $(this).find('.itemdelete').css({ 'visibility': 'hidden' });
+                }
+            }
+        )
+
+    });
+</script>
+<div id="f5">
+    
+
+    <div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-lg-12" style="margin-bottom:5px;text-align:left">
+
+                <a class="btn btn-success btn-sm" id="change" role="button">
+                    <i class="glyphicon glyphicon-transfer"> </i>
+                    改变状态
+                </a>
+                <button class="btn btn-sm btn-warning" @@click="tijiao">提交</button>
+                <a href="~/WebForm8.aspx" target="_blank" class="btn btn-sm  btn-link">查看日志</a>
+
+                <span style="float:right">
+
+                    <span id="aa1" style="font-weight:700">xxxx-xx-xx</span>
+                    <span id="aa2" style="font-weight:700">xx:xx:xx</span>
+                </span>
+
+                <hr style="margin-top: 5px; margin-bottom: 5px; border: 0;border-top: 1px solid #3F51B5;" />
+            </div>
+            <div class="col-md-6 col-sm-12 col-lg-6">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        单招
+                        <i class="glyphicon glyphicon-plus" style="float:right" @@click="appendRow('单招')"></i>
+                    </div>
+                    <div class="panel-body text-center" style="height:200px;overflow:auto;box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1)">
+                        <div class="block" v-for="item in danzhao">
+
+                            <el-date-picker v-model="item.DateRange" :clearable="false"
+                                            type="datetimerange"
+                                            range-separator="至"
+                                            start-placeholder="开始日期"
+                                            end-placeholder="结束日期"
+                                            @@change="m1"
+                                            size="small">
+                            </el-date-picker>
+                            <span :data-id="item.TimelineClientId" @@click="deleteItem($event)"
+                                  class="glyphicon glyphicon-remove itemdelete">
+
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-6 col-sm-12 col-lg-6">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        统招
+                        <i class="glyphicon glyphicon-plus" @@click="appendRow('统招')" style="float:right"></i>
+                    </div>
+                    <div class="panel-body text-center" style="height:200px;box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);overflow:auto">
+                        <div class="block" v-for="item in tongzhao">
+
+                            <el-date-picker v-model="item.DateRange" :clearable="false"
+                                            type="datetimerange"
+                                            range-separator="至"
+                                            start-placeholder="开始日期"
+                                            end-placeholder="结束日期"
+                                            @@change="m1"
+                                            size="small">
+                            </el-date-picker>
+                            <span :data-id="item.TimelineClientId" @@click="deleteItem($event)"
+                                  class="glyphicon glyphicon-remove itemdelete">
+
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6 col-sm-12 col-lg-6">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        中专
+                        <i class="glyphicon glyphicon-plus" style="float:right" @@click="appendRow('中专')"></i>
+                    </div>
+                    <div class="panel-body text-center" style="height:200px;box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);overflow:auto">
+
+
+
+
+
+
+
+
+                        <div class="block" v-for="item in zhongzhuan">
+
+                            <el-date-picker v-model="item.DateRange" :clearable="false"
+                                            type="datetimerange"
+                                            range-separator="至"
+                                            start-placeholder="开始日期"
+                                            end-placeholder="结束日期"
+                                            size="small">
+                            </el-date-picker>
+                            <span :data-id="item.TimelineClientId" @@click="deleteItem($event)"
+                                  class="glyphicon glyphicon-remove itemdelete">
+
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-6 col-sm-12 col-lg-6">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        五年一贯制
+                        <i class="glyphicon glyphicon-plus" style="float:right" @@click="appendRow('五年一贯制')"></i>
+                    </div>
+                    <div class="panel-body text-center" style="height:200px;box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);overflow:auto">
+                        <div class="block" v-for="item in wunian">
+                            <el-date-picker v-model="item.DateRange" :clearable="false"
+                                            type="datetimerange"
+                                            range-separator="至"
+                                            start-placeholder="开始日期"
+                                            end-placeholder="结束日期"
+                                            size="small">
+                            </el-date-picker>
+                            <span :data-id="item.TimelineClientId" @@click="deleteItem($event)"
+                                  class="glyphicon glyphicon-remove itemdelete">
+
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+   
+
+    <div class="modal fade " aria-hidden="true" data-backdrop="static" id="modelLoad" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">  <i class="glyphicon glyphicon-remove-circle"></i></button>
+
+                    <form>
+
+                        <div class="form-group form-group-sm">
+                            <h5 class="pro-title">正在保存，请耐心等待......</h5>
+                            <div class="progress pro-radius">
+                                <div class="progress-bar progress-bar-striped gradient load_bar" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">
+
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade " aria-hidden="true" data-backdrop="static" id="modela1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">  <i class="glyphicon glyphicon-remove-circle"></i></button>
+
+                    <form>
+
+                        <div class="form-group form-group-sm">
+                            <h5 class="pro-title">正在获取数据，请耐心等待......</h5>
+                            <div class="progress pro-radius">
+                                <div class="progress-bar progress-bar-striped gradient load_bar" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">
+
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="~/Scripts/vue.js"></script>
+<script src="~/Scripts/element-ui/lib/index.js"></script>
+<link href="~/Scripts/element-ui/lib/theme-chalk/index.css" rel="stylesheet" />
+
+<script>
+    var f1 = new Vue({
+        el: "#f5",
+        data: {
+            all: [],
+            value1: [new Date(2000, 10, 10, 10, 10), new Date(2000, 10, 11, 10, 10)],
+            count: 0,
+        },
+        created: function () {
+        },
+        mounted: function () {
+            this.getdata();
+        },
+        methods: {
+            m1: function (val) {
+                console.log(val)
+            },
+            getdata: function () {
+                var that = this;
+                $('#modela1').modal();
+                
+                $.ajax({
+                    url: "../TimeLine/GetData?r=" + Math.random(),
+                    data: { draw: -1, start: -1, length: -1 },
+                    success: function (data) {
+                        
+                        if (data.suc) {
+                            var arr = data.rows;
+                            var a2 = $.map(arr, function (item) {
+                                var a1 = getDateTime(item.DateRange[0]);
+                                var a2 = getDateTime(item.DateRange[1]);
+                                item.DateRange = [a1, a2];
+                                return item;
+                            });
+                            that.all = a2;
+
+                        }
+                        $('#modela1').modal('hide');
+                    }
+                })
+            }
+            ,
+            appendRow: function (type) {
+                this.count = this.count + 1;
+                this.all.push({
+                    TimelineClientId: "a" + (this.count),
+                    TimelineId: null,
+                    OrderId: null,
+                    category: type,
+                    BegTime: new Date(),
+                    EndTime: new Date(),
+                    InsertTime: null,
+                    LastUpdateTime: null,
+                    DateRange: [new Date(), new Date()]
+                })
+
+
+            }
+            ,
+            deleteItem: function (e) {
+                var id = $(e.currentTarget).attr("data-id");
+
+
+                //////////////////////
+                for (var i = this.all.length - 1; i >= 0; i--) {
+                    if (this.all[i].TimelineClientId == id) {
+                        this.all.splice(i, 1);
+                        break;
+                        return;
+                    }
+                }
+
+                //////////////////////
+
+            }
+            ,
+            tijiao: function () {
+                var that = this;
+                $('#modelLoad').modal();
+                $.ajax({
+                    url: "../TimeLine/SaveData",
+                    data: JSON.stringify({ list: that.all }),
+                    contentType: 'application/json',
+                    type: "post",
+                    success: function (data) {
+                        if (data.suc) {
+                            var arr = data.rows;
+                             
+
+                            var a2 = $.map(arr, function (item) {
+                                var a1 = getDateTime(item.DateRange[0]);
+                                var a2 = getDateTime(item.DateRange[1]);
+                                item.DateRange = [a1, a2];
+                                return item;
+                            });
+
+
+
+
+                            that.all = a2;
+                            
+                            $('#modelLoad').modal('hide');
+                        }
+                        else {
+                            alert(data.remark);
+                        }
+                    }
+                })
+            }
+        },
+        computed: {
+            danzhao: function () {
+                var d1 = $.grep(this.all, function (item) {return item.category === "单招"});
+                return d1;
+            },
+            tongzhao: function () {
+                 
+                var d1 = $.grep(this.all, function (item) { return item.category === "统招" });
+                return d1;
+            },
+            zhongzhuan: function () {
+              
+                var d1 = $.grep(this.all, function (item) { return item.category === "中专" });
+                return d1;
+            },
+            wunian: function () {
+              
+                var d1 = $.grep(this.all, function (item) { return item.category === "五年一贯制" });
+                return d1;
+            }
+        }
+
+
+
+
+    })
+</script>
+
+<script src="~/Scripts/monment/moment-with-locales.min.js"></script>
+<script src="~/Scripts/monment/moment.min.js"></script>
+
+<script>
+    setInterval(function () {
+        $('#aa1').html(moment().format('YYYY-MM-DD'));
+
+        $('#aa2').html(moment().format('HH:mm:ss'));
+    }, 1000)
+
+</script>
+
+
+
+

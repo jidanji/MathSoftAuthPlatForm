@@ -1,0 +1,798 @@
+﻿<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{60DAA6C5-9EFF-4811-BAC9-379D82116887}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MAZIKONG</RootNamespace>
+    <AssemblyName>MAZIKONG</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>3.1</TypeScriptToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=6.2.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.2.2\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="MathSoftCommonLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MathSoftCommonLib.1.0.0\lib\net40\MathSoftCommonLib.dll</HintPath>
+    </Reference>
+    <Reference Include="MathSoftModelLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MathSoftModelLib.1.0.0\lib\net40\MathSoftModelLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="NPOI, Version=2.3.0.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.3.0\lib\net40\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OOXML, Version=2.3.0.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.3.0\lib\net40\NPOI.OOXML.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXml4Net, Version=2.3.0.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.3.0\lib\net40\NPOI.OpenXml4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXmlFormats, Version=2.3.0.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.3.0\lib\net40\NPOI.OpenXmlFormats.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security.Principal.Windows, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Principal.Windows.6.0.0-preview.5.21301.5\lib\net461\System.Security.Principal.Windows.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.DataVisualization" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\favicon.ico" />
+    <Content Include="DependencyDLL\MySql.Data.dll" />
+    <Content Include="DependencyDLL\Newtonsoft.Json.dll" />
+    <Content Include="DependencyDLL\System.Data.SQLite.DLL" />
+    <Content Include="favicon.ico" />
+    <Content Include="images\excel.png" />
+    <Content Include="images\logo.png" />
+    <Content Include="images\maliang1.png" />
+    <Content Include="Scripts\animate.min.css" />
+    <Content Include="Scripts\nprogress-master\nprogress.css" />
+    <Content Include="Scripts\nprogress-master\nprogress.js" />
+    <Content Include="WebForm1.aspx" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrapUpdate.css" />
+    <Content Include="Content\DashBorad\dashboard.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\fonts\octicons.svg" />
+    <Content Include="Content\Images\nantianguifan.png" />
+    <Content Include="Content\Images\nantianip.png" />
+    <Content Include="Content\Images\nantianjibenxinxi.png" />
+    <Content Include="Content\Images\nantianyuanshuju.png" />
+    <Content Include="Content\octicons.css" />
+    <Content Include="Content\WorkFlowStatus.css" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Areas\Admin\Views\Login\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_BackGroud.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <Content Include="images\2019bg.jpg" />
+    <Content Include="images\2019new.png" />
+    <Content Include="images\aliyun.png" />
+    <Content Include="images\aliyunanquan.png" />
+    <Content Include="images\chrome_logo_2x.PNG" />
+    <Content Include="Scripts\DataTables-1.10.13\media\images\Sorting icons.psd" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="Areas\Admin\Views\UserInfoTop\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Department\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Role\Index.cshtml" />
+    <Content Include="Scripts\Echarts-4.x\echarts.min.js" />
+    <Content Include="Scripts\element-ui\lib\alert.js" />
+    <Content Include="Scripts\element-ui\lib\aside.js" />
+    <Content Include="Scripts\element-ui\lib\autocomplete.js" />
+    <Content Include="Scripts\element-ui\lib\avatar.js" />
+    <Content Include="Scripts\element-ui\lib\backtop.js" />
+    <Content Include="Scripts\element-ui\lib\badge.js" />
+    <Content Include="Scripts\element-ui\lib\breadcrumb-item.js" />
+    <Content Include="Scripts\element-ui\lib\breadcrumb.js" />
+    <Content Include="Scripts\element-ui\lib\button-group.js" />
+    <Content Include="Scripts\element-ui\lib\button.js" />
+    <Content Include="Scripts\element-ui\lib\calendar.js" />
+    <Content Include="Scripts\element-ui\lib\card.js" />
+    <Content Include="Scripts\element-ui\lib\carousel-item.js" />
+    <Content Include="Scripts\element-ui\lib\carousel.js" />
+    <Content Include="Scripts\element-ui\lib\cascader-panel.js" />
+    <Content Include="Scripts\element-ui\lib\cascader.js" />
+    <Content Include="Scripts\element-ui\lib\checkbox-button.js" />
+    <Content Include="Scripts\element-ui\lib\checkbox-group.js" />
+    <Content Include="Scripts\element-ui\lib\checkbox.js" />
+    <Content Include="Scripts\element-ui\lib\col.js" />
+    <Content Include="Scripts\element-ui\lib\collapse-item.js" />
+    <Content Include="Scripts\element-ui\lib\collapse.js" />
+    <Content Include="Scripts\element-ui\lib\color-picker.js" />
+    <Content Include="Scripts\element-ui\lib\container.js" />
+    <Content Include="Scripts\element-ui\lib\date-picker.js" />
+    <Content Include="Scripts\element-ui\lib\dialog.js" />
+    <Content Include="Scripts\element-ui\lib\directives\mousewheel.js" />
+    <Content Include="Scripts\element-ui\lib\directives\repeat-click.js" />
+    <Content Include="Scripts\element-ui\lib\divider.js" />
+    <Content Include="Scripts\element-ui\lib\drawer.js" />
+    <Content Include="Scripts\element-ui\lib\dropdown-item.js" />
+    <Content Include="Scripts\element-ui\lib\dropdown-menu.js" />
+    <Content Include="Scripts\element-ui\lib\dropdown.js" />
+    <Content Include="Scripts\element-ui\lib\element-ui.common.js" />
+    <Content Include="Scripts\element-ui\lib\footer.js" />
+    <Content Include="Scripts\element-ui\lib\form-item.js" />
+    <Content Include="Scripts\element-ui\lib\form.js" />
+    <Content Include="Scripts\element-ui\lib\header.js" />
+    <Content Include="Scripts\element-ui\lib\icon.js" />
+    <Content Include="Scripts\element-ui\lib\image.js" />
+    <Content Include="Scripts\element-ui\lib\index.js" />
+    <Content Include="Scripts\element-ui\lib\infinite-scroll.js" />
+    <Content Include="Scripts\element-ui\lib\input-number.js" />
+    <Content Include="Scripts\element-ui\lib\input.js" />
+    <Content Include="Scripts\element-ui\lib\link.js" />
+    <Content Include="Scripts\element-ui\lib\loading.js" />
+    <Content Include="Scripts\element-ui\lib\locale\format.js" />
+    <Content Include="Scripts\element-ui\lib\locale\index.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\af-ZA.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\ar.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\bg.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\ca.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\cs-CZ.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\da.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\de.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\ee.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\el.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\en.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\eo.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\es.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\eu.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\fa.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\fi.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\fr.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\he.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\hr.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\hu.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\hy-AM.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\id.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\it.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\ja.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\kg.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\km.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\ko.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\ku.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\kz.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\lt.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\lv.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\mn.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\nb-NO.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\nl.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\pl.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\pt-br.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\pt.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\ro.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\ru-RU.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\sk.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\sl.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\sr.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\sv-SE.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\ta.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\th.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\tk.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\tr-TR.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\ua.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\ug-CN.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\uz-UZ.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\vi.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\zh-CN.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\zh-TW.js" />
+    <Content Include="Scripts\element-ui\lib\main.js" />
+    <Content Include="Scripts\element-ui\lib\menu-item-group.js" />
+    <Content Include="Scripts\element-ui\lib\menu-item.js" />
+    <Content Include="Scripts\element-ui\lib\menu.js" />
+    <Content Include="Scripts\element-ui\lib\message-box.js" />
+    <Content Include="Scripts\element-ui\lib\message.js" />
+    <Content Include="Scripts\element-ui\lib\mixins\emitter.js" />
+    <Content Include="Scripts\element-ui\lib\mixins\focus.js" />
+    <Content Include="Scripts\element-ui\lib\mixins\locale.js" />
+    <Content Include="Scripts\element-ui\lib\mixins\migrating.js" />
+    <Content Include="Scripts\element-ui\lib\notification.js" />
+    <Content Include="Scripts\element-ui\lib\option-group.js" />
+    <Content Include="Scripts\element-ui\lib\option.js" />
+    <Content Include="Scripts\element-ui\lib\page-header.js" />
+    <Content Include="Scripts\element-ui\lib\pagination.js" />
+    <Content Include="Scripts\element-ui\lib\popconfirm.js" />
+    <Content Include="Scripts\element-ui\lib\popover.js" />
+    <Content Include="Scripts\element-ui\lib\progress.js" />
+    <Content Include="Scripts\element-ui\lib\radio-button.js" />
+    <Content Include="Scripts\element-ui\lib\radio-group.js" />
+    <Content Include="Scripts\element-ui\lib\radio.js" />
+    <Content Include="Scripts\element-ui\lib\rate.js" />
+    <Content Include="Scripts\element-ui\lib\row.js" />
+    <Content Include="Scripts\element-ui\lib\scrollbar.js" />
+    <Content Include="Scripts\element-ui\lib\select.js" />
+    <Content Include="Scripts\element-ui\lib\slider.js" />
+    <Content Include="Scripts\element-ui\lib\spinner.js" />
+    <Content Include="Scripts\element-ui\lib\step.js" />
+    <Content Include="Scripts\element-ui\lib\steps.js" />
+    <Content Include="Scripts\element-ui\lib\submenu.js" />
+    <Content Include="Scripts\element-ui\lib\switch.js" />
+    <Content Include="Scripts\element-ui\lib\tab-pane.js" />
+    <Content Include="Scripts\element-ui\lib\table-column.js" />
+    <Content Include="Scripts\element-ui\lib\table.js" />
+    <Content Include="Scripts\element-ui\lib\tabs.js" />
+    <Content Include="Scripts\element-ui\lib\tag.js" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\alert.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\aside.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\autocomplete.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\avatar.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\backtop.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\badge.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\base.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\breadcrumb-item.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\breadcrumb.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\button-group.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\button.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\calendar.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\card.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\carousel-item.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\carousel.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\cascader-panel.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\cascader.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\checkbox-button.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\checkbox-group.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\checkbox.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\col.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\collapse-item.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\collapse.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\color-picker.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\container.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\date-picker.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\dialog.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\display.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\divider.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\drawer.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\dropdown-item.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\dropdown-menu.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\dropdown.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\footer.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\form-item.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\form.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\header.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\icon.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\image.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\index.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\infinite-scroll.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\infiniteScroll.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\input-number.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\input.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\link.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\loading.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\main.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\menu-item-group.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\menu-item.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\menu.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\message-box.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\message.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\notification.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\option-group.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\option.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\page-header.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\pagination.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\popconfirm.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\popover.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\popper.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\progress.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\radio-button.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\radio-group.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\radio.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\rate.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\reset.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\row.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\scrollbar.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\select-dropdown.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\select.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\slider.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\spinner.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\step.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\steps.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\submenu.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\switch.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\tab-pane.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\table-column.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\table.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\tabs.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\tag.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\time-picker.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\time-select.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\timeline-item.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\timeline.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\tooltip.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\transfer.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\tree.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\upload.css" />
+    <Content Include="Scripts\element-ui\lib\time-picker.js" />
+    <Content Include="Scripts\element-ui\lib\time-select.js" />
+    <Content Include="Scripts\element-ui\lib\timeline-item.js" />
+    <Content Include="Scripts\element-ui\lib\timeline.js" />
+    <Content Include="Scripts\element-ui\lib\tooltip.js" />
+    <Content Include="Scripts\element-ui\lib\transfer.js" />
+    <Content Include="Scripts\element-ui\lib\transitions\collapse-transition.js" />
+    <Content Include="Scripts\element-ui\lib\tree.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\af-ZA.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\ar.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\bg.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\ca.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\cs-CZ.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\da.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\de.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\ee.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\el.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\en.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\eo.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\es.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\eu.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\fa.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\fi.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\fr.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\he.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\hr.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\hu.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\hy-AM.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\id.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\it.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\ja.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\kg.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\km.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\ko.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\ku.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\kz.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\lt.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\lv.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\mn.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\nb-NO.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\nl.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\pl.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\pt-br.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\pt.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\ro.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\ru-RU.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\sk.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\sl.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\sr.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\sv-SE.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\ta.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\th.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\tk.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\tr-TR.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\ua.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\ug-CN.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\uz-UZ.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\vi.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\zh-CN.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\zh-TW.js" />
+    <Content Include="Scripts\element-ui\lib\upload.js" />
+    <Content Include="Scripts\element-ui\lib\utils\after-leave.js" />
+    <Content Include="Scripts\element-ui\lib\utils\aria-dialog.js" />
+    <Content Include="Scripts\element-ui\lib\utils\aria-utils.js" />
+    <Content Include="Scripts\element-ui\lib\utils\clickoutside.js" />
+    <Content Include="Scripts\element-ui\lib\utils\date-util.js" />
+    <Content Include="Scripts\element-ui\lib\utils\date.js" />
+    <Content Include="Scripts\element-ui\lib\utils\dom.js" />
+    <Content Include="Scripts\element-ui\lib\utils\menu\aria-menubar.js" />
+    <Content Include="Scripts\element-ui\lib\utils\menu\aria-menuitem.js" />
+    <Content Include="Scripts\element-ui\lib\utils\menu\aria-submenu.js" />
+    <Content Include="Scripts\element-ui\lib\utils\merge.js" />
+    <Content Include="Scripts\element-ui\lib\utils\popper.js" />
+    <Content Include="Scripts\element-ui\lib\utils\popup\index.js" />
+    <Content Include="Scripts\element-ui\lib\utils\popup\popup-manager.js" />
+    <Content Include="Scripts\element-ui\lib\utils\resize-event.js" />
+    <Content Include="Scripts\element-ui\lib\utils\scroll-into-view.js" />
+    <Content Include="Scripts\element-ui\lib\utils\scrollbar-width.js" />
+    <Content Include="Scripts\element-ui\lib\utils\shared.js" />
+    <Content Include="Scripts\element-ui\lib\utils\types.js" />
+    <Content Include="Scripts\element-ui\lib\utils\util.js" />
+    <Content Include="Scripts\element-ui\lib\utils\vdom.js" />
+    <Content Include="Scripts\element-ui\lib\utils\vue-popper.js" />
+    <Content Include="Scripts\gojs\DrawCommandHandler.js" />
+    <Content Include="Scripts\gojs\GuidedDraggingTool.js" />
+    <Content Include="Scripts\gojs\RealtimeDragSelectingTool.js" />
+    <Content Include="Scripts\gojs\RotateMultipleTool.js" />
+    <Content Include="Scripts\layDate-v5.0.9\laydate\laydate.js" />
+    <Content Include="Scripts\layDate-v5.0.9\laydate\theme\default\font\iconfont.svg" />
+    <Content Include="Scripts\layDate-v5.0.9\laydate\theme\default\laydate.css" />
+    <Content Include="Areas\Admin\Views\MathDict\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Sth\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\MenuInfo\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Main\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\BaoBiao\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Index2.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Index3.cshtml" />
+    <Content Include="Areas\Admin\Views\UserInfoTop\ChangePWDIndex.cshtml" />
+    <Content Include="Content\fonts\octicons.woff" />
+    <Content Include="Content\fonts\octicons.ttf" />
+    <Content Include="Content\fonts\octicons.eot" />
+    <Content Include="Areas\Admin\Views\Student\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Student\BaoBiao.cshtml" />
+    <Content Include="Areas\Admin\Views\SysSetting\Index.cshtml" />
+    <Content Include="Scripts\monment\moment-with-locales.js" />
+    <Content Include="Scripts\monment\moment-with-locales.min.js" />
+    <Content Include="Scripts\monment\moment.js" />
+    <Content Include="Scripts\monment\moment.min.js" />
+    <Content Include="Scripts\vue.js" />
+    <Content Include="Scripts\vue.min.js" />
+    <Content Include="WebForm2.aspx" />
+    <Content Include="Areas\Admin\Views\FileUpload\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\AnalySISS\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ZhanZhangPiPei\Index.cshtml" />
+    <Content Include="WebForm3.aspx" />
+    <Content Include="WebForm4.aspx" />
+    <Content Include="fonts\FZZZHONGHJW.TTF" />
+    <Content Include="fonts\zsYAHEI.ttf" />
+    <Content Include="Areas\Admin\Views\ZhanZhangStatic\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ZhanZhangStaticNew\Index.cshtml" />
+    <Content Include="WebForm5.aspx" />
+    <Content Include="WebForm6.aspx" />
+    <Content Include="WebForm7.aspx" />
+    <Content Include="Areas\Admin\Views\UserInfoCommon\ChangePWDIndex.cshtml" />
+    <Content Include="Areas\Admin\Views\UserInfoCommon\Index.cshtml" />
+    <Content Include="WebForm8.aspx" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\fonts\element-icons.ttf" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\fonts\element-icons.woff" />
+    <None Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="images\login.png" />
+    <Content Include="images\logo.jpg" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\DataTables-1.10.13\media\css\dataTables.bootstrap.css" />
+    <Content Include="Scripts\DataTables-1.10.13\media\css\dataTables.bootstrap.min.css" />
+    <Content Include="Scripts\DataTables-1.10.13\media\css\dataTables.bootstrap4.css" />
+    <Content Include="Scripts\DataTables-1.10.13\media\css\dataTables.bootstrap4.min.css" />
+    <Content Include="Scripts\DataTables-1.10.13\media\css\dataTables.foundation.css" />
+    <Content Include="Scripts\DataTables-1.10.13\media\css\dataTables.foundation.min.css" />
+    <Content Include="Scripts\DataTables-1.10.13\media\css\dataTables.jqueryui.css" />
+    <Content Include="Scripts\DataTables-1.10.13\media\css\dataTables.jqueryui.min.css" />
+    <Content Include="Scripts\DataTables-1.10.13\media\css\dataTables.material.css" />
+    <Content Include="Scripts\DataTables-1.10.13\media\css\dataTables.material.min.css" />
+    <Content Include="Scripts\DataTables-1.10.13\media\css\dataTables.semanticui.css" />
+    <Content Include="Scripts\DataTables-1.10.13\media\css\dataTables.semanticui.min.css" />
+    <Content Include="Scripts\DataTables-1.10.13\media\css\dataTables.uikit.css" />
+    <Content Include="Scripts\DataTables-1.10.13\media\css\dataTables.uikit.min.css" />
+    <Content Include="Scripts\DataTables-1.10.13\media\css\jquery.dataTables.css" />
+    <Content Include="Scripts\DataTables-1.10.13\media\css\jquery.dataTables.min.css" />
+    <Content Include="Scripts\DataTables-1.10.13\media\css\jquery.dataTables_themeroller.css" />
+    <Content Include="Scripts\DataTables-1.10.13\media\images\favicon.ico" />
+    <Content Include="Scripts\DataTables-1.10.13\media\images\sort_asc.png" />
+    <Content Include="Scripts\DataTables-1.10.13\media\images\sort_asc_disabled.png" />
+    <Content Include="Scripts\DataTables-1.10.13\media\images\sort_both.png" />
+    <Content Include="Scripts\DataTables-1.10.13\media\images\sort_desc.png" />
+    <Content Include="Scripts\DataTables-1.10.13\media\images\sort_desc_disabled.png" />
+    <Content Include="Scripts\DataTables-1.10.13\media\js\dataTables.bootstrap.js" />
+    <Content Include="Scripts\DataTables-1.10.13\media\js\dataTables.bootstrap.min.js" />
+    <Content Include="Scripts\DataTables-1.10.13\media\js\dataTables.bootstrap4.js" />
+    <Content Include="Scripts\DataTables-1.10.13\media\js\dataTables.bootstrap4.min.js" />
+    <Content Include="Scripts\DataTables-1.10.13\media\js\dataTables.foundation.js" />
+    <Content Include="Scripts\DataTables-1.10.13\media\js\dataTables.foundation.min.js" />
+    <Content Include="Scripts\DataTables-1.10.13\media\js\dataTables.jqueryui.js" />
+    <Content Include="Scripts\DataTables-1.10.13\media\js\dataTables.jqueryui.min.js" />
+    <Content Include="Scripts\DataTables-1.10.13\media\js\dataTables.material.js" />
+    <Content Include="Scripts\DataTables-1.10.13\media\js\dataTables.material.min.js" />
+    <Content Include="Scripts\DataTables-1.10.13\media\js\dataTables.semanticui.js" />
+    <Content Include="Scripts\DataTables-1.10.13\media\js\dataTables.semanticui.min.js" />
+    <Content Include="Scripts\DataTables-1.10.13\media\js\dataTables.uikit.js" />
+    <Content Include="Scripts\DataTables-1.10.13\media\js\dataTables.uikit.min.js" />
+    <Content Include="Scripts\DataTables-1.10.13\media\js\jquery.dataTables.js" />
+    <Content Include="Scripts\DataTables-1.10.13\media\js\jquery.dataTables.min.js" />
+    <Content Include="Scripts\DataTables-1.10.13\media\js\jquery.js" />
+    <Content Include="Scripts\datetime.js" />
+    <Content Include="Scripts\jquery-1.9.1.js" />
+    <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\additional-methods.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\additional-methods.min.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\jquery.validate.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_zh.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_zh.min.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_zh_TW.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_zh_TW.min.js" />
+    <Content Include="Scripts\layer-v3.0.3\layer\layer.js" />
+    <Content Include="Scripts\layer-v3.0.3\layer\skin\default\icon-ext.png" />
+    <Content Include="Scripts\layer-v3.0.3\layer\skin\default\icon.png" />
+    <Content Include="Scripts\layer-v3.0.3\layer\skin\default\layer.css" />
+    <Content Include="Scripts\layer-v3.0.3\layer\skin\default\loading-0.gif" />
+    <Content Include="Scripts\layer-v3.0.3\layer\skin\default\loading-1.gif" />
+    <Content Include="Scripts\layer-v3.0.3\layer\skin\default\loading-2.gif" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\PreLoadMenuListAttribute.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AnalySISSController.cs" />
+    <Compile Include="Areas\Admin\Controllers\BaoBiaoController.cs" />
+    <Compile Include="Areas\Admin\Controllers\BgBaseController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DepartmentController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ExcelController.cs" />
+    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
+    <Compile Include="Areas\Admin\Controllers\EventController.cs" />
+    <Compile Include="Areas\Admin\Controllers\MainController.cs" />
+    <Compile Include="Areas\Admin\Controllers\MathDictController.cs" />
+    <Compile Include="Areas\Admin\Controllers\MenuInfoController.cs" />
+    <Compile Include="Areas\Admin\Controllers\RoleController.cs" />
+    <Compile Include="Areas\Admin\Controllers\StudentController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SysSettingController.cs" />
+    <Compile Include="Areas\Admin\Controllers\TimeLineController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UserInfoCommonController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UserInfoController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UserInfoTopController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ZhanZhangPiPeiController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ZhanZhangStaticController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ZhanZhangStaticNewController.cs" />
+    <Compile Include="Models\StaticUI.cs" />
+    <Compile Include="WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AutoMapperConfig.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebForm2.aspx.cs">
+      <DependentUpon>WebForm2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm2.aspx.designer.cs">
+      <DependentUpon>WebForm2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm3.aspx.cs">
+      <DependentUpon>WebForm3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm3.aspx.designer.cs">
+      <DependentUpon>WebForm3.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm4.aspx.cs">
+      <DependentUpon>WebForm4.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm4.aspx.designer.cs">
+      <DependentUpon>WebForm4.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm5.aspx.cs">
+      <DependentUpon>WebForm5.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm5.aspx.designer.cs">
+      <DependentUpon>WebForm5.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm6.aspx.cs">
+      <DependentUpon>WebForm6.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm6.aspx.designer.cs">
+      <DependentUpon>WebForm6.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm7.aspx.cs">
+      <DependentUpon>WebForm7.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm7.aspx.designer.cs">
+      <DependentUpon>WebForm7.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm8.aspx.cs">
+      <DependentUpon>WebForm8.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm8.aspx.designer.cs">
+      <DependentUpon>WebForm8.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Areas\Admin\Views\web.config" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-1.9.1.min.map" />
+    <Content Include="Scripts\layDate-v5.0.9\laydate\theme\default\font\iconfont.eot" />
+    <Content Include="Scripts\layDate-v5.0.9\laydate\theme\default\font\iconfont.ttf" />
+    <Content Include="Scripts\layDate-v5.0.9\laydate\theme\default\font\iconfont.woff" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\DataSource\" />
+    <Folder Include="Areas\Admin\Views\Event\" />
+    <Folder Include="Areas\Admin\Views\Excel\" />
+    <Folder Include="Areas\Admin\Views\TimeLine\" />
+    <Folder Include="Areas\Admin\Views\UserInfo\" />
+    <Folder Include="Controllers\" />
+    <Folder Include="Views\MZK\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Business\Business.csproj">
+      <Project>{c23c8d54-4719-408e-ac72-ac48e7a63c19}</Project>
+      <Name>Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataAccess\DataAccess.csproj">
+      <Project>{492BCC1C-B2DA-4779-9B6D-B247805F16D7}</Project>
+      <Name>DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DTOModel\DTOModel.csproj">
+      <Project>{9d10dbf6-c815-4644-b7b3-1277bd626a23}</Project>
+      <Name>DTOModel</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>54904</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:54905/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
