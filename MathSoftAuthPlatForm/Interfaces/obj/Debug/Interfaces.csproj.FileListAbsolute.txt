@@ -1,5 +1,0 @@
-C:\Users\malia\Documents\GitHub\MathSoftAuthPlatForm\MathSoftAuthPlatForm\Interfaces\bin\Debug\Interfaces.dll
-C:\Users\malia\Documents\GitHub\MathSoftAuthPlatForm\MathSoftAuthPlatForm\Interfaces\bin\Debug\Interfaces.pdb
-C:\Users\malia\Documents\GitHub\MathSoftAuthPlatForm\MathSoftAuthPlatForm\Interfaces\obj\Debug\Interfaces.csproj.CoreCompileInputs.cache
-C:\Users\malia\Documents\GitHub\MathSoftAuthPlatForm\MathSoftAuthPlatForm\Interfaces\obj\Debug\Interfaces.dll
-C:\Users\malia\Documents\GitHub\MathSoftAuthPlatForm\MathSoftAuthPlatForm\Interfaces\obj\Debug\Interfaces.pdb
