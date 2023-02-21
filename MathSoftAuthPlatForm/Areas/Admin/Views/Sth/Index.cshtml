@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_BackGroud.cshtml";
+}
+
+<h2>Index</h2>
+
+<script>
+    //关闭当前tab并刷新之前的列表
+    function closeThisTab() {
+        if (getUrlParamDecode('parTabId')) { //parTabId，父页面的iframe的ID
+            $(window.parent.document).contents().find("#tab_" + getUrlParamDecode('parTabId') + " iframe")[0].contentWindow.query_func(); // 执行父页面的方法，query_func(); 父页面的刷新方法
+        }
+        window.parent.Addtabs.close('tab_' + getUrlParamDecode('addTabId'));// 关闭当前tab
+    }
+</script>
+

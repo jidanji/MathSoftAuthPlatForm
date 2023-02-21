@@ -1,0 +1,1430 @@
+﻿<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{60DAA6C5-9EFF-4811-BAC9-379D82116887}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MathSoftAuthPlatForm</RootNamespace>
+    <AssemblyName>MathSoftAuthPlatForm</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>3.1</TypeScriptToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=6.2.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.2.2\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="NPOI, Version=2.3.0.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.3.0\lib\net40\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OOXML, Version=2.3.0.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.3.0\lib\net40\NPOI.OOXML.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXml4Net, Version=2.3.0.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.3.0\lib\net40\NPOI.OpenXml4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXmlFormats, Version=2.3.0.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.3.0\lib\net40\NPOI.OpenXmlFormats.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security.Principal.Windows, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Principal.Windows.5.0.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DataVisualization" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\favicon.ico" />
+    <Content Include="favicon.ico" />
+    <Content Include="images\excel.png" />
+    <Content Include="Scripts\animate.min.css" />
+    <Content Include="WebForm1.aspx" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrapUpdate.css" />
+    <Content Include="Content\DashBorad\dashboard.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\fonts\octicons.svg" />
+    <Content Include="Content\Images\nantianguifan.png" />
+    <Content Include="Content\Images\nantianip.png" />
+    <Content Include="Content\Images\nantianjibenxinxi.png" />
+    <Content Include="Content\Images\nantianyuanshuju.png" />
+    <Content Include="Content\octicons.css" />
+    <Content Include="Content\WorkFlowStatus.css" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Areas\Admin\Views\Login\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_BackGroud.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <Content Include="HtmlPage1.html" />
+    <Content Include="images\2019bg.jpg" />
+    <Content Include="images\2019new.png" />
+    <Content Include="images\aliyun.png" />
+    <Content Include="images\aliyunanquan.png" />
+    <Content Include="images\chrome_logo_2x.PNG" />
+    <Content Include="Scripts\DataTables-1.10.13\media\images\Sorting icons.psd" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="Areas\Admin\Views\UserInfo\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Department\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Role\Index.cshtml" />
+    <Content Include="Scripts\Echarts-4.x\echarts.min.js" />
+    <Content Include="Scripts\element-ui\lib\alert.js" />
+    <Content Include="Scripts\element-ui\lib\aside.js" />
+    <Content Include="Scripts\element-ui\lib\autocomplete.js" />
+    <Content Include="Scripts\element-ui\lib\avatar.js" />
+    <Content Include="Scripts\element-ui\lib\backtop.js" />
+    <Content Include="Scripts\element-ui\lib\badge.js" />
+    <Content Include="Scripts\element-ui\lib\breadcrumb-item.js" />
+    <Content Include="Scripts\element-ui\lib\breadcrumb.js" />
+    <Content Include="Scripts\element-ui\lib\button-group.js" />
+    <Content Include="Scripts\element-ui\lib\button.js" />
+    <Content Include="Scripts\element-ui\lib\calendar.js" />
+    <Content Include="Scripts\element-ui\lib\card.js" />
+    <Content Include="Scripts\element-ui\lib\carousel-item.js" />
+    <Content Include="Scripts\element-ui\lib\carousel.js" />
+    <Content Include="Scripts\element-ui\lib\cascader-panel.js" />
+    <Content Include="Scripts\element-ui\lib\cascader.js" />
+    <Content Include="Scripts\element-ui\lib\checkbox-button.js" />
+    <Content Include="Scripts\element-ui\lib\checkbox-group.js" />
+    <Content Include="Scripts\element-ui\lib\checkbox.js" />
+    <Content Include="Scripts\element-ui\lib\col.js" />
+    <Content Include="Scripts\element-ui\lib\collapse-item.js" />
+    <Content Include="Scripts\element-ui\lib\collapse.js" />
+    <Content Include="Scripts\element-ui\lib\color-picker.js" />
+    <Content Include="Scripts\element-ui\lib\container.js" />
+    <Content Include="Scripts\element-ui\lib\date-picker.js" />
+    <Content Include="Scripts\element-ui\lib\dialog.js" />
+    <Content Include="Scripts\element-ui\lib\directives\mousewheel.js" />
+    <Content Include="Scripts\element-ui\lib\directives\repeat-click.js" />
+    <Content Include="Scripts\element-ui\lib\divider.js" />
+    <Content Include="Scripts\element-ui\lib\drawer.js" />
+    <Content Include="Scripts\element-ui\lib\dropdown-item.js" />
+    <Content Include="Scripts\element-ui\lib\dropdown-menu.js" />
+    <Content Include="Scripts\element-ui\lib\dropdown.js" />
+    <Content Include="Scripts\element-ui\lib\element-ui.common.js" />
+    <Content Include="Scripts\element-ui\lib\footer.js" />
+    <Content Include="Scripts\element-ui\lib\form-item.js" />
+    <Content Include="Scripts\element-ui\lib\form.js" />
+    <Content Include="Scripts\element-ui\lib\header.js" />
+    <Content Include="Scripts\element-ui\lib\icon.js" />
+    <Content Include="Scripts\element-ui\lib\image.js" />
+    <Content Include="Scripts\element-ui\lib\index.js" />
+    <Content Include="Scripts\element-ui\lib\infinite-scroll.js" />
+    <Content Include="Scripts\element-ui\lib\input-number.js" />
+    <Content Include="Scripts\element-ui\lib\input.js" />
+    <Content Include="Scripts\element-ui\lib\link.js" />
+    <Content Include="Scripts\element-ui\lib\loading.js" />
+    <Content Include="Scripts\element-ui\lib\locale\format.js" />
+    <Content Include="Scripts\element-ui\lib\locale\index.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\af-ZA.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\ar.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\bg.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\ca.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\cs-CZ.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\da.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\de.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\ee.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\el.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\en.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\eo.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\es.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\eu.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\fa.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\fi.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\fr.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\he.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\hr.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\hu.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\hy-AM.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\id.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\it.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\ja.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\kg.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\km.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\ko.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\ku.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\kz.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\lt.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\lv.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\mn.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\nb-NO.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\nl.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\pl.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\pt-br.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\pt.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\ro.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\ru-RU.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\sk.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\sl.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\sr.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\sv-SE.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\ta.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\th.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\tk.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\tr-TR.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\ua.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\ug-CN.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\uz-UZ.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\vi.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\zh-CN.js" />
+    <Content Include="Scripts\element-ui\lib\locale\lang\zh-TW.js" />
+    <Content Include="Scripts\element-ui\lib\main.js" />
+    <Content Include="Scripts\element-ui\lib\menu-item-group.js" />
+    <Content Include="Scripts\element-ui\lib\menu-item.js" />
+    <Content Include="Scripts\element-ui\lib\menu.js" />
+    <Content Include="Scripts\element-ui\lib\message-box.js" />
+    <Content Include="Scripts\element-ui\lib\message.js" />
+    <Content Include="Scripts\element-ui\lib\mixins\emitter.js" />
+    <Content Include="Scripts\element-ui\lib\mixins\focus.js" />
+    <Content Include="Scripts\element-ui\lib\mixins\locale.js" />
+    <Content Include="Scripts\element-ui\lib\mixins\migrating.js" />
+    <Content Include="Scripts\element-ui\lib\notification.js" />
+    <Content Include="Scripts\element-ui\lib\option-group.js" />
+    <Content Include="Scripts\element-ui\lib\option.js" />
+    <Content Include="Scripts\element-ui\lib\page-header.js" />
+    <Content Include="Scripts\element-ui\lib\pagination.js" />
+    <Content Include="Scripts\element-ui\lib\popconfirm.js" />
+    <Content Include="Scripts\element-ui\lib\popover.js" />
+    <Content Include="Scripts\element-ui\lib\progress.js" />
+    <Content Include="Scripts\element-ui\lib\radio-button.js" />
+    <Content Include="Scripts\element-ui\lib\radio-group.js" />
+    <Content Include="Scripts\element-ui\lib\radio.js" />
+    <Content Include="Scripts\element-ui\lib\rate.js" />
+    <Content Include="Scripts\element-ui\lib\row.js" />
+    <Content Include="Scripts\element-ui\lib\scrollbar.js" />
+    <Content Include="Scripts\element-ui\lib\select.js" />
+    <Content Include="Scripts\element-ui\lib\slider.js" />
+    <Content Include="Scripts\element-ui\lib\spinner.js" />
+    <Content Include="Scripts\element-ui\lib\step.js" />
+    <Content Include="Scripts\element-ui\lib\steps.js" />
+    <Content Include="Scripts\element-ui\lib\submenu.js" />
+    <Content Include="Scripts\element-ui\lib\switch.js" />
+    <Content Include="Scripts\element-ui\lib\tab-pane.js" />
+    <Content Include="Scripts\element-ui\lib\table-column.js" />
+    <Content Include="Scripts\element-ui\lib\table.js" />
+    <Content Include="Scripts\element-ui\lib\tabs.js" />
+    <Content Include="Scripts\element-ui\lib\tag.js" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\alert.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\aside.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\autocomplete.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\avatar.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\backtop.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\badge.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\base.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\breadcrumb-item.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\breadcrumb.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\button-group.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\button.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\calendar.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\card.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\carousel-item.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\carousel.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\cascader-panel.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\cascader.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\checkbox-button.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\checkbox-group.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\checkbox.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\col.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\collapse-item.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\collapse.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\color-picker.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\container.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\date-picker.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\dialog.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\display.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\divider.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\drawer.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\dropdown-item.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\dropdown-menu.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\dropdown.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\footer.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\form-item.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\form.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\header.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\icon.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\image.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\index.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\infinite-scroll.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\infiniteScroll.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\input-number.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\input.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\link.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\loading.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\main.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\menu-item-group.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\menu-item.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\menu.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\message-box.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\message.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\notification.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\option-group.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\option.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\page-header.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\pagination.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\popconfirm.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\popover.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\popper.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\progress.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\radio-button.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\radio-group.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\radio.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\rate.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\reset.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\row.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\scrollbar.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\select-dropdown.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\select.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\slider.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\spinner.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\step.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\steps.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\submenu.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\switch.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\tab-pane.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\table-column.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\table.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\tabs.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\tag.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\time-picker.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\time-select.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\timeline-item.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\timeline.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\tooltip.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\transfer.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\tree.css" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\upload.css" />
+    <Content Include="Scripts\element-ui\lib\time-picker.js" />
+    <Content Include="Scripts\element-ui\lib\time-select.js" />
+    <Content Include="Scripts\element-ui\lib\timeline-item.js" />
+    <Content Include="Scripts\element-ui\lib\timeline.js" />
+    <Content Include="Scripts\element-ui\lib\tooltip.js" />
+    <Content Include="Scripts\element-ui\lib\transfer.js" />
+    <Content Include="Scripts\element-ui\lib\transitions\collapse-transition.js" />
+    <Content Include="Scripts\element-ui\lib\tree.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\af-ZA.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\ar.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\bg.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\ca.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\cs-CZ.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\da.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\de.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\ee.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\el.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\en.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\eo.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\es.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\eu.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\fa.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\fi.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\fr.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\he.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\hr.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\hu.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\hy-AM.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\id.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\it.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\ja.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\kg.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\km.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\ko.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\ku.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\kz.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\lt.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\lv.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\mn.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\nb-NO.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\nl.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\pl.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\pt-br.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\pt.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\ro.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\ru-RU.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\sk.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\sl.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\sr.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\sv-SE.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\ta.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\th.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\tk.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\tr-TR.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\ua.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\ug-CN.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\uz-UZ.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\vi.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\zh-CN.js" />
+    <Content Include="Scripts\element-ui\lib\umd\locale\zh-TW.js" />
+    <Content Include="Scripts\element-ui\lib\upload.js" />
+    <Content Include="Scripts\element-ui\lib\utils\after-leave.js" />
+    <Content Include="Scripts\element-ui\lib\utils\aria-dialog.js" />
+    <Content Include="Scripts\element-ui\lib\utils\aria-utils.js" />
+    <Content Include="Scripts\element-ui\lib\utils\clickoutside.js" />
+    <Content Include="Scripts\element-ui\lib\utils\date-util.js" />
+    <Content Include="Scripts\element-ui\lib\utils\date.js" />
+    <Content Include="Scripts\element-ui\lib\utils\dom.js" />
+    <Content Include="Scripts\element-ui\lib\utils\menu\aria-menubar.js" />
+    <Content Include="Scripts\element-ui\lib\utils\menu\aria-menuitem.js" />
+    <Content Include="Scripts\element-ui\lib\utils\menu\aria-submenu.js" />
+    <Content Include="Scripts\element-ui\lib\utils\merge.js" />
+    <Content Include="Scripts\element-ui\lib\utils\popper.js" />
+    <Content Include="Scripts\element-ui\lib\utils\popup\index.js" />
+    <Content Include="Scripts\element-ui\lib\utils\popup\popup-manager.js" />
+    <Content Include="Scripts\element-ui\lib\utils\resize-event.js" />
+    <Content Include="Scripts\element-ui\lib\utils\scroll-into-view.js" />
+    <Content Include="Scripts\element-ui\lib\utils\scrollbar-width.js" />
+    <Content Include="Scripts\element-ui\lib\utils\shared.js" />
+    <Content Include="Scripts\element-ui\lib\utils\types.js" />
+    <Content Include="Scripts\element-ui\lib\utils\util.js" />
+    <Content Include="Scripts\element-ui\lib\utils\vdom.js" />
+    <Content Include="Scripts\element-ui\lib\utils\vue-popper.js" />
+    <Content Include="Scripts\element-ui\packages\alert\index.js" />
+    <Content Include="Scripts\element-ui\packages\aside\index.js" />
+    <Content Include="Scripts\element-ui\packages\autocomplete\index.js" />
+    <Content Include="Scripts\element-ui\packages\avatar\index.js" />
+    <Content Include="Scripts\element-ui\packages\backtop\index.js" />
+    <Content Include="Scripts\element-ui\packages\badge\index.js" />
+    <Content Include="Scripts\element-ui\packages\breadcrumb-item\index.js" />
+    <Content Include="Scripts\element-ui\packages\breadcrumb\index.js" />
+    <Content Include="Scripts\element-ui\packages\button-group\index.js" />
+    <Content Include="Scripts\element-ui\packages\button\index.js" />
+    <Content Include="Scripts\element-ui\packages\calendar\index.js" />
+    <Content Include="Scripts\element-ui\packages\card\index.js" />
+    <Content Include="Scripts\element-ui\packages\carousel-item\index.js" />
+    <Content Include="Scripts\element-ui\packages\carousel\index.js" />
+    <Content Include="Scripts\element-ui\packages\cascader-panel\index.js" />
+    <Content Include="Scripts\element-ui\packages\cascader-panel\src\node.js" />
+    <Content Include="Scripts\element-ui\packages\cascader-panel\src\store.js" />
+    <Content Include="Scripts\element-ui\packages\cascader\index.js" />
+    <Content Include="Scripts\element-ui\packages\checkbox-button\index.js" />
+    <Content Include="Scripts\element-ui\packages\checkbox-group\index.js" />
+    <Content Include="Scripts\element-ui\packages\checkbox\index.js" />
+    <Content Include="Scripts\element-ui\packages\collapse-item\index.js" />
+    <Content Include="Scripts\element-ui\packages\collapse\index.js" />
+    <Content Include="Scripts\element-ui\packages\color-picker\index.js" />
+    <Content Include="Scripts\element-ui\packages\color-picker\src\color.js" />
+    <Content Include="Scripts\element-ui\packages\color-picker\src\draggable.js" />
+    <Content Include="Scripts\element-ui\packages\col\index.js" />
+    <Content Include="Scripts\element-ui\packages\col\src\col.js" />
+    <Content Include="Scripts\element-ui\packages\container\index.js" />
+    <Content Include="Scripts\element-ui\packages\date-picker\index.js" />
+    <Content Include="Scripts\element-ui\packages\date-picker\src\picker\date-picker.js" />
+    <Content Include="Scripts\element-ui\packages\date-picker\src\picker\time-picker.js" />
+    <Content Include="Scripts\element-ui\packages\date-picker\src\picker\time-select.js" />
+    <Content Include="Scripts\element-ui\packages\dialog\index.js" />
+    <Content Include="Scripts\element-ui\packages\divider\index.js" />
+    <Content Include="Scripts\element-ui\packages\drawer\index.js" />
+    <Content Include="Scripts\element-ui\packages\dropdown-item\index.js" />
+    <Content Include="Scripts\element-ui\packages\dropdown-menu\index.js" />
+    <Content Include="Scripts\element-ui\packages\dropdown\index.js" />
+    <Content Include="Scripts\element-ui\packages\footer\index.js" />
+    <Content Include="Scripts\element-ui\packages\form-item\index.js" />
+    <Content Include="Scripts\element-ui\packages\form\index.js" />
+    <Content Include="Scripts\element-ui\packages\header\index.js" />
+    <Content Include="Scripts\element-ui\packages\icon\index.js" />
+    <Content Include="Scripts\element-ui\packages\image\index.js" />
+    <Content Include="Scripts\element-ui\packages\infinite-scroll\index.js" />
+    <Content Include="Scripts\element-ui\packages\infinite-scroll\src\main.js" />
+    <Content Include="Scripts\element-ui\packages\input-number\index.js" />
+    <Content Include="Scripts\element-ui\packages\input\index.js" />
+    <Content Include="Scripts\element-ui\packages\input\src\calcTextareaHeight.js" />
+    <Content Include="Scripts\element-ui\packages\link\index.js" />
+    <Content Include="Scripts\element-ui\packages\loading\index.js" />
+    <Content Include="Scripts\element-ui\packages\loading\src\directive.js" />
+    <Content Include="Scripts\element-ui\packages\loading\src\index.js" />
+    <Content Include="Scripts\element-ui\packages\main\index.js" />
+    <Content Include="Scripts\element-ui\packages\menu-item-group\index.js" />
+    <Content Include="Scripts\element-ui\packages\menu-item\index.js" />
+    <Content Include="Scripts\element-ui\packages\menu\index.js" />
+    <Content Include="Scripts\element-ui\packages\menu\src\menu-mixin.js" />
+    <Content Include="Scripts\element-ui\packages\message-box\index.js" />
+    <Content Include="Scripts\element-ui\packages\message-box\src\main.js" />
+    <Content Include="Scripts\element-ui\packages\message\index.js" />
+    <Content Include="Scripts\element-ui\packages\message\src\main.js" />
+    <Content Include="Scripts\element-ui\packages\notification\index.js" />
+    <Content Include="Scripts\element-ui\packages\notification\src\main.js" />
+    <Content Include="Scripts\element-ui\packages\option-group\index.js" />
+    <Content Include="Scripts\element-ui\packages\option\index.js" />
+    <Content Include="Scripts\element-ui\packages\page-header\index.js" />
+    <Content Include="Scripts\element-ui\packages\pagination\index.js" />
+    <Content Include="Scripts\element-ui\packages\pagination\src\pagination.js" />
+    <Content Include="Scripts\element-ui\packages\popconfirm\index.js" />
+    <Content Include="Scripts\element-ui\packages\popover\index.js" />
+    <Content Include="Scripts\element-ui\packages\popover\src\directive.js" />
+    <Content Include="Scripts\element-ui\packages\progress\index.js" />
+    <Content Include="Scripts\element-ui\packages\radio-button\index.js" />
+    <Content Include="Scripts\element-ui\packages\radio-group\index.js" />
+    <Content Include="Scripts\element-ui\packages\radio\index.js" />
+    <Content Include="Scripts\element-ui\packages\rate\index.js" />
+    <Content Include="Scripts\element-ui\packages\row\index.js" />
+    <Content Include="Scripts\element-ui\packages\row\src\row.js" />
+    <Content Include="Scripts\element-ui\packages\scrollbar\index.js" />
+    <Content Include="Scripts\element-ui\packages\scrollbar\src\bar.js" />
+    <Content Include="Scripts\element-ui\packages\scrollbar\src\main.js" />
+    <Content Include="Scripts\element-ui\packages\scrollbar\src\util.js" />
+    <Content Include="Scripts\element-ui\packages\select\index.js" />
+    <Content Include="Scripts\element-ui\packages\select\src\navigation-mixin.js" />
+    <Content Include="Scripts\element-ui\packages\slider\index.js" />
+    <Content Include="Scripts\element-ui\packages\slider\src\marker.js" />
+    <Content Include="Scripts\element-ui\packages\spinner\index.js" />
+    <Content Include="Scripts\element-ui\packages\steps\index.js" />
+    <Content Include="Scripts\element-ui\packages\step\index.js" />
+    <Content Include="Scripts\element-ui\packages\submenu\index.js" />
+    <Content Include="Scripts\element-ui\packages\switch\index.js" />
+    <Content Include="Scripts\element-ui\packages\tab-pane\index.js" />
+    <Content Include="Scripts\element-ui\packages\table-column\index.js" />
+    <Content Include="Scripts\element-ui\packages\table\index.js" />
+    <Content Include="Scripts\element-ui\packages\table\src\config.js" />
+    <Content Include="Scripts\element-ui\packages\table\src\dropdown.js" />
+    <Content Include="Scripts\element-ui\packages\table\src\layout-observer.js" />
+    <Content Include="Scripts\element-ui\packages\table\src\store\current.js" />
+    <Content Include="Scripts\element-ui\packages\table\src\store\expand.js" />
+    <Content Include="Scripts\element-ui\packages\table\src\store\helper.js" />
+    <Content Include="Scripts\element-ui\packages\table\src\store\index.js" />
+    <Content Include="Scripts\element-ui\packages\table\src\store\tree.js" />
+    <Content Include="Scripts\element-ui\packages\table\src\store\watcher.js" />
+    <Content Include="Scripts\element-ui\packages\table\src\table-body.js" />
+    <Content Include="Scripts\element-ui\packages\table\src\table-column.js" />
+    <Content Include="Scripts\element-ui\packages\table\src\table-footer.js" />
+    <Content Include="Scripts\element-ui\packages\table\src\table-header.js" />
+    <Content Include="Scripts\element-ui\packages\table\src\table-layout.js" />
+    <Content Include="Scripts\element-ui\packages\table\src\util.js" />
+    <Content Include="Scripts\element-ui\packages\tabs\index.js" />
+    <Content Include="Scripts\element-ui\packages\tag\index.js" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\alert.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\aside.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\autocomplete.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\avatar.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\backtop.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\badge.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\base.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\breadcrumb-item.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\breadcrumb.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\button-group.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\button.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\calendar.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\card.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\carousel-item.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\carousel.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\cascader-panel.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\cascader.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\checkbox-button.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\checkbox-group.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\checkbox.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\col.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\collapse-item.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\collapse.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\color-picker.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\container.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\date-picker.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\dialog.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\display.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\divider.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\drawer.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\dropdown-item.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\dropdown-menu.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\dropdown.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\footer.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\form-item.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\form.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\header.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\icon.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\image.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\index.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\infinite-scroll.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\infiniteScroll.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\input-number.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\input.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\link.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\loading.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\main.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\menu-item-group.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\menu-item.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\menu.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\message-box.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\message.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\notification.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\option-group.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\option.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\page-header.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\pagination.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\popconfirm.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\popover.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\popper.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\progress.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\radio-button.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\radio-group.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\radio.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\rate.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\reset.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\row.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\scrollbar.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\select-dropdown.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\select.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\slider.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\spinner.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\step.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\steps.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\submenu.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\switch.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\tab-pane.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\table-column.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\table.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\tabs.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\tag.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\time-picker.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\time-select.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\timeline-item.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\timeline.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\tooltip.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\transfer.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\tree.css" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\upload.css" />
+    <Content Include="Scripts\element-ui\packages\time-picker\index.js" />
+    <Content Include="Scripts\element-ui\packages\time-select\index.js" />
+    <Content Include="Scripts\element-ui\packages\timeline-item\index.js" />
+    <Content Include="Scripts\element-ui\packages\timeline\index.js" />
+    <Content Include="Scripts\element-ui\packages\tooltip\index.js" />
+    <Content Include="Scripts\element-ui\packages\tooltip\src\main.js" />
+    <Content Include="Scripts\element-ui\packages\transfer\index.js" />
+    <Content Include="Scripts\element-ui\packages\tree\index.js" />
+    <Content Include="Scripts\element-ui\packages\tree\src\model\node.js" />
+    <Content Include="Scripts\element-ui\packages\tree\src\model\tree-store.js" />
+    <Content Include="Scripts\element-ui\packages\tree\src\model\util.js" />
+    <Content Include="Scripts\element-ui\packages\upload\index.js" />
+    <Content Include="Scripts\element-ui\packages\upload\src\ajax.js" />
+    <Content Include="Scripts\element-ui\src\directives\mousewheel.js" />
+    <Content Include="Scripts\element-ui\src\directives\repeat-click.js" />
+    <Content Include="Scripts\element-ui\src\index.js" />
+    <Content Include="Scripts\element-ui\src\locale\format.js" />
+    <Content Include="Scripts\element-ui\src\locale\index.js" />
+    <Content Include="Scripts\element-ui\src\locale\lang\af-ZA.js" />
+    <Content Include="Scripts\element-ui\src\locale\lang\ar.js" />
+    <Content Include="Scripts\element-ui\src\locale\lang\bg.js" />
+    <Content Include="Scripts\element-ui\src\locale\lang\ca.js" />
+    <Content Include="Scripts\element-ui\src\locale\lang\cs-CZ.js" />
+    <Content Include="Scripts\element-ui\src\locale\lang\da.js" />
+    <Content Include="Scripts\element-ui\src\locale\lang\de.js" />
+    <Content Include="Scripts\element-ui\src\locale\lang\ee.js" />
+    <Content Include="Scripts\element-ui\src\locale\lang\el.js" />
+    <Content Include="Scripts\element-ui\src\locale\lang\en.js" />
+    <Content Include="Scripts\element-ui\src\locale\lang\eo.js" />
+    <Content Include="Scripts\element-ui\src\locale\lang\es.js" />
+    <Content Include="Scripts\element-ui\src\locale\lang\eu.js" />
+    <Content Include="Scripts\element-ui\src\locale\lang\fa.js" />
+    <Content Include="Scripts\element-ui\src\locale\lang\fi.js" />
+    <Content Include="Scripts\element-ui\src\locale\lang\fr.js" />
+    <Content Include="Scripts\element-ui\src\locale\lang\he.js" />
+    <Content Include="Scripts\element-ui\src\locale\lang\hr.js" />
+    <Content Include="Scripts\element-ui\src\locale\lang\hu.js" />
+    <Content Include="Scripts\element-ui\src\locale\lang\hy-AM.js" />
+    <Content Include="Scripts\element-ui\src\locale\lang\id.js" />
+    <Content Include="Scripts\element-ui\src\locale\lang\it.js" />
+    <Content Include="Scripts\element-ui\src\locale\lang\ja.js" />
+    <Content Include="Scripts\element-ui\src\locale\lang\kg.js" />
+    <Content Include="Scripts\element-ui\src\locale\lang\km.js" />
+    <Content Include="Scripts\element-ui\src\locale\lang\ko.js" />
+    <Content Include="Scripts\element-ui\src\locale\lang\ku.js" />
+    <Content Include="Scripts\element-ui\src\locale\lang\kz.js" />
+    <Content Include="Scripts\element-ui\src\locale\lang\lt.js" />
+    <Content Include="Scripts\element-ui\src\locale\lang\lv.js" />
+    <Content Include="Scripts\element-ui\src\locale\lang\mn.js" />
+    <Content Include="Scripts\element-ui\src\locale\lang\nb-NO.js" />
+    <Content Include="Scripts\element-ui\src\locale\lang\nl.js" />
+    <Content Include="Scripts\element-ui\src\locale\lang\pl.js" />
+    <Content Include="Scripts\element-ui\src\locale\lang\pt-br.js" />
+    <Content Include="Scripts\element-ui\src\locale\lang\pt.js" />
+    <Content Include="Scripts\element-ui\src\locale\lang\ro.js" />
+    <Content Include="Scripts\element-ui\src\locale\lang\ru-RU.js" />
+    <Content Include="Scripts\element-ui\src\locale\lang\sk.js" />
+    <Content Include="Scripts\element-ui\src\locale\lang\sl.js" />
+    <Content Include="Scripts\element-ui\src\locale\lang\sr.js" />
+    <Content Include="Scripts\element-ui\src\locale\lang\sv-SE.js" />
+    <Content Include="Scripts\element-ui\src\locale\lang\ta.js" />
+    <Content Include="Scripts\element-ui\src\locale\lang\th.js" />
+    <Content Include="Scripts\element-ui\src\locale\lang\tk.js" />
+    <Content Include="Scripts\element-ui\src\locale\lang\tr-TR.js" />
+    <Content Include="Scripts\element-ui\src\locale\lang\ua.js" />
+    <Content Include="Scripts\element-ui\src\locale\lang\ug-CN.js" />
+    <Content Include="Scripts\element-ui\src\locale\lang\uz-UZ.js" />
+    <Content Include="Scripts\element-ui\src\locale\lang\vi.js" />
+    <Content Include="Scripts\element-ui\src\locale\lang\zh-CN.js" />
+    <Content Include="Scripts\element-ui\src\locale\lang\zh-TW.js" />
+    <Content Include="Scripts\element-ui\src\mixins\emitter.js" />
+    <Content Include="Scripts\element-ui\src\mixins\focus.js" />
+    <Content Include="Scripts\element-ui\src\mixins\locale.js" />
+    <Content Include="Scripts\element-ui\src\mixins\migrating.js" />
+    <Content Include="Scripts\element-ui\src\transitions\collapse-transition.js" />
+    <Content Include="Scripts\element-ui\src\utils\after-leave.js" />
+    <Content Include="Scripts\element-ui\src\utils\aria-dialog.js" />
+    <Content Include="Scripts\element-ui\src\utils\aria-utils.js" />
+    <Content Include="Scripts\element-ui\src\utils\clickoutside.js" />
+    <Content Include="Scripts\element-ui\src\utils\date-util.js" />
+    <Content Include="Scripts\element-ui\src\utils\date.js" />
+    <Content Include="Scripts\element-ui\src\utils\dom.js" />
+    <Content Include="Scripts\element-ui\src\utils\menu\aria-menubar.js" />
+    <Content Include="Scripts\element-ui\src\utils\menu\aria-menuitem.js" />
+    <Content Include="Scripts\element-ui\src\utils\menu\aria-submenu.js" />
+    <Content Include="Scripts\element-ui\src\utils\merge.js" />
+    <Content Include="Scripts\element-ui\src\utils\popper.js" />
+    <Content Include="Scripts\element-ui\src\utils\popup\index.js" />
+    <Content Include="Scripts\element-ui\src\utils\popup\popup-manager.js" />
+    <Content Include="Scripts\element-ui\src\utils\resize-event.js" />
+    <Content Include="Scripts\element-ui\src\utils\scroll-into-view.js" />
+    <Content Include="Scripts\element-ui\src\utils\scrollbar-width.js" />
+    <Content Include="Scripts\element-ui\src\utils\shared.js" />
+    <Content Include="Scripts\element-ui\src\utils\types.js" />
+    <Content Include="Scripts\element-ui\src\utils\util.js" />
+    <Content Include="Scripts\element-ui\src\utils\vdom.js" />
+    <Content Include="Scripts\element-ui\src\utils\vue-popper.js" />
+    <Content Include="Scripts\gojs\DrawCommandHandler.js" />
+    <Content Include="Scripts\gojs\go-debug-module.js" />
+    <Content Include="Scripts\gojs\go-debug.js" />
+    <Content Include="Scripts\gojs\go-module.js" />
+    <Content Include="Scripts\gojs\go.js" />
+    <Content Include="Scripts\gojs\GuidedDraggingTool.js" />
+    <Content Include="Scripts\gojs\RealtimeDragSelectingTool.js" />
+    <Content Include="Scripts\gojs\RotateMultipleTool.js" />
+    <Content Include="Scripts\layDate-v5.0.9\laydate\laydate.js" />
+    <Content Include="Scripts\layDate-v5.0.9\laydate\theme\default\font\iconfont.svg" />
+    <Content Include="Scripts\layDate-v5.0.9\laydate\theme\default\laydate.css" />
+    <Content Include="Areas\Admin\Views\MathDict\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Sth\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\MenuInfo\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Main\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\BaoBiao\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Index2.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Index3.cshtml" />
+    <Content Include="Areas\Admin\Views\UserInfo\ChangePWDIndex.cshtml" />
+    <Content Include="Content\fonts\octicons.woff" />
+    <Content Include="Content\fonts\octicons.ttf" />
+    <Content Include="Content\fonts\octicons.eot" />
+    <Content Include="Areas\Admin\Views\Student\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Student\BaoBiao.cshtml" />
+    <Content Include="Areas\Admin\Views\SysSetting\Index.cshtml" />
+    <Content Include="Scripts\monment\moment-with-locales.js" />
+    <Content Include="Scripts\monment\moment-with-locales.min.js" />
+    <Content Include="Scripts\monment\moment.js" />
+    <Content Include="Scripts\monment\moment.min.js" />
+    <Content Include="Scripts\vue.js" />
+    <Content Include="Scripts\vue.min.js" />
+    <Content Include="WebForm2.aspx" />
+    <Content Include="Areas\Admin\Views\FileUpload\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\AnalySISS\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ZhanZhangPiPei\Index.cshtml" />
+    <Content Include="WebForm3.aspx" />
+    <Content Include="WebForm4.aspx" />
+    <Content Include="fonts\FZZZHONGHJW.TTF" />
+    <Content Include="fonts\zsYAHEI.ttf" />
+    <Content Include="Areas\Admin\Views\ZhanZhangStatic\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ZhanZhangStaticNew\Index.cshtml" />
+    <Content Include="WebForm5.aspx" />
+    <Content Include="WebForm6.aspx" />
+    <Content Include="WebForm7.aspx" />
+    <Content Include="Content\modal.rar" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <Content Include="Scripts\element-ui\CHANGELOG.en-US.md" />
+    <Content Include="Scripts\element-ui\CHANGELOG.es.md" />
+    <Content Include="Scripts\element-ui\CHANGELOG.fr-FR.md" />
+    <Content Include="Scripts\element-ui\CHANGELOG.zh-CN.md" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\fonts\element-icons.ttf" />
+    <Content Include="Scripts\element-ui\lib\theme-chalk\fonts\element-icons.woff" />
+    <Content Include="Scripts\element-ui\LICENSE" />
+    <Content Include="Scripts\element-ui\package.json" />
+    <Content Include="Scripts\element-ui\packages\.DS_Store" />
+    <Content Include="Scripts\element-ui\packages\alert\src\main.vue" />
+    <Content Include="Scripts\element-ui\packages\aside\src\main.vue" />
+    <Content Include="Scripts\element-ui\packages\autocomplete\src\autocomplete-suggestions.vue" />
+    <Content Include="Scripts\element-ui\packages\autocomplete\src\autocomplete.vue" />
+    <Content Include="Scripts\element-ui\packages\avatar\src\main.vue" />
+    <Content Include="Scripts\element-ui\packages\backtop\src\main.vue" />
+    <Content Include="Scripts\element-ui\packages\badge\src\main.vue" />
+    <Content Include="Scripts\element-ui\packages\breadcrumb\src\breadcrumb-item.vue" />
+    <Content Include="Scripts\element-ui\packages\breadcrumb\src\breadcrumb.vue" />
+    <Content Include="Scripts\element-ui\packages\button\src\button-group.vue" />
+    <Content Include="Scripts\element-ui\packages\button\src\button.vue" />
+    <Content Include="Scripts\element-ui\packages\calendar\src\date-table.vue" />
+    <Content Include="Scripts\element-ui\packages\calendar\src\main.vue" />
+    <Content Include="Scripts\element-ui\packages\card\src\main.vue" />
+    <Content Include="Scripts\element-ui\packages\carousel\src\item.vue" />
+    <Content Include="Scripts\element-ui\packages\carousel\src\main.vue" />
+    <Content Include="Scripts\element-ui\packages\cascader-panel\src\cascader-menu.vue" />
+    <Content Include="Scripts\element-ui\packages\cascader-panel\src\cascader-node.vue" />
+    <Content Include="Scripts\element-ui\packages\cascader-panel\src\cascader-panel.vue" />
+    <Content Include="Scripts\element-ui\packages\cascader\src\cascader.vue" />
+    <Content Include="Scripts\element-ui\packages\checkbox\src\checkbox-button.vue" />
+    <Content Include="Scripts\element-ui\packages\checkbox\src\checkbox-group.vue" />
+    <Content Include="Scripts\element-ui\packages\checkbox\src\checkbox.vue" />
+    <Content Include="Scripts\element-ui\packages\collapse\src\collapse-item.vue" />
+    <Content Include="Scripts\element-ui\packages\collapse\src\collapse.vue" />
+    <Content Include="Scripts\element-ui\packages\color-picker\src\components\alpha-slider.vue" />
+    <Content Include="Scripts\element-ui\packages\color-picker\src\components\hue-slider.vue" />
+    <Content Include="Scripts\element-ui\packages\color-picker\src\components\picker-dropdown.vue" />
+    <Content Include="Scripts\element-ui\packages\color-picker\src\components\predefine.vue" />
+    <Content Include="Scripts\element-ui\packages\color-picker\src\components\sv-panel.vue" />
+    <Content Include="Scripts\element-ui\packages\color-picker\src\main.vue" />
+    <Content Include="Scripts\element-ui\packages\container\src\main.vue" />
+    <Content Include="Scripts\element-ui\packages\date-picker\src\basic\date-table.vue" />
+    <Content Include="Scripts\element-ui\packages\date-picker\src\basic\month-table.vue" />
+    <Content Include="Scripts\element-ui\packages\date-picker\src\basic\time-spinner.vue" />
+    <Content Include="Scripts\element-ui\packages\date-picker\src\basic\year-table.vue" />
+    <Content Include="Scripts\element-ui\packages\date-picker\src\panel\date-range.vue" />
+    <Content Include="Scripts\element-ui\packages\date-picker\src\panel\date.vue" />
+    <Content Include="Scripts\element-ui\packages\date-picker\src\panel\month-range.vue" />
+    <Content Include="Scripts\element-ui\packages\date-picker\src\panel\time-range.vue" />
+    <Content Include="Scripts\element-ui\packages\date-picker\src\panel\time-select.vue" />
+    <Content Include="Scripts\element-ui\packages\date-picker\src\panel\time.vue" />
+    <Content Include="Scripts\element-ui\packages\date-picker\src\picker.vue" />
+    <Content Include="Scripts\element-ui\packages\dialog\src\component.vue" />
+    <Content Include="Scripts\element-ui\packages\divider\src\main.vue" />
+    <Content Include="Scripts\element-ui\packages\drawer\src\main.vue" />
+    <Content Include="Scripts\element-ui\packages\dropdown\src\dropdown-item.vue" />
+    <Content Include="Scripts\element-ui\packages\dropdown\src\dropdown-menu.vue" />
+    <Content Include="Scripts\element-ui\packages\dropdown\src\dropdown.vue" />
+    <Content Include="Scripts\element-ui\packages\footer\src\main.vue" />
+    <Content Include="Scripts\element-ui\packages\form\src\form-item.vue" />
+    <Content Include="Scripts\element-ui\packages\form\src\form.vue" />
+    <Content Include="Scripts\element-ui\packages\form\src\label-wrap.vue" />
+    <Content Include="Scripts\element-ui\packages\header\src\main.vue" />
+    <Content Include="Scripts\element-ui\packages\icon\src\icon.vue" />
+    <Content Include="Scripts\element-ui\packages\image\src\image-viewer.vue" />
+    <Content Include="Scripts\element-ui\packages\image\src\main.vue" />
+    <Content Include="Scripts\element-ui\packages\input-number\src\input-number.vue" />
+    <Content Include="Scripts\element-ui\packages\input\src\input.vue" />
+    <Content Include="Scripts\element-ui\packages\link\src\main.vue" />
+    <Content Include="Scripts\element-ui\packages\loading\src\loading.vue" />
+    <Content Include="Scripts\element-ui\packages\main\src\main.vue" />
+    <Content Include="Scripts\element-ui\packages\menu\src\menu-item-group.vue" />
+    <Content Include="Scripts\element-ui\packages\menu\src\menu-item.vue" />
+    <Content Include="Scripts\element-ui\packages\menu\src\menu.vue" />
+    <Content Include="Scripts\element-ui\packages\menu\src\submenu.vue" />
+    <Content Include="Scripts\element-ui\packages\message-box\src\main.vue" />
+    <Content Include="Scripts\element-ui\packages\message\src\main.vue" />
+    <Content Include="Scripts\element-ui\packages\notification\src\main.vue" />
+    <Content Include="Scripts\element-ui\packages\page-header\src\main.vue" />
+    <Content Include="Scripts\element-ui\packages\pagination\src\pager.vue" />
+    <Content Include="Scripts\element-ui\packages\popconfirm\src\main.vue" />
+    <Content Include="Scripts\element-ui\packages\popover\src\main.vue" />
+    <Content Include="Scripts\element-ui\packages\progress\src\progress.vue" />
+    <Content Include="Scripts\element-ui\packages\radio\src\radio-button.vue" />
+    <Content Include="Scripts\element-ui\packages\radio\src\radio-group.vue" />
+    <Content Include="Scripts\element-ui\packages\radio\src\radio.vue" />
+    <Content Include="Scripts\element-ui\packages\rate\src\main.vue" />
+    <Content Include="Scripts\element-ui\packages\select\src\option-group.vue" />
+    <Content Include="Scripts\element-ui\packages\select\src\option.vue" />
+    <Content Include="Scripts\element-ui\packages\select\src\select-dropdown.vue" />
+    <Content Include="Scripts\element-ui\packages\select\src\select.vue" />
+    <Content Include="Scripts\element-ui\packages\slider\src\button.vue" />
+    <Content Include="Scripts\element-ui\packages\slider\src\main.vue" />
+    <Content Include="Scripts\element-ui\packages\spinner\src\spinner.vue" />
+    <Content Include="Scripts\element-ui\packages\steps\README.md" />
+    <Content Include="Scripts\element-ui\packages\steps\src\step.vue" />
+    <Content Include="Scripts\element-ui\packages\steps\src\steps.vue" />
+    <Content Include="Scripts\element-ui\packages\switch\src\component.vue" />
+    <Content Include="Scripts\element-ui\packages\table\src\filter-panel.vue" />
+    <Content Include="Scripts\element-ui\packages\table\src\table.vue" />
+    <Content Include="Scripts\element-ui\packages\tabs\src\tab-bar.vue" />
+    <Content Include="Scripts\element-ui\packages\tabs\src\tab-nav.vue" />
+    <Content Include="Scripts\element-ui\packages\tabs\src\tab-pane.vue" />
+    <Content Include="Scripts\element-ui\packages\tabs\src\tabs.vue" />
+    <Content Include="Scripts\element-ui\packages\tag\src\tag.vue" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\fonts\element-icons.ttf" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\lib\fonts\element-icons.woff" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\README.md" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\.DS_Store" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\alert.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\aside.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\autocomplete.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\avatar.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\backtop.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\badge.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\base.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\breadcrumb-item.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\breadcrumb.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\button-group.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\button.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\calendar.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\card.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\carousel-item.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\carousel.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\cascader-panel.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\cascader.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\checkbox-button.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\checkbox-group.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\checkbox.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\col.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\collapse-item.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\collapse.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\color-picker.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\common\popup.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\common\transition.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\common\var.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\container.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\date-picker.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\date-picker\date-picker.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\date-picker\date-range-picker.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\date-picker\date-table.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\date-picker\month-table.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\date-picker\picker-panel.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\date-picker\picker.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\date-picker\time-picker.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\date-picker\time-range-picker.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\date-picker\time-spinner.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\date-picker\year-table.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\dialog.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\display.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\divider.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\drawer.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\dropdown-item.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\dropdown-menu.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\dropdown.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\fonts\.DS_Store" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\fonts\element-icons.ttf" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\fonts\element-icons.woff" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\footer.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\form-item.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\form.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\header.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\icon.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\image.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\index.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\infinite-scroll.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\infiniteScroll.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\input-number.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\input.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\link.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\loading.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\main.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\menu-item-group.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\menu-item.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\menu.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\message-box.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\message.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\mixins\config.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\mixins\function.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\mixins\mixins.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\mixins\utils.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\mixins\_button.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\notification.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\option-group.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\option.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\page-header.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\pagination.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\popconfirm.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\popover.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\popper.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\progress.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\radio-button.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\radio-group.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\radio.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\rate.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\reset.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\row.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\scrollbar.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\select-dropdown.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\select.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\slider.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\spinner.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\step.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\steps.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\submenu.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\switch.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\tab-pane.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\table-column.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\table.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\tabs.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\tag.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\time-picker.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\time-select.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\timeline-item.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\timeline.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\tooltip.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\transfer.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\tree.scss" />
+    <Content Include="Scripts\element-ui\packages\theme-chalk\src\upload.scss" />
+    <Content Include="Scripts\element-ui\packages\timeline\src\item.vue" />
+    <Content Include="Scripts\element-ui\packages\timeline\src\main.vue" />
+    <Content Include="Scripts\element-ui\packages\transfer\src\main.vue" />
+    <Content Include="Scripts\element-ui\packages\transfer\src\transfer-panel.vue" />
+    <Content Include="Scripts\element-ui\packages\tree\src\tree-node.vue" />
+    <Content Include="Scripts\element-ui\packages\tree\src\tree.vue" />
+    <Content Include="Scripts\element-ui\packages\upload\src\index.vue" />
+    <Content Include="Scripts\element-ui\packages\upload\src\upload-dragger.vue" />
+    <Content Include="Scripts\element-ui\packages\upload\src\upload-list.vue" />
+    <Content Include="Scripts\element-ui\packages\upload\src\upload.vue" />
+    <Content Include="Scripts\element-ui\README.md" />
+    <None Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="images\login.png" />
+    <Content Include="images\logo.jpg" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\DataTables-1.10.13\media\css\dataTables.bootstrap.css" />
+    <Content Include="Scripts\DataTables-1.10.13\media\css\dataTables.bootstrap.min.css" />
+    <Content Include="Scripts\DataTables-1.10.13\media\css\dataTables.bootstrap4.css" />
+    <Content Include="Scripts\DataTables-1.10.13\media\css\dataTables.bootstrap4.min.css" />
+    <Content Include="Scripts\DataTables-1.10.13\media\css\dataTables.foundation.css" />
+    <Content Include="Scripts\DataTables-1.10.13\media\css\dataTables.foundation.min.css" />
+    <Content Include="Scripts\DataTables-1.10.13\media\css\dataTables.jqueryui.css" />
+    <Content Include="Scripts\DataTables-1.10.13\media\css\dataTables.jqueryui.min.css" />
+    <Content Include="Scripts\DataTables-1.10.13\media\css\dataTables.material.css" />
+    <Content Include="Scripts\DataTables-1.10.13\media\css\dataTables.material.min.css" />
+    <Content Include="Scripts\DataTables-1.10.13\media\css\dataTables.semanticui.css" />
+    <Content Include="Scripts\DataTables-1.10.13\media\css\dataTables.semanticui.min.css" />
+    <Content Include="Scripts\DataTables-1.10.13\media\css\dataTables.uikit.css" />
+    <Content Include="Scripts\DataTables-1.10.13\media\css\dataTables.uikit.min.css" />
+    <Content Include="Scripts\DataTables-1.10.13\media\css\jquery.dataTables.css" />
+    <Content Include="Scripts\DataTables-1.10.13\media\css\jquery.dataTables.min.css" />
+    <Content Include="Scripts\DataTables-1.10.13\media\css\jquery.dataTables_themeroller.css" />
+    <Content Include="Scripts\DataTables-1.10.13\media\images\favicon.ico" />
+    <Content Include="Scripts\DataTables-1.10.13\media\images\sort_asc.png" />
+    <Content Include="Scripts\DataTables-1.10.13\media\images\sort_asc_disabled.png" />
+    <Content Include="Scripts\DataTables-1.10.13\media\images\sort_both.png" />
+    <Content Include="Scripts\DataTables-1.10.13\media\images\sort_desc.png" />
+    <Content Include="Scripts\DataTables-1.10.13\media\images\sort_desc_disabled.png" />
+    <Content Include="Scripts\DataTables-1.10.13\media\js\dataTables.bootstrap.js" />
+    <Content Include="Scripts\DataTables-1.10.13\media\js\dataTables.bootstrap.min.js" />
+    <Content Include="Scripts\DataTables-1.10.13\media\js\dataTables.bootstrap4.js" />
+    <Content Include="Scripts\DataTables-1.10.13\media\js\dataTables.bootstrap4.min.js" />
+    <Content Include="Scripts\DataTables-1.10.13\media\js\dataTables.foundation.js" />
+    <Content Include="Scripts\DataTables-1.10.13\media\js\dataTables.foundation.min.js" />
+    <Content Include="Scripts\DataTables-1.10.13\media\js\dataTables.jqueryui.js" />
+    <Content Include="Scripts\DataTables-1.10.13\media\js\dataTables.jqueryui.min.js" />
+    <Content Include="Scripts\DataTables-1.10.13\media\js\dataTables.material.js" />
+    <Content Include="Scripts\DataTables-1.10.13\media\js\dataTables.material.min.js" />
+    <Content Include="Scripts\DataTables-1.10.13\media\js\dataTables.semanticui.js" />
+    <Content Include="Scripts\DataTables-1.10.13\media\js\dataTables.semanticui.min.js" />
+    <Content Include="Scripts\DataTables-1.10.13\media\js\dataTables.uikit.js" />
+    <Content Include="Scripts\DataTables-1.10.13\media\js\dataTables.uikit.min.js" />
+    <Content Include="Scripts\DataTables-1.10.13\media\js\jquery.dataTables.js" />
+    <Content Include="Scripts\DataTables-1.10.13\media\js\jquery.dataTables.min.js" />
+    <Content Include="Scripts\DataTables-1.10.13\media\js\jquery.js" />
+    <Content Include="Scripts\datetime.js" />
+    <Content Include="Scripts\jquery-1.9.1.js" />
+    <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\additional-methods.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\additional-methods.min.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\jquery.validate.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_ar.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_ar.min.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_bg.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_bg.min.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_bn_BD.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_bn_BD.min.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_ca.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_ca.min.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_cs.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_cs.min.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_da.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_da.min.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_de.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_de.min.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_el.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_el.min.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_es.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_es.min.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_es_AR.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_es_AR.min.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_es_PE.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_es_PE.min.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_et.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_et.min.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_eu.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_eu.min.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_fa.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_fa.min.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_fi.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_fi.min.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_fr.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_fr.min.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_ge.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_ge.min.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_gl.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_gl.min.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_he.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_he.min.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_hr.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_hr.min.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_hu.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_hu.min.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_hy_AM.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_hy_AM.min.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_id.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_id.min.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_is.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_is.min.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_it.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_it.min.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_ja.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_ja.min.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_ka.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_ka.min.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_kk.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_kk.min.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_ko.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_ko.min.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_lt.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_lt.min.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_lv.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_lv.min.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_mk.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_mk.min.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_my.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_my.min.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_nl.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_nl.min.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_no.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_no.min.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_pl.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_pl.min.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_pt_BR.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_pt_BR.min.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_pt_PT.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_pt_PT.min.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_ro.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_ro.min.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_ru.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_ru.min.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_si.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_si.min.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_sk.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_sk.min.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_sl.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_sl.min.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_sr.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_sr.min.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_sr_lat.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_sr_lat.min.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_sv.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_sv.min.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_th.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_th.min.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_tj.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_tj.min.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_tr.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_tr.min.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_uk.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_uk.min.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_vi.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_vi.min.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_zh.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_zh.min.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_zh_TW.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\messages_zh_TW.min.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\methods_de.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\methods_de.min.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\methods_es_CL.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\methods_es_CL.min.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\methods_fi.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\methods_fi.min.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\methods_nl.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\methods_nl.min.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\methods_pt.js" />
+    <Content Include="Scripts\jquery-validation-1.15.0\dist\localization\methods_pt.min.js" />
+    <Content Include="Scripts\layer-v3.0.3\layer\layer.js" />
+    <Content Include="Scripts\layer-v3.0.3\layer\mobile\layer.js" />
+    <Content Include="Scripts\layer-v3.0.3\layer\mobile\need\layer.css" />
+    <Content Include="Scripts\layer-v3.0.3\layer\skin\default\icon-ext.png" />
+    <Content Include="Scripts\layer-v3.0.3\layer\skin\default\icon.png" />
+    <Content Include="Scripts\layer-v3.0.3\layer\skin\default\layer.css" />
+    <Content Include="Scripts\layer-v3.0.3\layer\skin\default\loading-0.gif" />
+    <Content Include="Scripts\layer-v3.0.3\layer\skin\default\loading-1.gif" />
+    <Content Include="Scripts\layer-v3.0.3\layer\skin\default\loading-2.gif" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AnalySISSController.cs" />
+    <Compile Include="Areas\Admin\Controllers\BaoBiaoController.cs" />
+    <Compile Include="Areas\Admin\Controllers\BgBaseController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DepartmentController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ExcelController.cs" />
+    <Compile Include="Areas\Admin\Controllers\FileUploadController.cs" />
+    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
+    <Compile Include="Areas\Admin\Controllers\EventController.cs" />
+    <Compile Include="Areas\Admin\Controllers\MainController.cs" />
+    <Compile Include="Areas\Admin\Controllers\MathDictController.cs" />
+    <Compile Include="Areas\Admin\Controllers\MenuInfoController.cs" />
+    <Compile Include="Areas\Admin\Controllers\RoleController.cs" />
+    <Compile Include="Areas\Admin\Controllers\StudentController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SysSettingController.cs" />
+    <Compile Include="Areas\Admin\Controllers\TempController.cs" />
+    <Compile Include="Areas\Admin\Controllers\TimeLineController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UserInfoController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ZhanZhangPiPeiController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ZhanZhangStaticController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ZhanZhangStaticNewController.cs" />
+    <Compile Include="Models\StaticUI.cs" />
+    <Compile Include="WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\MZKController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AutoMapperConfig.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebForm2.aspx.cs">
+      <DependentUpon>WebForm2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm2.aspx.designer.cs">
+      <DependentUpon>WebForm2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm3.aspx.cs">
+      <DependentUpon>WebForm3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm3.aspx.designer.cs">
+      <DependentUpon>WebForm3.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm4.aspx.cs">
+      <DependentUpon>WebForm4.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm4.aspx.designer.cs">
+      <DependentUpon>WebForm4.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm5.aspx.cs">
+      <DependentUpon>WebForm5.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm5.aspx.designer.cs">
+      <DependentUpon>WebForm5.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm6.aspx.cs">
+      <DependentUpon>WebForm6.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm6.aspx.designer.cs">
+      <DependentUpon>WebForm6.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm7.aspx.cs">
+      <DependentUpon>WebForm7.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm7.aspx.designer.cs">
+      <DependentUpon>WebForm7.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Areas\Admin\Views\web.config" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-1.9.1.min.map" />
+    <Content Include="Scripts\layDate-v5.0.9\laydate\theme\default\font\iconfont.eot" />
+    <Content Include="Scripts\layDate-v5.0.9\laydate\theme\default\font\iconfont.ttf" />
+    <Content Include="Scripts\layDate-v5.0.9\laydate\theme\default\font\iconfont.woff" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\DataSource\" />
+    <Folder Include="Areas\Admin\Views\Event\" />
+    <Folder Include="Areas\Admin\Views\Excel\" />
+    <Folder Include="Areas\Admin\Views\Temp\" />
+    <Folder Include="Areas\Admin\Views\TimeLine\" />
+    <Folder Include="Views\MZK\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Business\Business.csproj">
+      <Project>{c23c8d54-4719-408e-ac72-ac48e7a63c19}</Project>
+      <Name>Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataAccess\DataAccess.csproj">
+      <Project>{492BCC1C-B2DA-4779-9B6D-B247805F16D7}</Project>
+      <Name>DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DTOModel\DTOModel.csproj">
+      <Project>{9d10dbf6-c815-4644-b7b3-1277bd626a23}</Project>
+      <Name>DTOModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MathSoftCommonLib\MathSoftCommonLib.csproj">
+      <Project>{d3d58bd5-b400-4657-9b1c-687aa16ac05a}</Project>
+      <Name>MathSoftCommonLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MathSoftModelLib\MathSoftModelLib.csproj">
+      <Project>{b14c0dd3-0c37-47f1-9c92-da244cd8fa06}</Project>
+      <Name>MathSoftModelLib</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\gojs\go-debug.d.ts" />
+    <TypeScriptCompile Include="Scripts\gojs\go-module.d.ts" />
+    <TypeScriptCompile Include="Scripts\gojs\go.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>54904</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:54904/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

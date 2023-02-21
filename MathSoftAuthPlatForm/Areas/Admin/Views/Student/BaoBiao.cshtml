@@ -1,0 +1,1743 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_BackGroud.cshtml";
+
+    ViewBag.Id = "a" + 10001;
+}
+
+<style>
+    .nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
+        border: none;
+        border-bottom: 3px solid #108ee9;
+        background: #c4e1ff
+    }
+
+    .nav-tabs {
+        border: none;
+    }
+
+    .tab-content {
+        padding: 5px;
+    }
+
+    #daiban a {
+        padding: 4px 15px;
+    }
+
+    #home, #profile, #messages {
+        border-left: 1px solid #ddd;
+        border-right: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+        padding: 5px;
+    }
+
+    .daizhixing {
+        background-color: #f7994b;
+    }
+
+
+    #modelView .modal-body h4, #modelStart .modal-body h4 {
+        font-family: 'Microsoft YaHei UI';
+        font-size: 14px;
+        font-weight: 700;
+    }
+
+    .text-info {
+        color: #646262;
+    }
+
+    hr {
+        margin-bottom: 8px;
+        margin-top: 8px;
+    }
+
+
+    .CommonBg {
+        display: flex; /*Flex布局*/
+        display: -webkit-flex; /* Safari */
+        align-items: center; /*指定垂直居中*/
+        min-height: 100px;
+    }
+
+    figure {
+        margin: 0 auto;
+        text-align: center;
+    }
+
+        figure p {
+            font-weight: 700
+        }
+
+    .text-info {
+        color: #646262;
+    }
+
+    .minHeight100 {
+        min-height: 100px;
+    }
+
+    .thg {
+        cursor: pointer;
+    }
+
+    #divXiaoYuan figure, #divLvGuan figure, #divPiaoJu figure {
+        border: 1px solid #eee;
+    }
+
+    #divXiaoYuan div, #divLvGuan div, #divPiaoJu div {
+    }
+
+
+    #modelView .modal-body {
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+        #modelView .modal-body::-webkit-scrollbar { /*滚动条整体样式*/
+            width: 10px; /*高宽分别对应横竖滚动条的尺寸*/
+            height: 10px;
+        }
+
+        #modelView .modal-body::-webkit-scrollbar-thumb { /*滚动条里面小方块*/
+            border-radius: 5px;
+            -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+            background: #333;
+        }
+
+        #modelView .modal-body::-webkit-scrollbar-track { /*滚动条里面轨道*/
+            -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+            border-radius: 0;
+            background: #eee;
+        }
+</style>
+<script src="~/Scripts/Echarts-4.x/echarts.min.js"></script>
+<script>
+    var t1 = null,
+        optype = 1,
+        t2 = null,
+        t3 = null,
+        t4 = null,
+        t5 = null,
+        t6 = null,
+        t7 = null,
+        t8 = null;
+    function initT1() {
+        if (t1) {
+            t1.draw(true)
+            return;
+        }
+        t1 = $('#t1').DataTable({
+            "bAutoWidth": true,
+            "aLengthMenu": [10,15, 20, 50, 100, 200, 500], //更改显示记录数选项
+            "iDisplayLength": 50, //默认显示的记录数
+            dom: 't<"d"r><"row"<"col-md-12"p>>',
+            "processing": true,
+            "serverSide": true,
+            "sScrollY": $(window).height() - $("#navbar").outerHeight()-190,
+            "bSort": false,
+            "bPaginate": true, //是否显示（应用）分页器
+
+            "ajax": {
+                "url": "GetData1",
+                datatype: "JSON",
+                type: "POST",
+                data: function (d) {
+                    d.BegDate = $("#searchBegDate").val();
+                    d.EndDate = $('#searchEndDate').val();
+                    d.StudentName = $("#searchStudentName").val()
+                    d.tuijianren = $("#ipttuijianren").val();
+                },
+                error: function () {
+                    alert("登录超时，请重新登录");
+                    window.location.href = '/admin/login';
+                }
+            },
+            "columns": [
+                { "data": null, width:50 },
+
+                {
+                    "data": "StudentName",
+
+                    render: function (data, type, row, meta) {
+                        return row.StudentName + "<br>" + row.StudentIDCard
+                    }
+                },
+                {
+                    "data": "StudentType"
+                },
+
+                {
+                    "data": "UserName",
+                    render: function (data, type, row, meta) {
+                        return row.UserName + "<br>" + row.UserDeptName
+                    }
+                },
+                {
+                    "data": "InsertTime", render: function (data, type, row, meta) {
+                        return datetimeFormate(data)
+                    }
+
+                },
+                {
+                    "data": null,
+                    render: function (data, type, row, meta) {
+                        return (data.DingZhengName||"-") + "<br>" + (data.DingZhengNumber||"-") + "<br>" + (datetimeFormate(data.DingZhengUpdateTime)||"-")
+                    }
+                },
+                {
+                    "data": null, render: function (data, type, row, meta) {
+                        return " <button view  class='btn btn-xs btn-link'>详情</button>"
+                    },
+                    'sClass': "text-center"
+
+
+                }
+            ],
+            language: {
+                "sProcessing": "正在处理数据...",
+                "sLengthMenu": "_MENU_",
+                "sZeroRecords": "没有匹配结果",
+                "sInfo": "_START_-_END_，共_TOTAL_",
+                "sInfoEmpty": "显示第 0 至 0 项结果，共 0 项",
+                "sInfoFiltered": "(由 _MAX_ 项结果过滤)",
+                "sInfoPostFix": "",
+                "sSearch": "搜索:",
+                "sUrl": "",
+                "sEmptyTable": "表中数据为空",
+                "sLoadingRecords": "载入中...",
+                "sInfoThousands": ",",
+                "oPaginate": {
+                    "sFirst": "首页",
+                    "sPrevious": "上页",
+                    "sNext": "下页",
+                    "sLast": "末页"
+                },
+                "oAria": {
+                    "sSortAscending": ": 以升序排列此列",
+                    "sSortDescending": ": 以降序排列此列"
+                }
+            },
+            "fnDrawCallback": function () {
+                var api = this.api();
+                var startIndex = api.context[0]._iDisplayStart;//获取到本页开始的条数
+                api.column(0).nodes().each(function (cell, i) {
+                    cell.innerHTML =   (startIndex + i + 1)
+                });
+
+                $('#cf1').html(api.page.info().recordsTotal)
+            }
+        });
+
+        $('#t1 tbody').on('click', 'tr', function (e) {
+            var selected = $(this).is(".selected")
+            if (!selected) {
+                $(this).addClass('selected')
+            }
+            else {
+                $(this).removeClass('selected')
+            }
+
+
+
+        })
+
+        $('#t1 tbody').on("click", 'button[delete]', function (e) {
+            e.stopPropagation();
+
+            var tr = $(this).closest('tr');
+            var row = t1.row(tr);
+            layer.confirm('您确定要删除吗？', {
+                btn: ['确定', '取消'] //按钮
+            }, function () {
+
+                $.ajax({
+                    'url': "DeleteMathWork",
+                    data: { "WorkId": row.data().WorkId },
+                    success: function (data) {
+                        if (data.suc) {
+                            layer.msg('删除成功', { icon: 1 })
+                            t1.draw(true);
+                        }
+                        else {
+                            layer.msg(data.remark, { icon: 2 })
+                        }
+
+                    }
+                })
+            });
+
+
+
+        });
+
+        $('#t1 tbody').on("click", 'button[edit]', function (e) {
+            optype = 2;
+            e.stopPropagation();
+            var tr = $(this).closest('tr');
+            var row = t1.row(tr);
+            var data = row.data();
+
+
+            $("#form1").get(0).reset();
+            $("#form1").validate().resetForm(); //清除验证
+
+            $("#myModalLabel").html("修改行程申请")
+            $('#modelZhong').modal();
+
+
+
+
+
+            for (var sth in data) {
+                $("#" + sth).val(data[sth])
+            }
+
+            $('#BegTime').val(dateFormate(data["BegTime"]))
+            $('#EndTime').val(dateFormate(data["EndTime"]))
+
+
+
+            //弹出编辑框 并
+        });
+
+        $('#t1 tbody').on("click", '*[view]', function (e) {
+
+
+            e.stopPropagation();
+            var tr = $(this).closest('tr');
+            var row = t1.row(tr);
+            var data = row.data();
+
+
+
+
+
+            $('#modelView').modal();
+            $("#modelView .modal-body").height($(window).height()-200)
+            $("#modelView .modal-body").animate({
+                'scrollTop': 0
+            });
+
+
+
+            for (var sth in data) {
+                $("#Div" + sth).html(data[sth])
+            }
+
+            $('#DivBegTime').html(dateFormate(data["BegTime"]))
+            $('#DivEndTime').html(dateFormate(data["EndTime"]))
+
+
+            var HisList = data.HisList;
+            $("#tableHis tbody tr").remove();
+            $.each(HisList, function (idx, el) {
+                $("#tableHis tbody").append("<tr><td>" + (idx + 1) + "</td><td>" + el.ShenPiRen + "</td><td>" + el.ShenPiJianYi + "</td><td>" + el.ShenPiJianRemark + "</td><td>" + datetimeFormate(el.ShenPiDateTime)+"</td></tr>")
+            })
+
+            var AttachedMentList = data.AttachedMentList;
+
+            var xiaoyuan = $.grep(AttachedMentList, function (el, index) {
+                return el.AttchedType=="校园风光";
+            });
+
+            var lvguan = $.grep(AttachedMentList, function (el, index) {
+                return el.AttchedType == "旅馆照片";
+            });
+
+            var piaoju = $.grep(AttachedMentList, function (el, index) {
+                return el.AttchedType == "票据照片";
+            });
+
+            var lichengbiao = $.grep(AttachedMentList, function (el, index) {
+                return el.AttchedType == "车辆里程表";
+            });
+
+            $('#divXiaoYuan,#divLvGuan,#divPiaoJu,#divCheLiangLiChengBiao').empty();
+
+            $(xiaoyuan).each(function (idx, el) {
+                $("#divXiaoYuan").append('<div class="col-md-3 col-sm-3 col-xs-3  CommonBg " style="height: 100px;"><figure><img class="thg" src="' + el.AttachedUrl + '" height="80" width="100%"><p>' + el.AttchedRemark+'</p></figure></div >')
+            })
+
+            $(lvguan).each(function (idx, el) {
+                $("#divLvGuan").append('<div class="col-md-3 col-sm-3 col-xs-3  CommonBg " style="height: 100px;"><figure><img class="thg" src="' + el.AttachedUrl + '" height="80" width="100%"><p>' + el.AttchedRemark + '</p></figure></div >')
+            })
+
+            $(piaoju).each(function (idx, el) {
+                $("#divPiaoJu").append('<div class="col-md-3 col-sm-3 col-xs-3  CommonBg " style="height: 100px;"><figure><img class="thg" src="' + el.AttachedUrl + '" height="80" width="100%"><p>' + el.AttchedRemark + '</p></figure></div >')
+            })
+
+            $(lichengbiao).each(function (idx, el) {
+                $("#divCheLiangLiChengBiao").append('<div class="col-md-3 col-sm-3 col-xs-3  CommonBg " style="height: 100px;"><figure><img class="thg" src="' + el.AttachedUrl + '" height="80" width="100%"><p>' + el.AttchedRemark + '</p></figure></div >')
+            })
+
+
+
+            //弹出编辑框 并
+
+        });
+
+        $('#t1 tbody').on("click", "*[start]", function (e) {
+            var tr = $(this).closest('tr');
+            var row = t1.row(tr);
+            var data = row.data();
+
+            layer.confirm('您确定要提交吗？', {
+                btn: ['确定', '取消'] //按钮
+            }, function () {
+
+                $.ajax({
+                    'url': "Send2SHengPi",
+                    data: { "WorkId": row.data().WorkId },
+                    success: function (data) {
+                        if (data.suc) {
+                            layer.msg('提交成功', { icon: 1 })
+                            t1.draw(true);
+                        }
+                        else {
+                            layer.msg(data.remark, { icon: 2 })
+                        }
+
+                    }
+                })
+            });
+
+        })
+
+        $('#t1 tbody').on("click", "*[zhongshen]", function (e) {
+            var tr = $(this).closest('tr');
+            var row = t1.row(tr);
+            var data = row.data();
+            $("#form2").get(0).reset();
+            $("#form2").validate().resetForm(); //清除验证
+            $("#SendWorkId").val(data.WorkId);
+            $("#InfactFee").val(data.InfactFee);
+            $("#modelStart").modal();
+        })
+
+
+        $("#t1 tbody").on("click", "*[tiepiao]", function () {
+            var tr = $(this).closest('tr');
+            var row = t1.row(tr);
+            var data = row.data();
+            $("#FileWorkId").val(data.WorkId)
+            $("#modelTiePiao").modal()
+        })
+    }
+
+    function initT2() {
+        if (t2) {
+            t2.draw(true)
+            return;
+        }
+        t2 = $('#t2').DataTable({
+            "bAutoWidth": true,
+            "aLengthMenu": [10,15, 20, 50, 100, 200, 500], //更改显示记录数选项
+            "iDisplayLength": 15, //默认显示的记录数
+            dom: 't<"d"r><"row"<"col-md-2"i><"col-md-8"p>>',
+            "processing": true,
+            "serverSide": true,
+            "sScrollY": $(window).height() - $("#navbar").outerHeight() - 200,
+            "bSort": false,
+            "bPaginate": false, //是否显示（应用）分页器
+
+            "ajax": {
+                "url": "/BaoBiao/GetZhaoShengBaoBiao",
+                datatype: "JSON",
+                type: "POST",
+                data: function (d) {
+
+                }
+            },
+            "columns": [
+                { "data": null },
+                {
+                    "data": "UserDeptName"
+
+                },
+                {
+                    "data": "TotalNumber"
+                }
+
+            ],
+            language: {
+                "sProcessing": "正在处理数据...",
+                "sLengthMenu": "显示 _MENU_ 项结果",
+                "sZeroRecords": "没有匹配结果",
+                "sInfo": "显示第_START_ 至 _END_ 项结果，共 _TOTAL_ 项",
+                "sInfoEmpty": "显示第 0 至 0 项结果，共 0 项",
+                "sInfoFiltered": "(由 _MAX_ 项结果过滤)",
+                "sInfoPostFix": "",
+                "sSearch": "搜索:",
+                "sUrl": "",
+                "sEmptyTable": "表中数据为空",
+                "sLoadingRecords": "载入中...",
+                "sInfoThousands": ",",
+                "oPaginate": {
+                    "sFirst": "首页",
+                    "sPrevious": "上页",
+                    "sNext": "下页",
+                    "sLast": "末页"
+                },
+                "oAria": {
+                    "sSortAscending": ": 以升序排列此列",
+                    "sSortDescending": ": 以降序排列此列"
+                }
+            },
+            "fnDrawCallback": function () {
+                var api = this.api();
+                var startIndex = api.context[0]._iDisplayStart;//获取到本页开始的条数
+                api.column(0).nodes().each(function (cell, i) {
+                    cell.innerHTML = (startIndex + i + 1)
+                });
+            }
+        });
+
+        $('#t2 tbody').on('click', 'tr', function (e) {
+            var selected = $(this).is(".selected")
+            if (!selected) {
+                $(this).addClass('selected')
+            }
+            else {
+                $(this).removeClass('selected')
+            }
+
+
+
+        })
+
+
+    }
+
+    function initT3() {
+        if (t3) {
+            t3.draw(true)
+            return;
+        }
+        t3 = $('#t3').DataTable({
+            "bAutoWidth": true,
+            "aLengthMenu": [10,15, 20, 50, 100, 200, 500], //更改显示记录数选项
+            "iDisplayLength": 15, //默认显示的记录数
+            dom: 't<"d"r><"row"<"col-md-2"i><"col-md-8"p>>',
+            "processing": true,
+            "serverSide": true,
+            "sScrollY": $(window).height() - $("#navbar").outerHeight() - 200,
+            "bSort": false,
+            "bPaginate": false, //是否显示（应用）分页器
+
+            "ajax": {
+                "url": "/BaoBiao/GetZhaoShengBaoBiaoByMonth",
+                datatype: "JSON",
+                type: "POST",
+                data: function (d) {
+
+                }
+            },
+            "columns": [
+                { "data": null },
+                {
+                    "data": "InsertData"
+                },
+                {
+                    "data": "TotalNumber"
+                }
+
+            ],
+            language: {
+                "sProcessing": "正在处理数据...",
+                "sLengthMenu": "显示 _MENU_ 项结果",
+                "sZeroRecords": "没有匹配结果",
+                "sInfo": "显示第 _START_ 至 _END_ 项结果，共 _TOTAL_ 项",
+                "sInfoEmpty": "显示第 0 至 0 项结果，共 0 项",
+                "sInfoFiltered": "(由 _MAX_ 项结果过滤)",
+                "sInfoPostFix": "",
+                "sSearch": "搜索:",
+                "sUrl": "",
+                "sEmptyTable": "表中数据为空",
+                "sLoadingRecords": "载入中...",
+                "sInfoThousands": ",",
+                "oPaginate": {
+                    "sFirst": "首页",
+                    "sPrevious": "上页",
+                    "sNext": "下页",
+                    "sLast": "末页"
+                },
+                "oAria": {
+                    "sSortAscending": ": 以升序排列此列",
+                    "sSortDescending": ": 以降序排列此列"
+                }
+            },
+            "fnDrawCallback": function () {
+                var api = this.api();
+                var startIndex = api.context[0]._iDisplayStart;//获取到本页开始的条数
+                api.column(0).nodes().each(function (cell, i) {
+                    cell.innerHTML = (startIndex + i + 1)
+                });
+            }
+        });
+
+        $('#t3 tbody').on('click', 'tr', function (e) {
+            var selected = $(this).is(".selected")
+            if (!selected) {
+                $(this).addClass('selected')
+            }
+            else {
+                $(this).removeClass('selected')
+            }
+
+
+
+        })
+
+
+    }
+
+    function initT4() {
+        if (t4) {
+            t4.draw(true)
+            return;
+        }
+        t4 = $('#t4').DataTable({
+            "bAutoWidth": true,
+            "aLengthMenu": [10,15, 20, 50, 100, 200, 500], //更改显示记录数选项
+            "iDisplayLength": 15, //默认显示的记录数
+            dom: 't<"d"r><"row"<"col-md-2"i><"col-md-8"p>>',
+            "processing": true,
+            "serverSide": true,
+            "sScrollY": $(window).height() - $("#navbar").outerHeight() - 200,
+            "bSort": false,
+            "bPaginate": false, //是否显示（应用）分页器
+
+            "ajax": {
+                "url": "/BaoBiao/GetZhaoShengBaoBiaoByTuiJianRen",
+                datatype: "JSON",
+                type: "POST",
+                data: function (d) {
+
+                }
+            },
+            "columns": [
+                { "data": null },
+                { "data": "UserDeptName" },
+                {
+                    "data": "UserName"
+                },
+                {
+                    "data": "TotalNumber"
+                }
+
+            ],
+            language: {
+                "sProcessing": "正在处理数据...",
+                "sLengthMenu": "显示 _MENU_ 项结果",
+                "sZeroRecords": "没有匹配结果",
+                "sInfo": "显示第 _START_ 至 _END_ 项结果，共 _TOTAL_ 项",
+                "sInfoEmpty": "显示第 0 至 0 项结果，共 0 项",
+                "sInfoFiltered": "(由 _MAX_ 项结果过滤)",
+                "sInfoPostFix": "",
+                "sSearch": "搜索:",
+                "sUrl": "",
+                "sEmptyTable": "表中数据为空",
+                "sLoadingRecords": "载入中...",
+                "sInfoThousands": ",",
+                "oPaginate": {
+                    "sFirst": "首页",
+                    "sPrevious": "上页",
+                    "sNext": "下页",
+                    "sLast": "末页"
+                },
+                "oAria": {
+                    "sSortAscending": ": 以升序排列此列",
+                    "sSortDescending": ": 以降序排列此列"
+                }
+            },
+            "fnDrawCallback": function () {
+                var api = this.api();
+                var startIndex = api.context[0]._iDisplayStart;//获取到本页开始的条数
+                api.column(0).nodes().each(function (cell, i) {
+                    cell.innerHTML =  (startIndex + i + 1)
+                });
+            }
+        });
+
+        $('#t4 tbody').on('click', 'tr', function (e) {
+            var selected = $(this).is(".selected")
+            if (!selected) {
+                $(this).addClass('selected')
+            }
+            else {
+                $(this).removeClass('selected')
+            }
+
+
+
+        })
+
+
+    }
+
+    function initT5() {
+        if (t5) {
+            t5.draw(true)
+            return;
+        }
+        t5 = $('#t5').DataTable({
+            "bAutoWidth": true,
+            "aLengthMenu": [10,15, 20, 50, 100, 200, 500], //更改显示记录数选项
+            "iDisplayLength": 15, //默认显示的记录数
+            dom: 't<"d"r><"row"<"col-md-2"i><"col-md-8"p>>',
+            "processing": true,
+            "serverSide": true,
+            "sScrollY": $(window).height() - $("#navbar").outerHeight() - 200,
+            "bSort": false,
+            "bPaginate": false, //是否显示（应用）分页器
+
+            "ajax": {
+                "url": "/BaoBiao/GetZhaoShengBaoBiaoByZhuanYe",
+                datatype: "JSON",
+                type: "POST",
+                data: function (d) {
+
+                }
+            },
+            "columns": [
+                { "data": null },
+                {
+                    "data": "ZhuanYeName"
+                },
+                {
+                    "data": "TotalNumber"
+                }
+
+            ],
+            language: {
+                "sProcessing": "正在处理数据...",
+                "sLengthMenu": "显示 _MENU_ 项结果",
+                "sZeroRecords": "没有匹配结果",
+                "sInfo": "显示第 _START_ 至 _END_ 项结果，共 _TOTAL_ 项",
+                "sInfoEmpty": "显示第 0 至 0 项结果，共 0 项",
+                "sInfoFiltered": "(由 _MAX_ 项结果过滤)",
+                "sInfoPostFix": "",
+                "sSearch": "搜索:",
+                "sUrl": "",
+                "sEmptyTable": "表中数据为空",
+                "sLoadingRecords": "载入中...",
+                "sInfoThousands": ",",
+                "oPaginate": {
+                    "sFirst": "首页",
+                    "sPrevious": "上页",
+                    "sNext": "下页",
+                    "sLast": "末页"
+                },
+                "oAria": {
+                    "sSortAscending": ": 以升序排列此列",
+                    "sSortDescending": ": 以降序排列此列"
+                }
+            },
+            "fnDrawCallback": function () {
+                var api = this.api();
+                var startIndex = api.context[0]._iDisplayStart;//获取到本页开始的条数
+                api.column(0).nodes().each(function (cell, i) {
+                    cell.innerHTML =   (startIndex + i + 1)
+                });
+            }
+        });
+
+        $('#t5 tbody').on('click', 'tr', function (e) {
+            var selected = $(this).is(".selected")
+            if (!selected) {
+                $(this).addClass('selected')
+            }
+            else {
+                $(this).removeClass('selected')
+            }
+
+
+
+        })
+
+
+    }
+
+
+    function initT6() {
+        if (t6) {
+            t6.draw(true)
+            return;
+        }
+        t6 = $('#t6').DataTable({
+            "bAutoWidth": true,
+            "aLengthMenu": [10,15, 20, 50, 100, 200, 500], //更改显示记录数选项
+            "iDisplayLength": 15, //默认显示的记录数
+            dom: 't<"d"r><"row"<"col-md-2"i><"col-md-8"p>>',
+            "processing": true,
+            "serverSide": true,
+            "sScrollY": $(window).height() - $("#navbar").outerHeight() - 200,
+            "bSort": false,
+            "bPaginate": false, //是否显示（应用）分页器
+
+            "ajax": {
+                "url": "/BaoBiao/GetZhaoShengBaoBiaoBySex",
+                datatype: "JSON",
+                type: "POST",
+                data: function (d) {
+
+                }
+            },
+            "columns": [
+                { "data": null },
+                {
+                    "data": "Sex"
+                },
+                {
+                    "data": "TotalNumber"
+                }
+
+            ],
+            language: {
+                "sProcessing": "正在处理数据...",
+                "sLengthMenu": "显示 _MENU_ 项结果",
+                "sZeroRecords": "没有匹配结果",
+                "sInfo": "显示第 _START_ 至 _END_ 项结果，共 _TOTAL_ 项",
+                "sInfoEmpty": "显示第 0 至 0 项结果，共 0 项",
+                "sInfoFiltered": "(由 _MAX_ 项结果过滤)",
+                "sInfoPostFix": "",
+                "sSearch": "搜索:",
+                "sUrl": "",
+                "sEmptyTable": "表中数据为空",
+                "sLoadingRecords": "载入中...",
+                "sInfoThousands": ",",
+                "oPaginate": {
+                    "sFirst": "首页",
+                    "sPrevious": "上页",
+                    "sNext": "下页",
+                    "sLast": "末页"
+                },
+                "oAria": {
+                    "sSortAscending": ": 以升序排列此列",
+                    "sSortDescending": ": 以降序排列此列"
+                }
+            },
+            "fnDrawCallback": function () {
+                var api = this.api();
+                var startIndex = api.context[0]._iDisplayStart;//获取到本页开始的条数
+                api.column(0).nodes().each(function (cell, i) {
+                    cell.innerHTML =  (startIndex + i + 1)
+                });
+            }
+        });
+
+        $('#t6 tbody').on('click', 'tr', function (e) {
+            var selected = $(this).is(".selected")
+            if (!selected) {
+                $(this).addClass('selected')
+            }
+            else {
+                $(this).removeClass('selected')
+            }
+
+
+
+        })
+
+
+    }
+
+    function initT7() {
+        if (t7) {
+            t7.draw(true)
+            return;
+        }
+        t7 = $('#t7').DataTable({
+            "bAutoWidth": true,
+            "aLengthMenu": [10,15, 20, 50, 100, 200, 500], //更改显示记录数选项
+            "iDisplayLength": 15, //默认显示的记录数
+            dom: 't<"d"r><"row"<"col-md-2"i><"col-md-8"p>>',
+            "processing": true,
+            "serverSide": true,
+            "sScrollY": $(window).height() - $("#navbar").outerHeight() - 200,
+            "bSort": false,
+            "bPaginate": false, //是否显示（应用）分页器
+
+            "ajax": {
+                "url": "/BaoBiao/GetZhaoShengBaoBiaoByArea",
+                datatype: "JSON",
+                type: "POST",
+                data: function (d) {
+
+                }
+            },
+            "columns": [
+                { "data": null },
+                {
+                    "data": "Area"
+                },
+                {
+                    "data": "TotalNumber"
+                }
+
+            ],
+            language: {
+                "sProcessing": "正在处理数据...",
+                "sLengthMenu": "显示 _MENU_ 项结果",
+                "sZeroRecords": "没有匹配结果",
+                "sInfo": "显示第 _START_ 至 _END_ 项结果，共 _TOTAL_ 项",
+                "sInfoEmpty": "显示第 0 至 0 项结果，共 0 项",
+                "sInfoFiltered": "(由 _MAX_ 项结果过滤)",
+                "sInfoPostFix": "",
+                "sSearch": "搜索:",
+                "sUrl": "",
+                "sEmptyTable": "表中数据为空",
+                "sLoadingRecords": "载入中...",
+                "sInfoThousands": ",",
+                "oPaginate": {
+                    "sFirst": "首页",
+                    "sPrevious": "上页",
+                    "sNext": "下页",
+                    "sLast": "末页"
+                },
+                "oAria": {
+                    "sSortAscending": ": 以升序排列此列",
+                    "sSortDescending": ": 以降序排列此列"
+                }
+            },
+            "fnDrawCallback": function () {
+                var api = this.api();
+                var startIndex = api.context[0]._iDisplayStart;//获取到本页开始的条数
+                api.column(0).nodes().each(function (cell, i) {
+                    cell.innerHTML =   (startIndex + i + 1)
+                });
+            }
+        });
+
+        $('#t7 tbody').on('click', 'tr', function (e) {
+            var selected = $(this).is(".selected")
+            if (!selected) {
+                $(this).addClass('selected')
+            }
+            else {
+                $(this).removeClass('selected')
+            }
+
+
+
+        })
+
+
+    }
+
+
+    function initT8() {
+        if (t8) {
+            t7.draw(true)
+            return;
+        }
+        t8 = $('#t8').DataTable({
+            "bAutoWidth": true,
+            "aLengthMenu": [10,15, 20, 50, 100, 200, 500], //更改显示记录数选项
+            "iDisplayLength": 15, //默认显示的记录数
+            dom: 't<"d"r><"row"<"col-md-2"i><"col-md-8"p>>',
+            "processing": true,
+            "serverSide": true,
+            "sScrollY": $(window).height() - $("#navbar").outerHeight() - 200,
+            "bSort": false,
+            "bPaginate": false, //是否显示（应用）分页器
+
+            "ajax": {
+                "url": "/BaoBiao/GetZhaoShengBaoBiaoByStudentType",
+                datatype: "JSON",
+                type: "POST",
+                data: function (d) {
+
+                }
+            },
+            "columns": [
+                { "data": null },
+                {
+                    "data": "StudentType"
+                },
+                {
+                    "data": "TotalNumber"
+                }
+
+            ],
+            language: {
+                "sProcessing": "正在处理数据...",
+                "sLengthMenu": "显示 _MENU_ 项结果",
+                "sZeroRecords": "没有匹配结果",
+                "sInfo": "显示第 _START_ 至 _END_ 项结果，共 _TOTAL_ 项",
+                "sInfoEmpty": "显示第 0 至 0 项结果，共 0 项",
+                "sInfoFiltered": "(由 _MAX_ 项结果过滤)",
+                "sInfoPostFix": "",
+                "sSearch": "搜索:",
+                "sUrl": "",
+                "sEmptyTable": "表中数据为空",
+                "sLoadingRecords": "载入中...",
+                "sInfoThousands": ",",
+                "oPaginate": {
+                    "sFirst": "首页",
+                    "sPrevious": "上页",
+                    "sNext": "下页",
+                    "sLast": "末页"
+                },
+                "oAria": {
+                    "sSortAscending": ": 以升序排列此列",
+                    "sSortDescending": ": 以降序排列此列"
+                }
+            },
+            "fnDrawCallback": function () {
+                var api = this.api();
+                var startIndex = api.context[0]._iDisplayStart;//获取到本页开始的条数
+                api.column(0).nodes().each(function (cell, i) {
+                    cell.innerHTML =  (startIndex + i + 1)
+                });
+            }
+        });
+
+        $('#t8 tbody').on('click', 'tr', function (e) {
+            var selected = $(this).is(".selected")
+            if (!selected) {
+                $(this).addClass('selected')
+            }
+            else {
+                $(this).removeClass('selected')
+            }
+        })
+
+
+    }
+
+
+    function InitEcharts() {
+        var   myChart = echarts.init(document.getElementById('echarts1'));
+
+        // 指定图表的配置项和数据
+        var   option = {
+            title: {
+                text: '男女比例的分布',
+                x: 'center',                 // 水平安放位置，默认为左对齐，可选为：
+                // 'center' ¦ 'left' ¦ 'right'
+                // ¦ {number}（x坐标，单位px）
+                y: 'bottom',
+                textStyle: {
+                    fontSize: 24,
+                    fontWeight: 'bolder'
+                },
+            },
+            tooltip: {
+                trigger: 'item',
+                formatter: "{a} <br/>{b}: {c} ({d}%)"
+            },
+            color: [
+                '#838cfd',
+                '#f36181',
+                'gray',
+            ],
+            legend: {
+                top: 40,
+                orient: 'vertical',
+                x: "right",
+
+                data: ['男', '女', '未知']
+            },
+            series: [
+                {
+                    name: '男女比例',
+                    type: 'pie',
+                    radius: ['30%', '60%'],
+                    avoidLabelOverlap: false,
+                    label: {
+                        normal: {
+                            show: false,
+                            position: 'center'
+                        },
+                        emphasis: {
+                            show: true,
+                            textStyle: {
+                                fontSize: '18',
+                                fontWeight: 'bold'
+                            }
+                        }
+                    },
+                    labelLine: {
+                        normal: {
+                            show: false
+                        }
+                    },
+                    data: [
+                        { value: 900, name: '男' },
+                        { value: 310, name: '女' },
+                        { value: 234, name: '未知' },
+                    ]
+                }
+            ]
+        }
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    }
+
+
+    $(document).ready(function () {
+
+
+
+        $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+            $.fn.dataTable.tables({ visible: true, api: true }).columns.adjust();
+
+            if ($(this).attr("href") === "#xingbie") {
+                InitEcharts();
+            }
+        })
+
+        $("#btnNew").click(function () {
+            optype = 1;
+            $("#form1").get(0).reset();
+            $("#form1").validate().resetForm(); //清除验证
+            $("#myModalLabel").html("录入学生信息")
+            $("#modelZhong").modal();
+        })
+
+        $("#BtnDaoChuExcel").click(function () {
+         location.href = '@Url.Content("~/Student/OutExcelReport")' + "?R=" + Math.random() * 10000
+                + "&BegDate=" + $("#searchBegDate").val()
+                + "&EndDate" + $('#searchEndDate').val();
+                +"&StudentName=" + $("#searchStudentName").val()
+                +"&=StudentIDCard" + $("#searchStudentIDCard").val();
+
+        });
+
+        $('#btnSearch').click(function () {
+            t1.draw(true);
+        })
+
+        $(document).on("click", "*.thg ", function () {
+            var src = $(this).attr("src")
+            window.open(src)
+        })
+
+
+        initT1();
+        initT2();
+        initT3();
+        initT4();
+        initT5();
+        initT6();
+        initT7();
+        initT8();
+
+
+        setInterval(function () {
+            t1.draw(true);
+            t2.draw(true);
+            t3.draw(true);
+            t4.draw(true);
+            t5.draw(true);
+            t6.draw(true);
+            t7.draw(true);
+            t8.draw(true);
+
+        }, 1000*60*2)
+
+
+
+
+
+        $("#form1").validate({
+            rules: {
+            },
+            submitHandler: function (form) {
+                var data = $(form).serialize();
+                $("#modelLoad").modal();
+                if (optype === 1) {
+                    $.ajax({
+                        url: "AddStudent",
+                        data: $(form).serialize(),
+                        success: function (data) {
+                            $("#modelLoad").modal("hide");
+                            if (data.suc) {
+                                layer.msg('新建成功', { icon: 1 })
+                                $('#modelZhong').modal('hide');
+                                t1.draw(true);
+                            }
+                            else {
+                                layer.msg(data.remark, { icon: 2 })
+                            }
+                        },
+                        dataType: "JSON",
+                        type: "POST"
+                    })
+                }
+                else {
+
+                    $.ajax({
+                        url: "UpdateMathWork",
+                        data: $(form).serialize(),
+                        success: function (data) {
+                            $("#modelLoad").modal("hide");
+                            if (data.suc) {
+                                layer.msg('更新成功', { icon: 1 })
+                                $('#modelZhong').modal('hide');
+                                t1.draw(false);
+                            }
+                            else {
+                                layer.msg(data.remark, { icon: 2 })
+                            }
+                        },
+                        dataType: "JSON",
+                        type: "POST"
+                    })
+
+                }
+            }
+
+
+
+        });
+
+
+        $("#form2").validate({
+            rules: {
+                InfactFee: {
+                    positiveinteger: true
+                }
+            },
+            submitHandler: function (form) {
+
+                var data = $(form).serialize();
+                $("#modelLoad").modal();
+                    $.ajax({
+                        url: "Send3SHengPi",
+                        data: $(form).serialize(),
+                        success: function (data) {
+                            $("#modelLoad").modal("hide");
+                            if (data.suc) {
+                                layer.msg('提交成功', { icon: 1 })
+                                $("#modelStart").modal("hide");
+                                t1.draw(false);
+                            }
+                            else {
+                                layer.msg(data.remark, { icon: 2 })
+                            }
+                        },
+                        dataType: "JSON",
+                        type: "POST"
+                    })
+
+
+            }
+
+
+
+        });
+
+        $("#formUpload").validate({
+            rules: {
+            },
+            submitHandler: function (form) {
+                var formData = new FormData();
+
+                formData.append("AttchedType", $("#AttchedType").val());
+                formData.append("FileWorkId", $("#FileWorkId").val());
+                formData.append("AttchedRemark", $("#AttchedRemark").val())
+                var AttachedUrl = document.getElementById("AttachedUrl").files[0];
+                formData.append("AttachedUrl", AttachedUrl);
+                $("#modelLoad").modal();
+                $.ajax({
+                    type: "POST",
+                    url: "UpLoadFile",
+                    data: formData,
+                    dataType: "JSON",
+                    cache: false,
+                    processData: false,
+                    contentType: false,
+                    success: function (data) {
+                        $("#modelLoad").modal("hide");
+                        if (data.suc) {
+                            layer.msg('上传成功', { icon: 1 })
+                            $("#formUpload").get(0).reset();
+                            $("#formUpload").validate().resetForm(); //清除验证
+                            t1.draw(false);
+                        }
+                        else {
+                            layer.msg(data.remark, { icon: 2 })
+                        }
+                    },
+                    dataType: "JSON",
+                    type: "POST"
+                })
+            }
+        });
+
+        $('.CommonBg').each(function (idx, el) {
+            $(el).height($(el).next().height())
+        });
+
+        $('#modelView').on('shown.bs.modal', function (e) {
+            $('.CommonBg').each(function (idx, el) {
+                $(el).height($(el).next().height())
+            });
+        })
+
+
+        laydate.render({
+            elem: '#BegTime' //指定元素
+        });
+
+        laydate.render({
+            elem: '#EndTime' //指定元素
+        });
+
+        laydate.render({
+            elem: '#searchBegDate' //指定元素
+        });
+
+        laydate.render({
+            elem: '#searchEndDate' //指定元素
+        });
+
+
+
+
+
+
+
+
+        jQuery.validator.addMethod("positiveinteger", function (value, element) {
+
+            //    var tel = /^-?\d+$/g;  //正、负 整数 + 0
+
+            //    return this.optional(element) || (tel.test(value));
+
+            //}, "请输入正整数");
+
+            var aint = parseInt(value);
+            return aint >= 0 && (aint + "") == value;
+        }, "请输入非负数");
+
+
+    })
+</script>
+<div>
+
+    <div style="clear:both;overflow:auto;margin-bottom:10px" class="row">
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="padding-right:0">
+            <div class="input-group  input-group-sm  ">
+                <span class="input-group-addon" id="basic-addon1">登记日期</span>
+                <input type="text"
+                       placeholder="开始日期"
+                       id="searchBegDate"
+                       name="searchBegDate"
+                       class="form-control"
+                       aria-describedby="basic-addon1">
+            </div>
+        </div>
+
+        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 form-group-sm" style="padding:0">
+
+            <input type="text"
+                   placeholder="结束日期"
+                   id="searchEndDate" name="searchEndDate" class="form-control " aria-describedby="basic-addon1">
+
+        </div>
+
+        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+            <div class="input-group  input-group-sm  ">
+                <span class="input-group-addon" id="basic-addon1">学生</span>
+                <input class="form-control" placeholder="学生身份证|姓名" name="searchStudentName" id="searchStudentName" type="text" />
+            </div>
+        </div>
+
+        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="padding:0">
+            <div class="input-group  input-group-sm  ">
+                <span class="input-group-addon" id="basic-addon1">推荐人</span>
+                <input class="form-control" placeholder="推荐人" name="ipttuijianren" id="ipttuijianren" type="text" />
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <button type="button" class="btn btn-primary btn-sm" id="btnSearch">
+
+                查询
+            </button>
+
+            <button id="BtnDaoChuExcel" class=" btn btn-sm btn-success">
+
+                导出
+            </button>
+
+
+        </div>
+    </div>
+
+    <div>
+
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active">
+                <a style="padding:5px;" href="#jichu" aria-controls="home" role="tab" data-toggle="tab">
+
+                    基础信息表
+                    【
+                    <span id="cf1">????</span>
+                    】
+                </a>
+            </li>
+
+            <li role="presentation">
+                <a style="padding:5px;" href="#riqi" aria-controls="profile" role="tab" data-toggle="tab">
+
+                    按日期
+                </a>
+            </li>
+
+            <li role="presentation">
+                <a style="padding:5px;" href="#bumen" aria-controls="profile" role="tab" data-toggle="tab">
+
+                    按部门
+                </a>
+            </li>
+
+            <li role="presentation">
+                <a style="padding:5px;" href="#tuijianren" aria-controls="profile" role="tab" data-toggle="tab">
+
+                    按推荐人
+                </a>
+            </li>
+
+            <li role="presentation">
+                <a style="padding:5px;" href="#zhuanye" aria-controls="profile" role="tab" data-toggle="tab">
+
+                    按专业
+                </a>
+            </li>
+
+            <li role="presentation">
+                <a style="padding:5px;" href="#xingbie" aria-controls="profile" role="tab" data-toggle="tab">
+
+                    按性别
+                </a>
+            </li>
+
+            <li role="presentation">
+                <a style="padding:5px;" href="#diqu" aria-controls="profile" role="tab" data-toggle="tab">
+
+                    按地区
+                </a>
+            </li>
+
+            <li role="presentation">
+                <a style="padding:5px;" href="#xingzhi" aria-controls="profile" role="tab" data-toggle="tab">
+
+                    按学生性质
+                </a>
+            </li>
+
+
+
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="jichu">
+
+
+
+
+
+
+                <table class="table" id="t1">
+                    <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th>学生信息</th>
+                            <th>学生性质</th>
+
+                            <th>推荐人</th>
+
+
+                            <th>录入时间</th>
+                            <th>更正后数据</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+
+                </table>
+            </div>
+
+            <div role="tabpanel" class="tab-pane" id="riqi">
+                <table class="table" id="t3">
+                    <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th>月份</th>
+                            <th>招生总数</th>
+                        </tr>
+                    </thead>
+
+                </table>
+            </div>
+
+
+            <div role="tabpanel" class="tab-pane" id="bumen">
+                <table class="table" id="t2">
+                    <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th>部门名称</th>
+
+                            <th>招生总人数</th>
+                        </tr>
+                    </thead>
+
+                </table>
+            </div>
+
+
+            <div role="tabpanel" class="tab-pane" id="tuijianren">
+                <table class="table" id="t4">
+                    <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th>推荐人部门</th>
+                            <th>推荐人</th>
+                            <th>招生总数</th>
+                        </tr>
+                    </thead>
+
+                </table>
+            </div>
+
+            <div role="tabpanel" class="tab-pane" id="zhuanye">
+                <table class="table" id="t5">
+                    <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th>专业</th>
+                            <th>招生总数</th>
+                        </tr>
+                    </thead>
+
+                </table>
+            </div>
+
+            <div role="tabpanel" class="tab-pane row" id="xingbie">
+
+                <div class="col-md-6">
+                    <div style="background-color:#eee">
+                        <table class="table" id="t6">
+                            <thead>
+                                <tr>
+                                    <th>序号</th>
+                                    <th>性别</th>
+                                    <th>招生总人数</th>
+                                </tr>
+                            </thead>
+
+                        </table>
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+                    <div id="echarts1" style="height:400px;width:100%">
+
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div role="tabpanel" class="tab-pane" id="diqu">
+                <table class="table" id="t7">
+                    <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th>地区</th>
+                            <th>招生总人数</th>
+                        </tr>
+                    </thead>
+
+                </table>
+            </div>
+
+            <div role="tabpanel" class="tab-pane" id="xingzhi">
+                <table class="table" id="t8">
+                    <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th>学生性质</th>
+                            <th>招生人数</th>
+                        </tr>
+                    </thead>
+
+                </table>
+            </div>
+
+
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <div aria-hidden="true" data-backdrop="static" class="modal fade" id="modelView" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form class="form-horizontal" id="form3">
+                    <input type="hidden" id="RoleId" name="RoleId" />
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">  <i class="glyphicon glyphicon-remove-circle"></i></button>
+                        <h4 class="modal-title" id="myModalLabel">学生基本信息</h4>
+                    </div>
+                    <div class="modal-body">
+                        <input id="WorkId" name="WorkId" type="hidden" />
+
+                        <div>
+
+                            <div class="   minHeight100">
+
+                                <div class="row">
+                                    <div class="col-md-2 col-sm-2 col-xs-2 text-right"><h4>学生姓名</h4></div>
+                                    <div class="col-md-4 col-sm-4 col-xs-4 text-left text-info"><h4 id="DivStudentName">未指定</h4></div>
+
+                                    <div class="col-md-2 col-sm-2 col-xs-2 text-right"><h4>性别</h4></div>
+                                    <div class="col-md-4 col-sm-4 col-xs-4 text-left text-info"><h4 id="DivSex">未指定</h4></div>
+                                </div>
+
+                                <hr />
+
+                                <div class="row">
+
+                                    <div class="col-md-2 col-sm-2 col-xs-2 text-right"><h4>考生地区</h4></div>
+                                    <div class="col-md-4 col-sm-4 col-xs-4 text-left text-info"><h4 id="DivArea">未指定</h4></div>
+
+                                    <div class="col-md-2 col-sm-2 col-xs-2 text-right"><h4>身份证号</h4></div>
+                                    <div class="col-md-4 col-sm-4 col-xs-4 text-left text-info"><h4 id="DivStudentIDCard">未指定</h4></div>
+
+                                </div>
+
+                                <hr />
+
+
+                                <div class="row">
+
+                                    <div class="col-md-2 col-sm-2 col-xs-2 text-right"><h4>联系方式</h4></div>
+                                    <div class="col-md-4 col-sm-4 col-xs-4 text-left text-info"><h4 id="DivStudentPhone">未指定</h4></div>
+
+                                    <div class="col-md-2 col-sm-2 col-xs-2 text-right"><h4> 学生性质</h4></div>
+                                    <div class="col-md-4 col-sm-4 col-xs-4 text-left text-info"><h4 id="DivStudentType">未指定</h4></div>
+
+
+                                </div>
+
+                                <hr />
+
+                                <div class="row">
+                                    <div class="col-md-2 col-sm-2 col-xs-2 text-right"><h4>报考专业</h4></div>
+                                    <div class="col-md-4 col-sm-4 col-xs-4 text-left text-info"><h4 id="DivStudentZhuanYeValue">未指定</h4></div>
+
+                                    <div class="col-md-2 col-sm-2 col-xs-2 text-right"><h4>原中学</h4></div>
+                                    <div class="col-md-4 col-sm-4 col-xs-4 text-left text-info"><h4 id="DivStudentSchool">未指定</h4></div>
+
+
+                                </div>
+                                <hr />
+
+                                <div class="row">
+                                    <div class="col-md-2 col-sm-2 col-xs-2 text-right"><h4>家庭住址</h4></div>
+                                    <div class="col-md-10 col-sm-10 col-xs-10 text-left text-info"><h4 id="DivStudentAddress">未指定</h4></div>
+
+
+
+                                </div>
+                                <hr />
+                                <div class="row">
+                                    <div class="col-md-2 col-sm-2 col-xs-2 text-right"><h4>备注</h4></div>
+                                    <div class="col-md-4 col-sm-4 col-xs-4 text-left text-info"><h4 id="DivRemark">未指定</h4></div>
+
+
+
+                                </div>
+
+                                <hr />
+                                <div class="row">
+                                    <div class="col-md-2 col-sm-2 col-xs-2 text-right"><h4>推荐人</h4></div>
+                                    <div class="col-md-4 col-sm-4 col-xs-4 text-left text-info">
+                                        <h4 id="DivUserName">
+                                            未指定
+
+                                        </h4>
+                                        <span id="DivUserPhone"> </span>
+                                    </div>
+
+                                    <div class="col-md-2 col-sm-2 col-xs-2 text-right"><h4>推荐人部门</h4></div>
+                                    <div class="col-md-4 col-sm-4 col-xs-4 text-left text-info"><h4 id="DivUserDeptName">未指定</h4></div>
+
+
+                                </div>
+
+                                <hr />
+
+
+
+
+
+                            </div>
+
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    </div>
+                    <div class="modal-footer">
+
+
+
+
+
+
+
+                        <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal">
+                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            关闭
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
