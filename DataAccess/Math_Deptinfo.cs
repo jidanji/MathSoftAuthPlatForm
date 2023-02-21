@@ -18,7 +18,6 @@ namespace DataAccess
         public Math_Deptinfo()
         {
             this.Math_UserInfo = new HashSet<Math_UserInfo>();
-            this.Math_Work = new HashSet<Math_Work>();
         }
     
         public System.Guid Math_Dept_Id { get; set; }
@@ -30,7 +29,5 @@ namespace DataAccess
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Math_UserInfo> Math_UserInfo { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Math_Work> Math_Work { get; set; }
     }
 }

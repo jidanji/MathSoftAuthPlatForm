@@ -53,37 +53,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BLL_AttachedMent.cs" />
-    <Compile Include="BLL_BaoBiao.cs" />
-    <Compile Include="BLL_BrowserInfo.cs" />
-    <Compile Include="BLL_Dcit.cs" />
-    <Compile Include="BLL_DeleteLog.cs" />
-    <Compile Include="BLL_Event.cs" />
-    <Compile Include="BLL_Math_CWC.cs" />
     <Compile Include="BLL_Math_Deptinfo.cs" />
     <Compile Include="BLL_Math_Dict.cs" />
     <Compile Include="BLL_Math_DictType.cs" />
-    <Compile Include="BLL_Math_FileUpload.cs" />
-    <Compile Include="BLL_Math_JYT.cs" />
     <Compile Include="BLL_Math_MenuInfo.cs" />
-    <Compile Include="BLL_Math_Student.cs" />
-    <Compile Include="BLL_Math_SYJD.cs" />
     <Compile Include="BLL_Math_View_DictAndType.cs" />
-    <Compile Include="BLL_Math_Work.cs" />
-    <Compile Include="BLL_Math_Work_History.cs" />
-    <Compile Include="BLL_Math_XSC.cs" />
-    <Compile Include="BLL_Math_ZZ.cs" />
-    <Compile Include="BLL_Math_ZZTARGET.cs" />
     <Compile Include="BLL_Role.cs" />
-    <Compile Include="BLL_SysSetting.cs" />
-    <Compile Include="BLL_TimeLine.cs" />
     <Compile Include="BLL_User.cs" />
-    <Compile Include="BLL_View_AnalySISS.cs" />
     <Compile Include="BLL_View_User_Menu.cs" />
     <Compile Include="BLL_View_User_Role.cs" />
-    <Compile Include="BLL_View_ZhanZhangStatic.cs" />
-    <Compile Include="BLL_ZhanZhangStaticNew.cs" />
-    <Compile Include="BLL_ZZ_Static.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

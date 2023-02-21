@@ -17,7 +17,6 @@ namespace DataAccess
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Math_UserInfo()
         {
-            this.Math_Student = new HashSet<Math_Student>();
             this.Math_User_Role_Select = new HashSet<Math_User_Role_Select>();
         }
     
@@ -35,8 +34,6 @@ namespace DataAccess
         public Nullable<int> User_Area { get; set; }
     
         public virtual Math_Deptinfo Math_Deptinfo { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Math_Student> Math_Student { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Math_User_Role_Select> Math_User_Role_Select { get; set; }
     }

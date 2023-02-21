@@ -40,35 +40,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dto_CWC.cs" />
-    <Compile Include="Dto_JYT.cs" />
-    <Compile Include="Dto_Math_FileUpload.cs" />
-    <Compile Include="Dto_Math_ZZ.cs" />
-    <Compile Include="Dto_SYJD.cs" />
-    <Compile Include="DTO_View_ZhanZhangStatic.cs" />
-    <Compile Include="Dto_XSC.cs" />
-    <Compile Include="Dto_View_AnalySISS.cs" />
-    <Compile Include="Dto_ZZ_Static.cs" />
-    <Compile Include="gojsModal.cs" />
-    <Compile Include="SSISDetail.cs" />
-    <Compile Include="StaticUI.cs" />
-    <Compile Include="UI_TimeLine.cs" />
-    <Compile Include="UIStatic.cs" />
-    <Compile Include="UIStudent.cs" />
-    <Compile Include="UIZHaoShengBaobiao.cs" />
-    <Compile Include="UI_AttachedMent.cs" />
-    <Compile Include="UIEventInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UIMathUserInfo.cs" />
     <Compile Include="UIMath_Dict.cs" />
     <Compile Include="UIMath_DictType.cs" />
     <Compile Include="UIMath_View_DictAndType.cs" />
-    <Compile Include="UIMath_Work.cs" />
-    <Compile Include="UIMath_Work_History.cs" />
     <Compile Include="UIRoleModel.cs" />
     <Compile Include="UI_Math_Deptinfo.cs" />
     <Compile Include="UI_Math_Menuinfo.cs" />
-    <Compile Include="UI_SysSetting.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

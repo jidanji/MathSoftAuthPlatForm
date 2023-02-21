@@ -27,41 +27,18 @@ namespace DataAccess
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<AttachedMent> AttachedMents { get; set; }
-        public virtual DbSet<BaseInfo> BaseInfoes { get; set; }
-        public virtual DbSet<BrowserInfo> BrowserInfoes { get; set; }
-        public virtual DbSet<CC> CCs { get; set; }
-        public virtual DbSet<DeleteLog> DeleteLogs { get; set; }
-        public virtual DbSet<Math_CWC> Math_CWC { get; set; }
         public virtual DbSet<Math_Deptinfo> Math_Deptinfo { get; set; }
         public virtual DbSet<Math_Dict> Math_Dict { get; set; }
         public virtual DbSet<Math_DictType> Math_DictType { get; set; }
-        public virtual DbSet<Math_FileUpload> Math_FileUpload { get; set; }
-        public virtual DbSet<Math_JYT> Math_JYT { get; set; }
         public virtual DbSet<Math_MenuInfo> Math_MenuInfo { get; set; }
         public virtual DbSet<Math_Role_Menu_Selcet> Math_Role_Menu_Selcet { get; set; }
         public virtual DbSet<Math_RoleInfo> Math_RoleInfo { get; set; }
-        public virtual DbSet<Math_Status> Math_Status { get; set; }
-        public virtual DbSet<Math_Student> Math_Student { get; set; }
-        public virtual DbSet<Math_SYJD> Math_SYJD { get; set; }
         public virtual DbSet<Math_User_Role_Select> Math_User_Role_Select { get; set; }
         public virtual DbSet<Math_UserInfo> Math_UserInfo { get; set; }
-        public virtual DbSet<Math_Work> Math_Work { get; set; }
-        public virtual DbSet<Math_Work_History> Math_Work_History { get; set; }
-        public virtual DbSet<Math_XSC> Math_XSC { get; set; }
-        public virtual DbSet<Math_ZZ> Math_ZZ { get; set; }
-        public virtual DbSet<Math_ZZTARGET> Math_ZZTARGET { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
-        public virtual DbSet<SysSetting> SysSettings { get; set; }
-        public virtual DbSet<TimeLine> TimeLines { get; set; }
-        public virtual DbSet<ZhanZhangStaticNew> ZhanZhangStaticNews { get; set; }
-        public virtual DbSet<ZZ_Static> ZZ_Static { get; set; }
         public virtual DbSet<Math_View_DictAndType> Math_View_DictAndType { get; set; }
-        public virtual DbSet<View_AnalySISS> View_AnalySISS { get; set; }
         public virtual DbSet<View_User_Menu> View_User_Menu { get; set; }
         public virtual DbSet<View_User_Role> View_User_Role { get; set; }
-        public virtual DbSet<View_ZhanZhangStatic> View_ZhanZhangStatic { get; set; }
-        public virtual DbSet<View_ZhanZhangStaticBase> View_ZhanZhangStaticBase { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {

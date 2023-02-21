@@ -5,52 +5,24 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="d747d0b439f3432aa3ccdf54373f2e36" Name="Diagram1" ZoomLevel="64">
-        <EntityTypeShape EntityType="MathRoleAuthorModel.AttachedMent" Width="1.5" PointX="5.25" PointY="12" />
-        <EntityTypeShape EntityType="MathRoleAuthorModel.BaseInfo" Width="1.5" PointX="7.75" PointY="10" />
-        <EntityTypeShape EntityType="MathRoleAuthorModel.BrowserInfo" Width="1.5" PointX="9.75" PointY="10" />
-        <EntityTypeShape EntityType="MathRoleAuthorModel.CC" Width="1.5" PointX="10.75" PointY="1" />
-        <EntityTypeShape EntityType="MathRoleAuthorModel.DeleteLog" Width="1.5" PointX="0.75" PointY="1" />
-        <EntityTypeShape EntityType="MathRoleAuthorModel.Math_CWC" Width="1.5" PointX="10.75" PointY="5" />
-        <EntityTypeShape EntityType="MathRoleAuthorModel.Math_Deptinfo" Width="1.5" PointX="0.75" PointY="8" />
-        <EntityTypeShape EntityType="MathRoleAuthorModel.Math_Dict" Width="1.5" PointX="6" PointY="0.75" />
-        <EntityTypeShape EntityType="MathRoleAuthorModel.Math_DictType" Width="1.5" PointX="3.75" PointY="1.125" />
-        <EntityTypeShape EntityType="MathRoleAuthorModel.Math_FileUpload" Width="1.5" PointX="11.75" PointY="9" />
-        <EntityTypeShape EntityType="MathRoleAuthorModel.Math_JYT" Width="1.5" PointX="11.75" PointY="12" />
-        <EntityTypeShape EntityType="MathRoleAuthorModel.Math_MenuInfo" Width="1.5" PointX="3" PointY="19.5" />
-        <EntityTypeShape EntityType="MathRoleAuthorModel.Math_Role_Menu_Selcet" Width="1.5" PointX="5.25" PointY="15.875" />
-        <EntityTypeShape EntityType="MathRoleAuthorModel.Math_RoleInfo" Width="1.5" PointX="3" PointY="15.625" />
-        <EntityTypeShape EntityType="MathRoleAuthorModel.Math_Status" Width="1.5" PointX="12.75" PointY="1" />
-        <EntityTypeShape EntityType="MathRoleAuthorModel.Math_Student" Width="1.5" PointX="8.25" PointY="3.125" />
-        <EntityTypeShape EntityType="MathRoleAuthorModel.Math_SYJD" Width="1.5" PointX="12.75" PointY="4" />
-        <EntityTypeShape EntityType="MathRoleAuthorModel.Math_User_Role_Select" Width="1.5" PointX="5.25" PointY="4.875" />
-        <EntityTypeShape EntityType="MathRoleAuthorModel.Math_UserInfo" Width="1.5" PointX="3" PointY="4" />
-        <EntityTypeShape EntityType="MathRoleAuthorModel.Math_Work" Width="1.5" PointX="3" PointY="8.5" />
-        <EntityTypeShape EntityType="MathRoleAuthorModel.Math_Work_History" Width="1.5" PointX="5.25" PointY="8.625" />
-        <EntityTypeShape EntityType="MathRoleAuthorModel.Math_XSC" Width="1.5" PointX="13.75" PointY="7" />
-        <EntityTypeShape EntityType="MathRoleAuthorModel.Math_ZZ" Width="1.5" PointX="7.75" PointY="14" />
-        <EntityTypeShape EntityType="MathRoleAuthorModel.Math_ZZTARGET" Width="1.5" PointX="13.75" PointY="11" />
-        <EntityTypeShape EntityType="MathRoleAuthorModel.sysdiagram" Width="1.5" PointX="13.75" PointY="14" />
-        <EntityTypeShape EntityType="MathRoleAuthorModel.SysSetting" Width="1.5" PointX="14.75" PointY="1" />
-        <EntityTypeShape EntityType="MathRoleAuthorModel.TimeLine" Width="1.5" PointX="15.75" PointY="4" />
-        <EntityTypeShape EntityType="MathRoleAuthorModel.ZhanZhangStaticNew" Width="1.5" PointX="15.75" PointY="8" />
-        <EntityTypeShape EntityType="MathRoleAuthorModel.ZZ_Static" Width="1.5" PointX="9.75" PointY="16" />
-        <EntityTypeShape EntityType="MathRoleAuthorModel.Math_View_DictAndType" Width="1.5" PointX="15.75" PointY="12" />
-        <EntityTypeShape EntityType="MathRoleAuthorModel.View_AnalySISS" Width="1.5" PointX="15.75" PointY="15" />
-        <EntityTypeShape EntityType="MathRoleAuthorModel.View_User_Menu" Width="1.5" PointX="11.75" PointY="17" />
-        <EntityTypeShape EntityType="MathRoleAuthorModel.View_User_Role" Width="1.5" PointX="17.75" PointY="1" />
-        <EntityTypeShape EntityType="MathRoleAuthorModel.View_ZhanZhangStatic" Width="1.5" PointX="17.75" PointY="7" />
-        <EntityTypeShape EntityType="MathRoleAuthorModel.View_ZhanZhangStaticBase" Width="1.5" PointX="17.75" PointY="11" />
-        <AssociationConnector Association="MathRoleAuthorModel.FK_AttachedMent_Math_Work" />
+        <EntityTypeShape EntityType="MathRoleAuthorModel.Math_Deptinfo" Width="1.5" PointX="0.75" PointY="1.625" />
+        <EntityTypeShape EntityType="MathRoleAuthorModel.Math_Dict" Width="1.5" PointX="10" PointY="0.875" />
+        <EntityTypeShape EntityType="MathRoleAuthorModel.Math_DictType" Width="1.5" PointX="7.75" PointY="1.25" />
+        <EntityTypeShape EntityType="MathRoleAuthorModel.Math_MenuInfo" Width="1.5" PointX="3" PointY="9.375" />
+        <EntityTypeShape EntityType="MathRoleAuthorModel.Math_Role_Menu_Selcet" Width="1.5" PointX="5.25" PointY="5.875" />
+        <EntityTypeShape EntityType="MathRoleAuthorModel.Math_RoleInfo" Width="1.5" PointX="3" PointY="5.5" />
+        <EntityTypeShape EntityType="MathRoleAuthorModel.Math_User_Role_Select" Width="1.5" PointX="5.25" PointY="1.875" />
+        <EntityTypeShape EntityType="MathRoleAuthorModel.Math_UserInfo" Width="1.5" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="MathRoleAuthorModel.sysdiagram" Width="1.5" PointX="7.75" PointY="4.75" />
+        <EntityTypeShape EntityType="MathRoleAuthorModel.Math_View_DictAndType" Width="1.5" PointX="7.75" PointY="7.75" />
+        <EntityTypeShape EntityType="MathRoleAuthorModel.View_User_Menu" Width="1.5" PointX="9.75" PointY="4.75" />
+        <EntityTypeShape EntityType="MathRoleAuthorModel.View_User_Role" Width="1.5" PointX="5.75" PointY="10.75" />
         <AssociationConnector Association="MathRoleAuthorModel.FK_Math_UserInfo_Math_UserInfo" />
-        <AssociationConnector Association="MathRoleAuthorModel.FK_Math_Work_Math_Deptinfo" />
         <AssociationConnector Association="MathRoleAuthorModel.FK_Math_Dict_Math_DictType" />
-        <AssociationConnector Association="MathRoleAuthorModel.FK_Math_Student_Math_Dict" />
         <AssociationConnector Association="MathRoleAuthorModel.菜单id的关系" />
         <AssociationConnector Association="MathRoleAuthorModel.Roleid关系" />
         <AssociationConnector Association="MathRoleAuthorModel.RoleId" />
-        <AssociationConnector Association="MathRoleAuthorModel.FK_Math_Student_Math_Student" />
         <AssociationConnector Association="MathRoleAuthorModel.UserId" />
-        <AssociationConnector Association="MathRoleAuthorModel.FK_Work_His_Math_Work" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -134,7 +134,6 @@
     <Content Include="favicon.ico" />
     <Content Include="images\excel.png" />
     <Content Include="Scripts\animate.min.css" />
-    <Content Include="WebForm1.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -164,7 +163,6 @@
     <Content Include="Areas\Admin\Views\Login\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_BackGroud.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
     <Content Include="HtmlPage1.html" />
     <Content Include="images\2019bg.jpg" />
     <Content Include="images\2019new.png" />
@@ -803,35 +801,18 @@
     <Content Include="Areas\Admin\Views\Sth\Index.cshtml" />
     <Content Include="Areas\Admin\Views\MenuInfo\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Main\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\BaoBiao\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Home\Index2.cshtml" />
-    <Content Include="Areas\Admin\Views\Home\Index3.cshtml" />
     <Content Include="Areas\Admin\Views\UserInfo\ChangePWDIndex.cshtml" />
     <Content Include="Content\fonts\octicons.woff" />
     <Content Include="Content\fonts\octicons.ttf" />
     <Content Include="Content\fonts\octicons.eot" />
-    <Content Include="Areas\Admin\Views\Student\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Student\BaoBiao.cshtml" />
-    <Content Include="Areas\Admin\Views\SysSetting\Index.cshtml" />
     <Content Include="Scripts\monment\moment-with-locales.js" />
     <Content Include="Scripts\monment\moment-with-locales.min.js" />
     <Content Include="Scripts\monment\moment.js" />
     <Content Include="Scripts\monment\moment.min.js" />
     <Content Include="Scripts\vue.js" />
     <Content Include="Scripts\vue.min.js" />
-    <Content Include="WebForm2.aspx" />
-    <Content Include="Areas\Admin\Views\FileUpload\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\AnalySISS\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\ZhanZhangPiPei\Index.cshtml" />
-    <Content Include="WebForm3.aspx" />
-    <Content Include="WebForm4.aspx" />
     <Content Include="fonts\FZZZHONGHJW.TTF" />
     <Content Include="fonts\zsYAHEI.ttf" />
-    <Content Include="Areas\Admin\Views\ZhanZhangStatic\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\ZhanZhangStaticNew\Index.cshtml" />
-    <Content Include="WebForm5.aspx" />
-    <Content Include="WebForm6.aspx" />
-    <Content Include="WebForm7.aspx" />
     <Content Include="Content\modal.rar" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <Content Include="Scripts\element-ui\CHANGELOG.en-US.md" />
@@ -1252,83 +1233,21 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
-    <Compile Include="Areas\Admin\Controllers\AnalySISSController.cs" />
-    <Compile Include="Areas\Admin\Controllers\BaoBiaoController.cs" />
     <Compile Include="Areas\Admin\Controllers\BgBaseController.cs" />
     <Compile Include="Areas\Admin\Controllers\DepartmentController.cs" />
-    <Compile Include="Areas\Admin\Controllers\ExcelController.cs" />
-    <Compile Include="Areas\Admin\Controllers\FileUploadController.cs" />
-    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
-    <Compile Include="Areas\Admin\Controllers\EventController.cs" />
     <Compile Include="Areas\Admin\Controllers\MainController.cs" />
     <Compile Include="Areas\Admin\Controllers\MathDictController.cs" />
     <Compile Include="Areas\Admin\Controllers\MenuInfoController.cs" />
     <Compile Include="Areas\Admin\Controllers\RoleController.cs" />
-    <Compile Include="Areas\Admin\Controllers\StudentController.cs" />
-    <Compile Include="Areas\Admin\Controllers\SysSettingController.cs" />
-    <Compile Include="Areas\Admin\Controllers\TempController.cs" />
-    <Compile Include="Areas\Admin\Controllers\TimeLineController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserInfoController.cs" />
-    <Compile Include="Areas\Admin\Controllers\ZhanZhangPiPeiController.cs" />
-    <Compile Include="Areas\Admin\Controllers\ZhanZhangStaticController.cs" />
-    <Compile Include="Areas\Admin\Controllers\ZhanZhangStaticNewController.cs" />
     <Compile Include="Models\StaticUI.cs" />
-    <Compile Include="WebForm1.aspx.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="WebForm1.aspx.designer.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Controllers\MZKController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AutoMapperConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WebForm2.aspx.cs">
-      <DependentUpon>WebForm2.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="WebForm2.aspx.designer.cs">
-      <DependentUpon>WebForm2.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="WebForm3.aspx.cs">
-      <DependentUpon>WebForm3.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="WebForm3.aspx.designer.cs">
-      <DependentUpon>WebForm3.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="WebForm4.aspx.cs">
-      <DependentUpon>WebForm4.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="WebForm4.aspx.designer.cs">
-      <DependentUpon>WebForm4.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="WebForm5.aspx.cs">
-      <DependentUpon>WebForm5.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="WebForm5.aspx.designer.cs">
-      <DependentUpon>WebForm5.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="WebForm6.aspx.cs">
-      <DependentUpon>WebForm6.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="WebForm6.aspx.designer.cs">
-      <DependentUpon>WebForm6.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="WebForm7.aspx.cs">
-      <DependentUpon>WebForm7.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="WebForm7.aspx.designer.cs">
-      <DependentUpon>WebForm7.aspx</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config">
@@ -1351,10 +1270,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\DataSource\" />
-    <Folder Include="Areas\Admin\Views\Event\" />
-    <Folder Include="Areas\Admin\Views\Excel\" />
-    <Folder Include="Areas\Admin\Views\Temp\" />
-    <Folder Include="Areas\Admin\Views\TimeLine\" />
     <Folder Include="Views\MZK\" />
   </ItemGroup>
   <ItemGroup>

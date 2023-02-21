@@ -23,9 +23,7 @@ namespace MAZIKONG.Areas.Admin.Controllers
             ViewBag.BrowserType = b.Type;
             int toal = 0;
             Guid idj = Guid.Parse("0D930AF9-76A3-4AB8-A492-580216BA64CC");
-            var list = new BLL_Math_Dict().Search(-1, -1, out toal, i => i.DictTypeId == idj);
-            var m1 = list.FirstOrDefault();
-            ViewBag.important = m1 == null ? "欢迎使用" : m1.DictRemark;
+          
 
             return View();
         }
@@ -57,12 +55,7 @@ namespace MAZIKONG.Areas.Admin.Controllers
                     //Response.Write("<hr>");
 
 
-                    new BLL_BrowserInfo().Add(b.Browser, b.Version, UserName
-                        , b.Type, b.Platform,
-                        b.Frames.ToString(),
-                        b.Tables.ToString(),
-                        b.Cookies.ToString()
-                         );
+                   
 
 
                     FormsAuthentication.SetAuthCookie(UserName, false);

@@ -51,18 +51,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AttachedMent.cs">
-      <DependentUpon>DataContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="BaseInfo.cs">
-      <DependentUpon>DataContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="BrowserInfo.cs">
-      <DependentUpon>DataContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CC.cs">
-      <DependentUpon>DataContext.tt</DependentUpon>
-    </Compile>
     <Compile Include="DataContext.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -78,12 +66,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataContext.edmx</DependentUpon>
     </Compile>
-    <Compile Include="DeleteLog.cs">
-      <DependentUpon>DataContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Math_CWC.cs">
-      <DependentUpon>DataContext.tt</DependentUpon>
-    </Compile>
     <Compile Include="Math_Deptinfo.cs">
       <DependentUpon>DataContext.tt</DependentUpon>
     </Compile>
@@ -91,12 +73,6 @@
       <DependentUpon>DataContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Math_DictType.cs">
-      <DependentUpon>DataContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Math_FileUpload.cs">
-      <DependentUpon>DataContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Math_JYT.cs">
       <DependentUpon>DataContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Math_MenuInfo.cs">
@@ -108,15 +84,6 @@
     <Compile Include="Math_Role_Menu_Selcet.cs">
       <DependentUpon>DataContext.tt</DependentUpon>
     </Compile>
-    <Compile Include="Math_Status.cs">
-      <DependentUpon>DataContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Math_Student.cs">
-      <DependentUpon>DataContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Math_SYJD.cs">
-      <DependentUpon>DataContext.tt</DependentUpon>
-    </Compile>
     <Compile Include="Math_UserInfo.cs">
       <DependentUpon>DataContext.tt</DependentUpon>
     </Compile>
@@ -124,21 +91,6 @@
       <DependentUpon>DataContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Math_View_DictAndType.cs">
-      <DependentUpon>DataContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Math_Work.cs">
-      <DependentUpon>DataContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Math_Work_History.cs">
-      <DependentUpon>DataContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Math_XSC.cs">
-      <DependentUpon>DataContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Math_ZZ.cs">
-      <DependentUpon>DataContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Math_ZZTARGET.cs">
       <DependentUpon>DataContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -151,31 +103,10 @@
     <Compile Include="sysdiagram.cs">
       <DependentUpon>DataContext.tt</DependentUpon>
     </Compile>
-    <Compile Include="SysSetting.cs">
-      <DependentUpon>DataContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TimeLine.cs">
-      <DependentUpon>DataContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="View_AnalySISS.cs">
-      <DependentUpon>DataContext.tt</DependentUpon>
-    </Compile>
     <Compile Include="View_User_Menu.cs">
       <DependentUpon>DataContext.tt</DependentUpon>
     </Compile>
     <Compile Include="View_User_Role.cs">
-      <DependentUpon>DataContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="View_ZhanZhangStatic.cs">
-      <DependentUpon>DataContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="View_ZhanZhangStaticBase.cs">
-      <DependentUpon>DataContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ZhanZhangStaticNew.cs">
-      <DependentUpon>DataContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ZZ_Static.cs">
       <DependentUpon>DataContext.tt</DependentUpon>
     </Compile>
   </ItemGroup>

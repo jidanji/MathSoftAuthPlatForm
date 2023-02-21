@@ -14,12 +14,6 @@ namespace DataAccess
     
     public partial class Math_Dict
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Math_Dict()
-        {
-            this.Math_Student = new HashSet<Math_Student>();
-        }
-    
         public System.Guid DictId { get; set; }
         public int DictOrderId { get; set; }
         public string DictValue { get; set; }
@@ -27,7 +21,5 @@ namespace DataAccess
         public string DictRemark { get; set; }
     
         public virtual Math_DictType Math_DictType { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Math_Student> Math_Student { get; set; }
     }
 }
