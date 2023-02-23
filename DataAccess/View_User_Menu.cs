@@ -35,5 +35,6 @@ namespace DataAccess
         public string User_Sex { get; set; }
         public Nullable<int> User_Area { get; set; }
         public Nullable<int> MenuOrderBy { get; set; }
+        public Nullable<int> PageType { get; set; }
     }
 }

@@ -29,6 +29,7 @@ namespace DataAccess
         public Nullable<System.DateTime> MenuInsertTime { get; set; }
         public Nullable<System.DateTime> MenuUpdateTime { get; set; }
         public Nullable<int> MenuOrderBy { get; set; }
+        public Nullable<int> PageType { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Math_Role_Menu_Selcet> Math_Role_Menu_Selcet { get; set; }

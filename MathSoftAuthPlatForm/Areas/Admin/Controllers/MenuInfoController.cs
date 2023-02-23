@@ -65,12 +65,12 @@ namespace MAZIKONG.Areas.Admin.Controllers
         }
 
         [Authorize]
-        public ActionResult AddMenu(string MenuTitle, string MenuURL, string MenuRemark, string MenuIcon,int MenuOrderBy)
+        public ActionResult AddMenu(string MenuTitle, string MenuURL, string MenuRemark, string MenuIcon,int MenuOrderBy,int PageType)
         {
 
             MathRoleAuthorEntities entities = new MathRoleAuthorEntities();
             BLL_Math_MenuInfo bLL_Role = new BLL_Math_MenuInfo();
-            UIModelData<Math_MenuInfo> uIModelData = bLL_Role.Add(MenuTitle, MenuURL, MenuRemark, MenuIcon, MenuOrderBy,i => i.MenuTitle == MenuTitle);
+            UIModelData<Math_MenuInfo> uIModelData = bLL_Role.Add(MenuTitle, MenuURL, MenuRemark, MenuIcon, MenuOrderBy,  PageType, i => i.MenuTitle == MenuTitle);
             UIModelData<UI_Math_Menuinfo> model = new UIModelData<UI_Math_Menuinfo>
             {
                 Data = Mapper.Map<UI_Math_Menuinfo>(uIModelData.Data),
@@ -82,12 +82,12 @@ namespace MAZIKONG.Areas.Admin.Controllers
         }
 
         [Authorize]
-        public ActionResult UpdateMenu(Guid MenuId, string MenuTitle, string MenuURL, string MenuRemark, string MenuIcon,int MenuOrderBy)
+        public ActionResult UpdateMenu(Guid MenuId, string MenuTitle, string MenuURL, string MenuRemark, string MenuIcon,int MenuOrderBy,int PageType)
         {
 
             MathRoleAuthorEntities entities = new MathRoleAuthorEntities();
             BLL_Math_MenuInfo bLL_Role = new BLL_Math_MenuInfo();
-            UIModelData<Math_MenuInfo> uIModelData = bLL_Role.Update(MenuId, MenuTitle, MenuURL, MenuRemark, MenuIcon, MenuOrderBy,
+            UIModelData<Math_MenuInfo> uIModelData = bLL_Role.Update(MenuId, MenuTitle, MenuURL, MenuRemark, MenuIcon, MenuOrderBy, PageType,
                 i => i.MenuId != MenuId && i.MenuTitle == MenuTitle);
 
             UIModelData<UI_Math_Menuinfo> model = new UIModelData<UI_Math_Menuinfo>

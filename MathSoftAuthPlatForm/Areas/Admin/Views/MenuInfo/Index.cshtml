@@ -82,6 +82,14 @@
                         return '<a>' + data + '</a>'
                     }
                 },
+
+                {
+                    "data": "PageType",
+                    render: function (data, type, row, meta) {
+                        return data == 1 ? "普通页面" : "外部路由";
+                    }
+                },
+
                 {
                     "data": "MenuURL"
                 },
@@ -424,12 +432,15 @@
                         </div>
 
 
-                        <label class="col-sm-2  control-label" for="formGroupInputSmall">菜单链接</label>
+
+                        <label class="col-sm-2  control-label" for="formGroupInputSmall">页面类型</label>
                         <div class="col-sm-4">
-                            <input type="text" required class="form-control"
-                                   placeholder="请输入菜单链接"
-                                   id="MenuURL"
-                                   name="MenuURL" />
+                            <select required class="form-control"  id="PageType"
+                                   name="PageType" >
+                                <option value="">请选择页面类型</option>
+                                <option value="1">内部路由</option>
+                                <option value="2">外部页面</option>
+                            </select>
                         </div>
 
 
@@ -439,7 +450,13 @@
                     <div class="form-group form-group-sm row">
 
 
-
+                        <label class="col-sm-2  control-label" for="formGroupInputSmall">菜单链接</label>
+                        <div class="col-sm-4">
+                            <input type="text" required class="form-control"
+                                   placeholder="请输入菜单链接"
+                                   id="MenuURL"
+                                   name="MenuURL" />
+                        </div>
 
                         <label class="col-sm-2  control-label" for="formGroupInputSmall">排序字段</label>
                         <div class="col-sm-4">
@@ -450,7 +467,7 @@
                         </div>
 
 
-                       
+
 
 
 
@@ -979,10 +996,11 @@
                 </th>
                 <th>序号</th>
                 <th>菜单名称</th>
+                <th>页面类型</th>
                 <th>菜单链接</th>
                 <th>图标</th>
                 <th>排序字段</th>
-                 
+
                 <th>更新时间</th>
                 <th>备注</th>
                 <th>操作</th>

@@ -19,7 +19,7 @@ namespace Business
             contextItem = context.Math_MenuInfo;
         }
 
-        public UIModelData<Math_MenuInfo> Add(string MenuTitle, string MenuURL, string MenuRemark, string MenuIcon,int MenuOrderBy, Expression<Func<Math_MenuInfo, bool>> perWhere)
+        public UIModelData<Math_MenuInfo> Add(string MenuTitle, string MenuURL, string MenuRemark, string MenuIcon,int MenuOrderBy,int PageType, Expression<Func<Math_MenuInfo, bool>> perWhere)
         {
             Math_MenuInfo model = new Math_MenuInfo()
             {
@@ -30,7 +30,8 @@ namespace Business
                 MenuIcon = MenuIcon,
                 MenuTitle = MenuTitle,
                 MenuURL = MenuURL,
-                MenuOrderBy = MenuOrderBy
+                MenuOrderBy = MenuOrderBy,
+                PageType= PageType
             };
             UIModelData<Math_MenuInfo> uIModelData = new UIModelData<Math_MenuInfo> { };
             int total = GetTotal(perWhere);
@@ -51,7 +52,7 @@ namespace Business
             return uIModelData;
         }
 
-        public UIModelData<Math_MenuInfo> Update(Guid Menuid, string MenuTitle, string MenuURL, string MenuRemark, string MenuIcon,int  MenuOrderBy, Expression<Func<Math_MenuInfo, bool>> perWhere)
+        public UIModelData<Math_MenuInfo> Update(Guid Menuid, string MenuTitle, string MenuURL, string MenuRemark, string MenuIcon,int  MenuOrderBy,int PageType, Expression<Func<Math_MenuInfo, bool>> perWhere)
         {
             UIModelData<Math_MenuInfo> uIModelData = new UIModelData<Math_MenuInfo> { };
             int total = GetTotal(perWhere);
@@ -74,6 +75,7 @@ namespace Business
                 model.MenuTitle = MenuTitle;
                 model.MenuURL = MenuURL;
                 model.MenuOrderBy = MenuOrderBy;
+                model.PageType = PageType;
 
                 context.SaveChanges();
                 uIModelData.suc = true;

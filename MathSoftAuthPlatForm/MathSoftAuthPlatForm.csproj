@@ -199,7 +199,6 @@
     <Content Include="Scripts\layDate-v5.0.9\laydate\theme\default\font\iconfont.svg" />
     <Content Include="Scripts\layDate-v5.0.9\laydate\theme\default\laydate.css" />
     <Content Include="Areas\Admin\Views\MathDict\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Sth\Index.cshtml" />
     <Content Include="Areas\Admin\Views\MenuInfo\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Main\Index.cshtml" />
     <Content Include="Areas\Admin\Views\UserInfo\ChangePWDIndex.cshtml" />
@@ -210,12 +209,14 @@
     <Content Include="Scripts\monment\moment-with-locales.min.js" />
     <Content Include="Scripts\monment\moment.js" />
     <Content Include="Scripts\monment\moment.min.js" />
+    <Content Include="Scripts\urlexe.js" />
     <Content Include="Scripts\vue.js" />
     <Content Include="Scripts\vue.min.js" />
     <Content Include="fonts\FZZZHONGHJW.TTF" />
     <Content Include="fonts\zsYAHEI.ttf" />
     <Content Include="Content\modal.rar" />
     <Content Include="Areas\Admin\Views\Shared\_BackGroudNoLeft.cshtml" />
+    <Content Include="Areas\Admin\Views\OuterPage\Index.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="images\login.png" />
@@ -411,6 +412,7 @@
     <Compile Include="Areas\Admin\Controllers\MainController.cs" />
     <Compile Include="Areas\Admin\Controllers\MathDictController.cs" />
     <Compile Include="Areas\Admin\Controllers\MenuInfoController.cs" />
+    <Compile Include="Areas\Admin\Controllers\OuterPageController.cs" />
     <Compile Include="Areas\Admin\Controllers\RoleController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserInfoController.cs" />
     <Compile Include="Models\StaticUI.cs" />

@@ -18,5 +18,7 @@ namespace DTOModel
         public DateTime MenuUpdateTime { get; set; }
 
         public int? MenuOrderBy { get; set; }
+
+        public int PageType { get; set; }
     }
 }

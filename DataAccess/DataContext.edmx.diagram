@@ -8,7 +8,7 @@
         <EntityTypeShape EntityType="MathRoleAuthorModel.Math_Deptinfo" Width="1.5" PointX="0.75" PointY="1.625" />
         <EntityTypeShape EntityType="MathRoleAuthorModel.Math_Dict" Width="1.5" PointX="10" PointY="0.875" />
         <EntityTypeShape EntityType="MathRoleAuthorModel.Math_DictType" Width="1.5" PointX="7.75" PointY="1.25" />
-        <EntityTypeShape EntityType="MathRoleAuthorModel.Math_MenuInfo" Width="1.5" PointX="3" PointY="9.375" />
+        <EntityTypeShape EntityType="MathRoleAuthorModel.Math_MenuInfo" Width="1.5" PointX="3" PointY="9.25" />
         <EntityTypeShape EntityType="MathRoleAuthorModel.Math_Role_Menu_Selcet" Width="1.5" PointX="5.25" PointY="5.875" />
         <EntityTypeShape EntityType="MathRoleAuthorModel.Math_RoleInfo" Width="1.5" PointX="3" PointY="5.5" />
         <EntityTypeShape EntityType="MathRoleAuthorModel.Math_User_Role_Select" Width="1.5" PointX="5.25" PointY="1.875" />

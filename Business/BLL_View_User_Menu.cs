@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Web;
 
 namespace Business
 {
@@ -38,6 +39,13 @@ namespace Business
             else
             {
                 list = contextItem.Where(exp1).OrderByDescending(i => i.MenuOrderBy).ToList();
+            }
+
+            foreach (var item in list) {
+                if (item.PageType == 2)
+                {
+                    item.MenuURL = "/Admin/OuterPage/Index?url=" + HttpUtility.UrlEncode(item.MenuURL, System.Text.Encoding.GetEncoding(936)) ;
+                }
             }
             //下面是menu去重复的过程。
             var MenuIds = list.Select(item => item.MenuId).Distinct().ToList();
