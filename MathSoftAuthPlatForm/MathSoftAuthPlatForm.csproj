@@ -137,6 +137,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\favicon.ico" />
+    <Content Include="Content\bg.png" />
     <Content Include="DependencyDLL\MySql.Data.dll" />
     <Content Include="DependencyDLL\Newtonsoft.Json.dll" />
     <Content Include="DependencyDLL\System.Data.SQLite.DLL" />
@@ -175,8 +176,6 @@
     <Content Include="HtmlPage1.html" />
     <Content Include="images\2019bg.jpg" />
     <Content Include="images\2019new.png" />
-    <Content Include="images\aliyun.png" />
-    <Content Include="images\aliyunanquan.png" />
     <Content Include="images\chrome_logo_2x.PNG" />
     <Content Include="Scripts\DataTables-1.10.13\media\images\Sorting icons.psd" />
     <Content Include="fonts\FontAwesome.otf" />
