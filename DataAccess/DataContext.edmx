@@ -5,6 +5,21 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="MathRoleAuthorModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="GongsiInfo">
+          <Key>
+            <PropertyRef Name="GongsiID" />
+          </Key>
+          <Property Name="GongsiID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="GongsiIndex" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GongsiName" Type="varchar(max)" />
+          <Property Name="GongsiContent" Type="varchar(max)" />
+          <Property Name="GongsiSearchkey" Type="varchar(max)" />
+          <Property Name="GongsiSearchDes" Type="varchar(max)" />
+          <Property Name="GongsiFooter" Type="varchar(max)" />
+          <Property Name="GongsiCultrue" Type="varchar(max)" />
+          <Property Name="GongsiShortName" Type="varchar(max)" />
+          <Property Name="GongsiLogo" Type="varchar(max)" />
+        </EntityType>
         <EntityType Name="Math_Deptinfo">
           <Key>
             <PropertyRef Name="Math_Dept_Id" />
@@ -104,7 +119,7 @@
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <!--生成过程中发现错误:
-警告 6002: 表/视图“MathRoleAuthor.dbo.Math_View_DictAndType”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+警告 6002: 表/视图“MathSoftAuthPlatForm.dbo.Math_View_DictAndType”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
         <EntityType Name="Math_View_DictAndType">
           <Key>
             <PropertyRef Name="DictId" />
@@ -118,7 +133,7 @@
           <Property Name="DictRemark" Type="varchar" MaxLength="50" />
         </EntityType>
         <!--生成过程中发现错误:
-警告 6002: 表/视图“MathRoleAuthor.dbo.View_User_Menu”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+警告 6002: 表/视图“MathSoftAuthPlatForm.dbo.View_User_Menu”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
         <EntityType Name="View_User_Menu">
           <Key>
             <PropertyRef Name="UserId" />
@@ -262,6 +277,7 @@
         </Function>
         <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="MathRoleAuthorModelStoreContainer">
+          <EntitySet Name="GongsiInfo" EntityType="Self.GongsiInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Math_Deptinfo" EntityType="Self.Math_Deptinfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Math_Dict" EntityType="Self.Math_Dict" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Math_DictType" EntityType="Self.Math_DictType" Schema="dbo" store:Type="Tables" />
@@ -403,6 +419,7 @@
             <End Role="Math_UserInfo" EntitySet="Math_UserInfo" />
             <End Role="Math_User_Role_Select" EntitySet="Math_User_Role_Select" />
           </AssociationSet>
+          <EntitySet Name="GongsiInfoes" EntityType="MathRoleAuthorModel.GongsiInfo" />
           </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -647,6 +664,21 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="GongsiInfo">
+          <Key>
+            <PropertyRef Name="GongsiID" />
+          </Key>
+          <Property Name="GongsiID" Type="Guid" Nullable="false" />
+          <Property Name="GongsiIndex" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GongsiName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="GongsiContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="GongsiSearchkey" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="GongsiSearchDes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="GongsiFooter" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="GongsiCultrue" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="GongsiShortName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="GongsiLogo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -822,6 +854,22 @@
                 <ScalarProperty Name="MenuOrderId" ColumnName="MenuOrderId" />
                 <ScalarProperty Name="MenuId" ColumnName="MenuId" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GongsiInfoes">
+            <EntityTypeMapping TypeName="MathRoleAuthorModel.GongsiInfo">
+              <MappingFragment StoreEntitySet="GongsiInfo">
+                <ScalarProperty Name="GongsiLogo" ColumnName="GongsiLogo" />
+                <ScalarProperty Name="GongsiShortName" ColumnName="GongsiShortName" />
+                <ScalarProperty Name="GongsiCultrue" ColumnName="GongsiCultrue" />
+                <ScalarProperty Name="GongsiFooter" ColumnName="GongsiFooter" />
+                <ScalarProperty Name="GongsiSearchDes" ColumnName="GongsiSearchDes" />
+                <ScalarProperty Name="GongsiSearchkey" ColumnName="GongsiSearchkey" />
+                <ScalarProperty Name="GongsiContent" ColumnName="GongsiContent" />
+                <ScalarProperty Name="GongsiName" ColumnName="GongsiName" />
+                <ScalarProperty Name="GongsiIndex" ColumnName="GongsiIndex" />
+                <ScalarProperty Name="GongsiID" ColumnName="GongsiID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

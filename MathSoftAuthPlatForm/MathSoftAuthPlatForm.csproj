@@ -137,12 +137,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\favicon.ico" />
+    <Content Include="Content\bg.jpg" />
     <Content Include="Content\bg.png" />
     <Content Include="DependencyDLL\MySql.Data.dll" />
     <Content Include="DependencyDLL\Newtonsoft.Json.dll" />
     <Content Include="DependencyDLL\System.Data.SQLite.DLL" />
     <Content Include="favicon.ico" />
     <Content Include="images\excel.png" />
+    <Content Include="images\logo.png" />
     <Content Include="Scripts\animate.min.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -219,8 +221,6 @@
     <Content Include="Areas\Admin\Views\OuterPage\Index.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
-    <Content Include="images\login.png" />
-    <Content Include="images\logo.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\DataTables-1.10.13\media\css\dataTables.bootstrap.css" />

@@ -66,6 +66,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataContext.edmx</DependentUpon>
     </Compile>
+    <Compile Include="GongsiInfo.cs">
+      <DependentUpon>DataContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="Math_Deptinfo.cs">
       <DependentUpon>DataContext.tt</DependentUpon>
     </Compile>

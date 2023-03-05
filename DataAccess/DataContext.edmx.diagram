@@ -22,6 +22,7 @@
         <AssociationConnector Association="MathRoleAuthorModel.Roleid关系" />
         <AssociationConnector Association="MathRoleAuthorModel.RoleId" />
         <AssociationConnector Association="MathRoleAuthorModel.UserId" />
+        <EntityTypeShape EntityType="MathRoleAuthorModel.GongsiInfo" Width="1.5" PointX="5.375" PointY="10.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

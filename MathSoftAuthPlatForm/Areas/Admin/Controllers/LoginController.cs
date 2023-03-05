@@ -107,7 +107,7 @@ namespace MAZIKONG.Areas.Admin.Controllers
         /// 根据cookie验证当前用户的登录信息
         /// </summary>
         /// <returns></returns>
-        public ActionResult CheckCurrentLoginStatus()
+        public ActionResult LoginStatus()
         {
             string username = System.Web.HttpContext.Current.User.Identity.Name;
 
@@ -163,5 +163,41 @@ namespace MAZIKONG.Areas.Admin.Controllers
 
         }
         #endregion
+
+
+        public ActionResult LogOut() {
+            UIModelData<string> ret = null;
+            try
+            {
+                FormsAuthentication.SignOut();
+                ret = new UIModelData<string>
+                {
+                    Data = string.Empty,
+                    remark = string.Empty,
+                    status = 1,
+                    suc = true
+                };
+               
+            }
+            catch(Exception ex)
+            {
+                ret = new UIModelData<string>
+                {
+                    Data = string.Empty,
+                    remark = ex.Message,
+                    status = 0,
+                    suc = false
+                };
+            }
+
+            finally { }
+            return new JsonResult
+            {
+                Data = ret,
+                JsonRequestBehavior = JsonRequestBehavior.AllowGet,
+
+            };
+
+        }
     }
 }
